@@ -383,7 +383,7 @@ describe('instantiate client', () => {
         apiKey: 'My API Key',
         bearerToken: 'My Bearer Token',
       });
-      expect(client.baseURL).toEqual('https://api.qanapi.com/v2');
+      expect(client.baseURL).toEqual('https://My-Subdomain.qanapi.com/v2');
     });
 
     test('blank env variable', () => {
@@ -393,7 +393,7 @@ describe('instantiate client', () => {
         apiKey: 'My API Key',
         bearerToken: 'My Bearer Token',
       });
-      expect(client.baseURL).toEqual('https://api.qanapi.com/v2');
+      expect(client.baseURL).toEqual('https://My-Subdomain.qanapi.com/v2');
     });
   });
 
