@@ -161,7 +161,7 @@ export class Qanapi {
   }: ClientOptions = {}) {
     if (subdomain === undefined) {
       throw new Errors.QanapiError(
-        "The QANAPI_SUBDOMAIN environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an subdomain option, like new Qanapi({ subdomain: 'My Subdomain' }).",
+        "The QANAPI_SUBDOMAIN environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an subdomain option, like new Qanapi({ subdomain: 'My-Subdomain' }).",
       );
     }
     if (apiKey === undefined) {
