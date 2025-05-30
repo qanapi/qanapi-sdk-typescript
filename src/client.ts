@@ -37,6 +37,11 @@ import { APIKeys } from './resources/api-keys/api-keys';
 
 export interface ClientOptions {
   /**
+   * Defaults to process.env['QANAPI_SUBDOMAIN'].
+   */
+  subdomain?: string | undefined;
+
+  /**
    * Defaults to process.env['QANAPI_API_KEY'].
    */
   apiKey?: string | undefined;
@@ -117,6 +122,7 @@ export interface ClientOptions {
  * API Client for interfacing with the Qanapi API.
  */
 export class Qanapi {
+  subdomain: string;
   apiKey: string;
   bearerToken: string;
 
@@ -135,6 +141,7 @@ export class Qanapi {
   /**
    * API Client for interfacing with the Qanapi API.
    *
+   * @param {string | undefined} [opts.subdomain=process.env['QANAPI_SUBDOMAIN'] ?? undefined]
    * @param {string | undefined} [opts.apiKey=process.env['QANAPI_API_KEY'] ?? undefined]
    * @param {string | undefined} [opts.bearerToken=process.env['QANAPI_BEARER_TOKEN'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['QANAPI_BASE_URL'] ?? https://api.qanapi.com/v2] - Override the default base URL for the API.
@@ -147,10 +154,16 @@ export class Qanapi {
    */
   constructor({
     baseURL = readEnv('QANAPI_BASE_URL'),
+    subdomain = readEnv('QANAPI_SUBDOMAIN'),
     apiKey = readEnv('QANAPI_API_KEY'),
     bearerToken = readEnv('QANAPI_BEARER_TOKEN'),
     ...opts
   }: ClientOptions = {}) {
+    if (subdomain === undefined) {
+      throw new Errors.QanapiError(
+        "The QANAPI_SUBDOMAIN environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an subdomain option, like new Qanapi({ subdomain: 'My Subdomain' }).",
+      );
+    }
     if (apiKey === undefined) {
       throw new Errors.QanapiError(
         "The QANAPI_API_KEY environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an apiKey option, like new Qanapi({ apiKey: 'My API Key' }).",
@@ -163,6 +176,7 @@ export class Qanapi {
     }
 
     const options: ClientOptions = {
+      subdomain,
       apiKey,
       bearerToken,
       ...opts,
@@ -186,6 +200,7 @@ export class Qanapi {
 
     this._options = options;
 
+    this.subdomain = subdomain;
     this.apiKey = apiKey;
     this.bearerToken = bearerToken;
   }
@@ -202,6 +217,7 @@ export class Qanapi {
       logger: this.logger,
       logLevel: this.logLevel,
       fetchOptions: this.fetchOptions,
+      subdomain: this.subdomain,
       apiKey: this.apiKey,
       bearerToken: this.bearerToken,
       ...options,
