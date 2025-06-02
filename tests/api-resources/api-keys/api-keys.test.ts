@@ -4,6 +4,7 @@ import Qanapi from 'qanapi';
 
 const client = new Qanapi({
   apiKey: 'My API Key',
+  subdomain: 'My-Subdomain',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
