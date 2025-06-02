@@ -50,12 +50,12 @@ export interface ClientOptions {
   /**
    * Defaults to process.env['QANAPI_USER_EMAIL'].
    */
-  email?: string | undefined;
+  email?: string | null | undefined;
 
   /**
    * Defaults to process.env['QANAPI_USER_PASSWORD'].
    */
-  password?: string | undefined;
+  password?: string | null | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -130,8 +130,8 @@ export interface ClientOptions {
 export class Qanapi {
   apiKey: string;
   subdomain: string | null;
-  email: string;
-  password: string;
+  email: string | null;
+  password: string | null;
 
   baseURL: string;
   maxRetries: number;
@@ -150,8 +150,8 @@ export class Qanapi {
    *
    * @param {string | undefined} [opts.apiKey=process.env['QANAPI_API_KEY'] ?? undefined]
    * @param {string | null | undefined} [opts.subdomain=process.env['QANAPI_SUBDOMAIN'] ?? null]
-   * @param {string | undefined} [opts.email=process.env['QANAPI_USER_EMAIL'] ?? undefined]
-   * @param {string | undefined} [opts.password=process.env['QANAPI_USER_PASSWORD'] ?? undefined]
+   * @param {string | null | undefined} [opts.email=process.env['QANAPI_USER_EMAIL'] ?? null]
+   * @param {string | null | undefined} [opts.password=process.env['QANAPI_USER_PASSWORD'] ?? null]
    * @param {string} [opts.baseURL=process.env['QANAPI_BASE_URL'] ?? https://{subdomain}.qanapi.com/v2] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -164,23 +164,13 @@ export class Qanapi {
     baseURL = readEnv('QANAPI_BASE_URL'),
     apiKey = readEnv('QANAPI_API_KEY'),
     subdomain = readEnv('QANAPI_SUBDOMAIN') ?? null,
-    email = readEnv('QANAPI_USER_EMAIL'),
-    password = readEnv('QANAPI_USER_PASSWORD'),
+    email = readEnv('QANAPI_USER_EMAIL') ?? null,
+    password = readEnv('QANAPI_USER_PASSWORD') ?? null,
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.QanapiError(
         "The QANAPI_API_KEY environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an apiKey option, like new Qanapi({ apiKey: 'My API Key' }).",
-      );
-    }
-    if (email === undefined) {
-      throw new Errors.QanapiError(
-        "The QANAPI_USER_EMAIL environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an email option, like new Qanapi({ email: 'My Email' }).",
-      );
-    }
-    if (password === undefined) {
-      throw new Errors.QanapiError(
-        "The QANAPI_USER_PASSWORD environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an password option, like new Qanapi({ password: 'My Password' }).",
       );
     }
 

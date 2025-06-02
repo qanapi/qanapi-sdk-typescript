@@ -24,8 +24,6 @@ describe('instantiate client', () => {
       baseURL: 'http://localhost:5000/',
       defaultHeaders: { 'X-My-Default-Header': '2' },
       apiKey: 'My API Key',
-      email: 'My Email',
-      password: 'My Password',
     });
 
     test('they are used in the request', () => {
@@ -89,20 +87,14 @@ describe('instantiate client', () => {
         error: jest.fn(),
       };
 
-      const client = new Qanapi({
-        logger: logger,
-        logLevel: 'debug',
-        apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
-      });
+      const client = new Qanapi({ logger: logger, logLevel: 'debug', apiKey: 'My API Key' });
 
       await forceAPIResponseForClient(client);
       expect(debugMock).toHaveBeenCalled();
     });
 
     test('default logLevel is warn', async () => {
-      const client = new Qanapi({ apiKey: 'My API Key', email: 'My Email', password: 'My Password' });
+      const client = new Qanapi({ apiKey: 'My API Key' });
       expect(client.logLevel).toBe('warn');
     });
 
@@ -115,13 +107,7 @@ describe('instantiate client', () => {
         error: jest.fn(),
       };
 
-      const client = new Qanapi({
-        logger: logger,
-        logLevel: 'info',
-        apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
-      });
+      const client = new Qanapi({ logger: logger, logLevel: 'info', apiKey: 'My API Key' });
 
       await forceAPIResponseForClient(client);
       expect(debugMock).not.toHaveBeenCalled();
@@ -137,12 +123,7 @@ describe('instantiate client', () => {
       };
 
       process.env['QANAPI_LOG'] = 'debug';
-      const client = new Qanapi({
-        logger: logger,
-        apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
-      });
+      const client = new Qanapi({ logger: logger, apiKey: 'My API Key' });
       expect(client.logLevel).toBe('debug');
 
       await forceAPIResponseForClient(client);
@@ -159,12 +140,7 @@ describe('instantiate client', () => {
       };
 
       process.env['QANAPI_LOG'] = 'not a log level';
-      const client = new Qanapi({
-        logger: logger,
-        apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
-      });
+      const client = new Qanapi({ logger: logger, apiKey: 'My API Key' });
       expect(client.logLevel).toBe('warn');
       expect(warnMock).toHaveBeenCalledWith(
         'process.env[\'QANAPI_LOG\'] was set to "not a log level", expected one of ["off","error","warn","info","debug"]',
@@ -181,13 +157,7 @@ describe('instantiate client', () => {
       };
 
       process.env['QANAPI_LOG'] = 'debug';
-      const client = new Qanapi({
-        logger: logger,
-        logLevel: 'off',
-        apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
-      });
+      const client = new Qanapi({ logger: logger, logLevel: 'off', apiKey: 'My API Key' });
 
       await forceAPIResponseForClient(client);
       expect(debugMock).not.toHaveBeenCalled();
@@ -203,13 +173,7 @@ describe('instantiate client', () => {
       };
 
       process.env['QANAPI_LOG'] = 'not a log level';
-      const client = new Qanapi({
-        logger: logger,
-        logLevel: 'debug',
-        apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
-      });
+      const client = new Qanapi({ logger: logger, logLevel: 'debug', apiKey: 'My API Key' });
       expect(client.logLevel).toBe('debug');
       expect(warnMock).not.toHaveBeenCalled();
     });
@@ -221,8 +185,6 @@ describe('instantiate client', () => {
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo' },
         apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
       });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/foo?apiVersion=foo');
     });
@@ -232,8 +194,6 @@ describe('instantiate client', () => {
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo', hello: 'world' },
         apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
       });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/foo?apiVersion=foo&hello=world');
     });
@@ -243,8 +203,6 @@ describe('instantiate client', () => {
         baseURL: 'http://localhost:5000/',
         defaultQuery: { hello: 'world' },
         apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
       });
       expect(client.buildURL('/foo', { hello: undefined })).toEqual('http://localhost:5000/foo');
     });
@@ -254,8 +212,6 @@ describe('instantiate client', () => {
     const client = new Qanapi({
       baseURL: 'http://localhost:5000/',
       apiKey: 'My API Key',
-      email: 'My Email',
-      password: 'My Password',
       fetch: (url) => {
         return Promise.resolve(
           new Response(JSON.stringify({ url, custom: true }), {
@@ -274,8 +230,6 @@ describe('instantiate client', () => {
     const client = new Qanapi({
       baseURL: 'http://localhost:5000/',
       apiKey: 'My API Key',
-      email: 'My Email',
-      password: 'My Password',
       fetch: defaultFetch,
     });
   });
@@ -284,8 +238,6 @@ describe('instantiate client', () => {
     const client = new Qanapi({
       baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
       apiKey: 'My API Key',
-      email: 'My Email',
-      password: 'My Password',
       fetch: (...args) => {
         return new Promise((resolve, reject) =>
           setTimeout(
@@ -315,13 +267,7 @@ describe('instantiate client', () => {
       return new Response(JSON.stringify({}), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Qanapi({
-      baseURL: 'http://localhost:5000/',
-      apiKey: 'My API Key',
-      email: 'My Email',
-      password: 'My Password',
-      fetch: testFetch,
-    });
+    const client = new Qanapi({ baseURL: 'http://localhost:5000/', apiKey: 'My API Key', fetch: testFetch });
 
     await client.patch('/foo');
     expect(capturedRequest?.method).toEqual('PATCH');
@@ -329,22 +275,12 @@ describe('instantiate client', () => {
 
   describe('baseUrl', () => {
     test('trailing slash', () => {
-      const client = new Qanapi({
-        baseURL: 'http://localhost:5000/custom/path/',
-        apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
-      });
+      const client = new Qanapi({ baseURL: 'http://localhost:5000/custom/path/', apiKey: 'My API Key' });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/custom/path/foo');
     });
 
     test('no trailing slash', () => {
-      const client = new Qanapi({
-        baseURL: 'http://localhost:5000/custom/path',
-        apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
-      });
+      const client = new Qanapi({ baseURL: 'http://localhost:5000/custom/path', apiKey: 'My API Key' });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/custom/path/foo');
     });
 
@@ -353,57 +289,41 @@ describe('instantiate client', () => {
     });
 
     test('explicit option', () => {
-      const client = new Qanapi({
-        baseURL: 'https://example.com',
-        apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
-      });
+      const client = new Qanapi({ baseURL: 'https://example.com', apiKey: 'My API Key' });
       expect(client.baseURL).toEqual('https://example.com');
     });
 
     test('env variable', () => {
       process.env['QANAPI_BASE_URL'] = 'https://example.com/from_env';
-      const client = new Qanapi({ apiKey: 'My API Key', email: 'My Email', password: 'My Password' });
+      const client = new Qanapi({ apiKey: 'My API Key' });
       expect(client.baseURL).toEqual('https://example.com/from_env');
     });
 
     test('empty env variable', () => {
       process.env['QANAPI_BASE_URL'] = ''; // empty
-      const client = new Qanapi({ apiKey: 'My API Key', email: 'My Email', password: 'My Password' });
+      const client = new Qanapi({ apiKey: 'My API Key' });
       expect(client.baseURL).toEqual('https://My-Subdomain.qanapi.com/v2');
     });
 
     test('blank env variable', () => {
       process.env['QANAPI_BASE_URL'] = '  '; // blank
-      const client = new Qanapi({ apiKey: 'My API Key', email: 'My Email', password: 'My Password' });
+      const client = new Qanapi({ apiKey: 'My API Key' });
       expect(client.baseURL).toEqual('https://My-Subdomain.qanapi.com/v2');
     });
   });
 
   test('maxRetries option is correctly set', () => {
-    const client = new Qanapi({
-      maxRetries: 4,
-      apiKey: 'My API Key',
-      email: 'My Email',
-      password: 'My Password',
-    });
+    const client = new Qanapi({ maxRetries: 4, apiKey: 'My API Key' });
     expect(client.maxRetries).toEqual(4);
 
     // default
-    const client2 = new Qanapi({ apiKey: 'My API Key', email: 'My Email', password: 'My Password' });
+    const client2 = new Qanapi({ apiKey: 'My API Key' });
     expect(client2.maxRetries).toEqual(2);
   });
 
   describe('withOptions', () => {
     test('creates a new client with overridden options', () => {
-      const client = new Qanapi({
-        baseURL: 'http://localhost:5000/',
-        maxRetries: 3,
-        apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
-      });
+      const client = new Qanapi({ baseURL: 'http://localhost:5000/', maxRetries: 3, apiKey: 'My API Key' });
 
       const newClient = client.withOptions({
         maxRetries: 5,
@@ -429,8 +349,6 @@ describe('instantiate client', () => {
         defaultHeaders: { 'X-Test-Header': 'test-value' },
         defaultQuery: { 'test-param': 'test-value' },
         apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
       });
 
       const newClient = client.withOptions({
@@ -445,13 +363,7 @@ describe('instantiate client', () => {
     });
 
     test('respects runtime property changes when creating new client', () => {
-      const client = new Qanapi({
-        baseURL: 'http://localhost:5000/',
-        timeout: 1000,
-        apiKey: 'My API Key',
-        email: 'My Email',
-        password: 'My Password',
-      });
+      const client = new Qanapi({ baseURL: 'http://localhost:5000/', timeout: 1000, apiKey: 'My API Key' });
 
       // Modify the client properties directly after creation
       client.baseURL = 'http://localhost:6000/';
@@ -480,28 +392,20 @@ describe('instantiate client', () => {
   test('with environment variable arguments', () => {
     // set options via env var
     process.env['QANAPI_API_KEY'] = 'My API Key';
-    process.env['QANAPI_USER_EMAIL'] = 'My Email';
-    process.env['QANAPI_USER_PASSWORD'] = 'My Password';
     const client = new Qanapi();
     expect(client.apiKey).toBe('My API Key');
-    expect(client.email).toBe('My Email');
-    expect(client.password).toBe('My Password');
   });
 
   test('with overridden environment variable arguments', () => {
     // set options via env var
     process.env['QANAPI_API_KEY'] = 'another My API Key';
-    process.env['QANAPI_USER_EMAIL'] = 'another My Email';
-    process.env['QANAPI_USER_PASSWORD'] = 'another My Password';
-    const client = new Qanapi({ apiKey: 'My API Key', email: 'My Email', password: 'My Password' });
+    const client = new Qanapi({ apiKey: 'My API Key' });
     expect(client.apiKey).toBe('My API Key');
-    expect(client.email).toBe('My Email');
-    expect(client.password).toBe('My Password');
   });
 });
 
 describe('request building', () => {
-  const client = new Qanapi({ apiKey: 'My API Key', email: 'My Email', password: 'My Password' });
+  const client = new Qanapi({ apiKey: 'My API Key' });
 
   describe('custom headers', () => {
     test('handles undefined', () => {
@@ -520,7 +424,7 @@ describe('request building', () => {
 });
 
 describe('default encoder', () => {
-  const client = new Qanapi({ apiKey: 'My API Key', email: 'My Email', password: 'My Password' });
+  const client = new Qanapi({ apiKey: 'My API Key' });
 
   class Serializable {
     toJSON() {
@@ -605,13 +509,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Qanapi({
-      apiKey: 'My API Key',
-      email: 'My Email',
-      password: 'My Password',
-      timeout: 10,
-      fetch: testFetch,
-    });
+    const client = new Qanapi({ apiKey: 'My API Key', timeout: 10, fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -641,13 +539,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Qanapi({
-      apiKey: 'My API Key',
-      email: 'My Email',
-      password: 'My Password',
-      fetch: testFetch,
-      maxRetries: 4,
-    });
+    const client = new Qanapi({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 4 });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
 
@@ -671,13 +563,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new Qanapi({
-      apiKey: 'My API Key',
-      email: 'My Email',
-      password: 'My Password',
-      fetch: testFetch,
-      maxRetries: 4,
-    });
+    const client = new Qanapi({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 4 });
 
     expect(
       await client.request({
@@ -708,8 +594,6 @@ describe('retries', () => {
     };
     const client = new Qanapi({
       apiKey: 'My API Key',
-      email: 'My Email',
-      password: 'My Password',
       fetch: testFetch,
       maxRetries: 4,
       defaultHeaders: { 'X-Stainless-Retry-Count': null },
@@ -741,13 +625,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new Qanapi({
-      apiKey: 'My API Key',
-      email: 'My Email',
-      password: 'My Password',
-      fetch: testFetch,
-      maxRetries: 4,
-    });
+    const client = new Qanapi({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 4 });
 
     expect(
       await client.request({
@@ -777,12 +655,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Qanapi({
-      apiKey: 'My API Key',
-      email: 'My Email',
-      password: 'My Password',
-      fetch: testFetch,
-    });
+    const client = new Qanapi({ apiKey: 'My API Key', fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -812,12 +685,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Qanapi({
-      apiKey: 'My API Key',
-      email: 'My Email',
-      password: 'My Password',
-      fetch: testFetch,
-    });
+    const client = new Qanapi({ apiKey: 'My API Key', fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
