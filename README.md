@@ -25,7 +25,9 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Qanapi from 'qanapi';
 
-const client = new Qanapi();
+const client = new Qanapi({
+  apiKey: process.env['QANAPI_API_KEY'], // This is the default and can be omitted
+});
 
 async function main() {
   await client.auth.login({ body: {} });
@@ -42,7 +44,9 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Qanapi from 'qanapi';
 
-const client = new Qanapi();
+const client = new Qanapi({
+  apiKey: process.env['QANAPI_API_KEY'], // This is the default and can be omitted
+});
 
 async function main() {
   const params: Qanapi.AuthLoginParams = { body: {} };
@@ -102,7 +106,6 @@ You can use the `maxRetries` option to configure or disable this:
 ```js
 // Configure the default for all requests:
 const client = new Qanapi({
-  apiKey: 'My API Key',
   maxRetries: 0, // default is 2
 });
 
@@ -120,7 +123,6 @@ Requests time out after 1 minute by default. You can configure this with a `time
 ```ts
 // Configure the default for all requests:
 const client = new Qanapi({
-  apiKey: 'My API Key',
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
