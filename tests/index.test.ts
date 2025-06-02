@@ -346,13 +346,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['QANAPI_BASE_URL'] = ''; // empty
       const client = new Qanapi({ apiKey: 'My API Key', subdomain: 'My-Subdomain' });
-      expect(client.baseURL).toEqual('https://My-Subdomain.qanapi.com/v2');
+      expect(client.baseURL).toEqual('https://My-Subdomain.qanapi.cloud.com/api/v2');
     });
 
     test('blank env variable', () => {
       process.env['QANAPI_BASE_URL'] = '  '; // blank
       const client = new Qanapi({ apiKey: 'My API Key', subdomain: 'My-Subdomain' });
-      expect(client.baseURL).toEqual('https://My-Subdomain.qanapi.com/v2');
+      expect(client.baseURL).toEqual('https://My-Subdomain.qanapi.cloud.com/api/v2');
     });
   });
 
