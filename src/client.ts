@@ -47,6 +47,11 @@ export interface ClientOptions {
   subdomain?: string | null | undefined;
 
   /**
+   * Defaults to process.env['QANAPI_BEARER_TOKEN'].
+   */
+  bearerToken?: string | undefined;
+
+  /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
    * Defaults to process.env['QANAPI_BASE_URL'].
@@ -119,6 +124,7 @@ export interface ClientOptions {
 export class Qanapi {
   apiKey: string;
   subdomain: string | null;
+  bearerToken: string;
 
   baseURL: string;
   maxRetries: number;
@@ -137,6 +143,7 @@ export class Qanapi {
    *
    * @param {string | undefined} [opts.apiKey=process.env['QANAPI_API_KEY'] ?? undefined]
    * @param {string | null | undefined} [opts.subdomain=process.env['QANAPI_SUBDOMAIN'] ?? null]
+   * @param {string | undefined} [opts.bearerToken=process.env['QANAPI_BEARER_TOKEN'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['QANAPI_BASE_URL'] ?? https://{subdomain}.qanapi.com/v2] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -149,6 +156,7 @@ export class Qanapi {
     baseURL = readEnv('QANAPI_BASE_URL'),
     apiKey = readEnv('QANAPI_API_KEY'),
     subdomain = readEnv('QANAPI_SUBDOMAIN') ?? null,
+    bearerToken = readEnv('QANAPI_BEARER_TOKEN'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
@@ -156,10 +164,16 @@ export class Qanapi {
         "The QANAPI_API_KEY environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an apiKey option, like new Qanapi({ apiKey: 'My API Key' }).",
       );
     }
+    if (bearerToken === undefined) {
+      throw new Errors.QanapiError(
+        "The QANAPI_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an bearerToken option, like new Qanapi({ bearerToken: 'My Bearer Token' }).",
+      );
+    }
 
     const options: ClientOptions = {
       apiKey,
       subdomain,
+      bearerToken,
       ...opts,
       baseURL: baseURL || `https://${subdomain}.qanapi.com/v2`,
     };
@@ -183,6 +197,7 @@ export class Qanapi {
 
     this.apiKey = apiKey;
     this.subdomain = subdomain;
+    this.bearerToken = bearerToken;
   }
 
   /**
@@ -199,6 +214,7 @@ export class Qanapi {
       fetchOptions: this.fetchOptions,
       apiKey: this.apiKey,
       subdomain: this.subdomain,
+      bearerToken: this.bearerToken,
       ...options,
     });
   }
@@ -212,7 +228,15 @@ export class Qanapi {
   }
 
   protected authHeaders(opts: FinalRequestOptions): NullableHeaders | undefined {
+    return buildHeaders([this.apiKeyAuth(opts), this.bearerAuth(opts)]);
+  }
+
+  protected apiKeyAuth(opts: FinalRequestOptions): NullableHeaders | undefined {
     return buildHeaders([{ 'x-qanapi-authorization': this.apiKey }]);
+  }
+
+  protected bearerAuth(opts: FinalRequestOptions): NullableHeaders | undefined {
+    return buildHeaders([{ Authorization: `Bearer ${this.bearerToken}` }]);
   }
 
   /**
