@@ -27,6 +27,7 @@ import Qanapi from 'qanapi';
 
 const client = new Qanapi({
   apiKey: process.env['QANAPI_API_KEY'], // This is the default and can be omitted
+  bearerToken: process.env['QANAPI_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
 async function main() {
@@ -46,6 +47,7 @@ import Qanapi from 'qanapi';
 
 const client = new Qanapi({
   apiKey: process.env['QANAPI_API_KEY'], // This is the default and can be omitted
+  bearerToken: process.env['QANAPI_BEARER_TOKEN'], // This is the default and can be omitted
 });
 
 async function main() {
