@@ -47,9 +47,14 @@ export interface ClientOptions {
   subdomain?: string | null | undefined;
 
   /**
-   * Defaults to process.env['QANAPI_BEARER_TOKEN'].
+   * Defaults to process.env['QANAPI_USER_EMAIL'].
    */
-  bearerToken?: string | undefined;
+  email?: string | undefined;
+
+  /**
+   * Defaults to process.env['QANAPI_USER_PASSWORD'].
+   */
+  password?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -124,7 +129,8 @@ export interface ClientOptions {
 export class Qanapi {
   apiKey: string;
   subdomain: string | null;
-  bearerToken: string;
+  email: string;
+  password: string;
 
   baseURL: string;
   maxRetries: number;
@@ -143,7 +149,8 @@ export class Qanapi {
    *
    * @param {string | undefined} [opts.apiKey=process.env['QANAPI_API_KEY'] ?? undefined]
    * @param {string | null | undefined} [opts.subdomain=process.env['QANAPI_SUBDOMAIN'] ?? null]
-   * @param {string | undefined} [opts.bearerToken=process.env['QANAPI_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.email=process.env['QANAPI_USER_EMAIL'] ?? undefined]
+   * @param {string | undefined} [opts.password=process.env['QANAPI_USER_PASSWORD'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['QANAPI_BASE_URL'] ?? https://{subdomain}.qanapi.com/v2] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -156,7 +163,8 @@ export class Qanapi {
     baseURL = readEnv('QANAPI_BASE_URL'),
     apiKey = readEnv('QANAPI_API_KEY'),
     subdomain = readEnv('QANAPI_SUBDOMAIN') ?? null,
-    bearerToken = readEnv('QANAPI_BEARER_TOKEN'),
+    email = readEnv('QANAPI_USER_EMAIL'),
+    password = readEnv('QANAPI_USER_PASSWORD'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
@@ -164,16 +172,22 @@ export class Qanapi {
         "The QANAPI_API_KEY environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an apiKey option, like new Qanapi({ apiKey: 'My API Key' }).",
       );
     }
-    if (bearerToken === undefined) {
+    if (email === undefined) {
       throw new Errors.QanapiError(
-        "The QANAPI_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an bearerToken option, like new Qanapi({ bearerToken: 'My Bearer Token' }).",
+        "The QANAPI_USER_EMAIL environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an email option, like new Qanapi({ email: 'My Email' }).",
+      );
+    }
+    if (password === undefined) {
+      throw new Errors.QanapiError(
+        "The QANAPI_USER_PASSWORD environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an password option, like new Qanapi({ password: 'My Password' }).",
       );
     }
 
     const options: ClientOptions = {
       apiKey,
       subdomain,
-      bearerToken,
+      email,
+      password,
       ...opts,
       baseURL: baseURL || `https://${subdomain}.qanapi.com/v2`,
     };
@@ -197,7 +211,8 @@ export class Qanapi {
 
     this.apiKey = apiKey;
     this.subdomain = subdomain;
-    this.bearerToken = bearerToken;
+    this.email = email;
+    this.password = password;
   }
 
   /**
@@ -214,7 +229,8 @@ export class Qanapi {
       fetchOptions: this.fetchOptions,
       apiKey: this.apiKey,
       subdomain: this.subdomain,
-      bearerToken: this.bearerToken,
+      email: this.email,
+      password: this.password,
       ...options,
     });
   }
@@ -225,18 +241,6 @@ export class Qanapi {
 
   protected validateHeaders({ values, nulls }: NullableHeaders) {
     return;
-  }
-
-  protected authHeaders(opts: FinalRequestOptions): NullableHeaders | undefined {
-    return buildHeaders([this.apiKeyAuth(opts), this.bearerAuth(opts)]);
-  }
-
-  protected apiKeyAuth(opts: FinalRequestOptions): NullableHeaders | undefined {
-    return buildHeaders([{ 'x-qanapi-authorization': this.apiKey }]);
-  }
-
-  protected bearerAuth(opts: FinalRequestOptions): NullableHeaders | undefined {
-    return buildHeaders([{ Authorization: `Bearer ${this.bearerToken}` }]);
   }
 
   /**
@@ -669,7 +673,6 @@ export class Qanapi {
         ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
         ...getPlatformHeaders(),
       },
-      this.authHeaders(options),
       this._options.defaultHeaders,
       bodyHeaders,
       options.headers,
