@@ -141,7 +141,7 @@ export class Qanapi {
    * @param {string | undefined} [opts.apiKey=process.env['QANAPI_API_KEY'] ?? undefined]
    * @param {string | undefined} [opts.subdomain=process.env['QANAPI_SUBDOMAIN'] ?? undefined]
    * @param {string | null | undefined} [opts.bearerToken]
-   * @param {string} [opts.baseURL=process.env['QANAPI_BASE_URL'] ?? https://{subdomain}.qanapi.com/v2] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['QANAPI_BASE_URL'] ?? https://{subdomain}.qanapi.cloud.com/api/v2] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -172,7 +172,7 @@ export class Qanapi {
       subdomain,
       bearerToken,
       ...opts,
-      baseURL: baseURL || `https://${subdomain}.qanapi.com/v2`,
+      baseURL: baseURL || `https://${subdomain}.qanapi.cloud.com/api/v2`,
     };
 
     this.baseURL = options.baseURL!;
