@@ -45,7 +45,7 @@ export interface ClientOptions {
   /**
    * A subdomain from the Qanapi account Settings
    */
-  subdomain?: string | null | undefined;
+  subdomain?: string | undefined;
 
   /**
    * Defaults to process.env['QANAPI_USER_EMAIL'].
@@ -129,7 +129,7 @@ export interface ClientOptions {
  */
 export class Qanapi {
   apiKey: string;
-  subdomain: string | null;
+  subdomain: string;
   email: string | null;
   password: string | null;
 
@@ -149,7 +149,7 @@ export class Qanapi {
    * API Client for interfacing with the Qanapi API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['QANAPI_API_KEY'] ?? undefined]
-   * @param {string | null | undefined} [opts.subdomain=process.env['QANAPI_SUBDOMAIN'] ?? null]
+   * @param {string | undefined} [opts.subdomain=process.env['QANAPI_SUBDOMAIN'] ?? undefined]
    * @param {string | null | undefined} [opts.email=process.env['QANAPI_USER_EMAIL'] ?? null]
    * @param {string | null | undefined} [opts.password=process.env['QANAPI_USER_PASSWORD'] ?? null]
    * @param {string} [opts.baseURL=process.env['QANAPI_BASE_URL'] ?? https://{subdomain}.qanapi.com/v2] - Override the default base URL for the API.
@@ -163,7 +163,7 @@ export class Qanapi {
   constructor({
     baseURL = readEnv('QANAPI_BASE_URL'),
     apiKey = readEnv('QANAPI_API_KEY'),
-    subdomain = readEnv('QANAPI_SUBDOMAIN') ?? null,
+    subdomain = readEnv('QANAPI_SUBDOMAIN'),
     email = readEnv('QANAPI_USER_EMAIL') ?? null,
     password = readEnv('QANAPI_USER_PASSWORD') ?? null,
     ...opts
@@ -171,6 +171,11 @@ export class Qanapi {
     if (apiKey === undefined) {
       throw new Errors.QanapiError(
         "The QANAPI_API_KEY environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an apiKey option, like new Qanapi({ apiKey: 'My API Key' }).",
+      );
+    }
+    if (subdomain === undefined) {
+      throw new Errors.QanapiError(
+        "The QANAPI_SUBDOMAIN environment variable is missing or empty; either provide it, or instantiate the Qanapi client with an subdomain option, like new Qanapi({ subdomain: 'My-Subdomain' }).",
       );
     }
 
