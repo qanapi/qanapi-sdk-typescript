@@ -11,13 +11,15 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * await client.auth.login({ body: {} });
+   * await client.auth.login({
+   *   email: 'valid@email.com',
+   *   password: 'secret123',
+   * });
    * ```
    */
-  login(params: AuthLoginParams, options?: RequestOptions): APIPromise<void> {
-    const { body } = params;
+  login(body: AuthLoginParams, options?: RequestOptions): APIPromise<void> {
     return this._client.post('/auth/login', {
-      body: body,
+      body,
       ...options,
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
     });
@@ -25,6 +27,11 @@ export class Auth extends APIResource {
 
   /**
    * Refresh access token using refresh token
+   *
+   * @example
+   * ```ts
+   * await client.auth.refreshToken();
+   * ```
    */
   refreshToken(options?: RequestOptions): APIPromise<void> {
     return this._client.post('/auth/refresh', {
@@ -35,6 +42,11 @@ export class Auth extends APIResource {
 
   /**
    * Retrieve user profile and roles
+   *
+   * @example
+   * ```ts
+   * await client.auth.retrieveUserDetails();
+   * ```
    */
   retrieveUserDetails(options?: RequestOptions): APIPromise<void> {
     return this._client.get('/auth/userdetails', {
@@ -45,6 +57,11 @@ export class Auth extends APIResource {
 
   /**
    * Revoke the current token
+   *
+   * @example
+   * ```ts
+   * await client.auth.revokeToken();
+   * ```
    */
   revokeToken(options?: RequestOptions): APIPromise<void> {
     return this._client.post('/auth/revoke', {
@@ -55,7 +72,9 @@ export class Auth extends APIResource {
 }
 
 export interface AuthLoginParams {
-  body: unknown;
+  email: string;
+
+  password: string;
 }
 
 export declare namespace Auth {

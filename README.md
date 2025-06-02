@@ -31,7 +31,7 @@ const client = new Qanapi({
 });
 
 async function main() {
-  await client.auth.login({ body: {} });
+  await client.auth.login({ email: 'valid@email.com', password: 'secret123' });
 }
 
 main();
@@ -51,7 +51,7 @@ const client = new Qanapi({
 });
 
 async function main() {
-  const params: Qanapi.AuthLoginParams = { body: {} };
+  const params: Qanapi.AuthLoginParams = { email: 'valid@email.com', password: 'secret123' };
   await client.auth.login(params);
 }
 
@@ -69,15 +69,17 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const response = await client.auth.login({ body: {} }).catch(async (err) => {
-    if (err instanceof Qanapi.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
+  const response = await client.auth
+    .login({ email: 'valid@email.com', password: 'secret123' })
+    .catch(async (err) => {
+      if (err instanceof Qanapi.APIError) {
+        console.log(err.status); // 400
+        console.log(err.name); // BadRequestError
+        console.log(err.headers); // {server: 'nginx', ...}
+      } else {
+        throw err;
+      }
+    });
 }
 
 main();
@@ -113,7 +115,7 @@ const client = new Qanapi({
 });
 
 // Or, configure per-request:
-await client.auth.login({ body: {} }, {
+await client.auth.login({ email: 'valid@email.com', password: 'secret123' }, {
   maxRetries: 5,
 });
 ```
@@ -131,7 +133,7 @@ const client = new Qanapi({
 });
 
 // Override per-request:
-await client.auth.login({ body: {} }, {
+await client.auth.login({ email: 'valid@email.com', password: 'secret123' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -154,11 +156,13 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new Qanapi();
 
-const response = await client.auth.login({ body: {} }).asResponse();
+const response = await client.auth.login({ email: 'valid@email.com', password: 'secret123' }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: result, response: raw } = await client.auth.login({ body: {} }).withResponse();
+const { data: result, response: raw } = await client.auth
+  .login({ email: 'valid@email.com', password: 'secret123' })
+  .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(result);
 ```
