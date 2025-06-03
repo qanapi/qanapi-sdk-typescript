@@ -20,7 +20,7 @@ import { APIPromise } from './core/api-promise';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
-import { Auth, AuthLoginParams } from './resources/auth';
+import { Auth, AuthLoginParams, AuthLoginResponse } from './resources/auth';
 import { Decrypt, DecryptDecryptPayloadParams } from './resources/decrypt';
 import { Encrypt, EncryptEncryptDataParams } from './resources/encrypt';
 import {
@@ -750,7 +750,11 @@ Qanapi.Scopes = Scopes;
 export declare namespace Qanapi {
   export type RequestOptions = Opts.RequestOptions;
 
-  export { Auth as Auth, type AuthLoginParams as AuthLoginParams };
+  export {
+    Auth as Auth,
+    type AuthLoginResponse as AuthLoginResponse,
+    type AuthLoginParams as AuthLoginParams,
+  };
 
   export { Encrypt as Encrypt, type EncryptEncryptDataParams as EncryptEncryptDataParams };
 
