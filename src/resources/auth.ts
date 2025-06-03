@@ -71,7 +71,7 @@ export interface AuthLoginResponse {
   /**
    * JWT Bearer token
    */
-  access_token?: unknown;
+  access_token?: string;
 }
 
 export interface AuthLoginParams {
