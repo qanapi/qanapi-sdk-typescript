@@ -11,18 +11,14 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * await client.auth.login({
+   * const response = await client.auth.login({
    *   email: 'valid@email.com',
    *   password: 'secret123',
    * });
    * ```
    */
-  login(body: AuthLoginParams, options?: RequestOptions): APIPromise<void> {
-    return this._client.post('/auth/login', {
-      body,
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-    });
+  login(body: AuthLoginParams, options?: RequestOptions): APIPromise<AuthLoginResponse> {
+    return this._client.post('/auth/login', { body, ...options });
   }
 
   /**
@@ -71,6 +67,13 @@ export class Auth extends APIResource {
   }
 }
 
+export interface AuthLoginResponse {
+  /**
+   * JWT Bearer token
+   */
+  access_token?: unknown;
+}
+
 export interface AuthLoginParams {
   email: string;
 
@@ -78,5 +81,5 @@ export interface AuthLoginParams {
 }
 
 export declare namespace Auth {
-  export { type AuthLoginParams as AuthLoginParams };
+  export { type AuthLoginResponse as AuthLoginResponse, type AuthLoginParams as AuthLoginParams };
 }

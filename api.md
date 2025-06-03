@@ -1,8 +1,12 @@
 # Auth
 
+Types:
+
+- <code><a href="./src/resources/auth.ts">AuthLoginResponse</a></code>
+
 Methods:
 
-- <code title="post /auth/login">client.auth.<a href="./src/resources/auth.ts">login</a>({ ...params }) -> void</code>
+- <code title="post /auth/login">client.auth.<a href="./src/resources/auth.ts">login</a>({ ...params }) -> AuthLoginResponse</code>
 - <code title="post /auth/refresh">client.auth.<a href="./src/resources/auth.ts">refreshToken</a>() -> void</code>
 - <code title="get /auth/userdetails">client.auth.<a href="./src/resources/auth.ts">retrieveUserDetails</a>() -> void</code>
 - <code title="post /auth/revoke">client.auth.<a href="./src/resources/auth.ts">revokeToken</a>() -> void</code>

@@ -28,7 +28,9 @@ import Qanapi from 'qanapi';
 const client = new Qanapi();
 
 async function main() {
-  await client.auth.login({ email: 'valid@email.com', password: 'secret123' });
+  const response = await client.auth.login({ email: 'valid@email.com', password: 'secret123' });
+
+  console.log(response.access_token);
 }
 
 main();
@@ -46,7 +48,7 @@ const client = new Qanapi();
 
 async function main() {
   const params: Qanapi.AuthLoginParams = { email: 'valid@email.com', password: 'secret123' };
-  await client.auth.login(params);
+  const response: Qanapi.AuthLoginResponse = await client.auth.login(params);
 }
 
 main();
@@ -154,11 +156,11 @@ const response = await client.auth.login({ email: 'valid@email.com', password: '
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: result, response: raw } = await client.auth
+const { data: response, response: raw } = await client.auth
   .login({ email: 'valid@email.com', password: 'secret123' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(result);
+console.log(response.access_token);
 ```
 
 ### Logging
