@@ -25,10 +25,7 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Qanapi from 'qanapi';
 
-const client = new Qanapi({
-  subdomain: 'My-Subdomain',
-  apiKey: process.env['QANAPI_API_KEY'], // This is the default and can be omitted
-});
+const client = new Qanapi();
 
 async function main() {
   await client.auth.login({ email: 'valid@email.com', password: 'secret123' });
@@ -45,10 +42,7 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Qanapi from 'qanapi';
 
-const client = new Qanapi({
-  subdomain: 'My-Subdomain',
-  apiKey: process.env['QANAPI_API_KEY'], // This is the default and can be omitted
-});
+const client = new Qanapi();
 
 async function main() {
   const params: Qanapi.AuthLoginParams = { email: 'valid@email.com', password: 'secret123' };
