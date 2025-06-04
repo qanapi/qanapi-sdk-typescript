@@ -27,13 +27,9 @@ import Qanapi from 'qanapi';
 
 const client = new Qanapi();
 
-async function main() {
-  const response = await client.auth.login({ email: 'valid@email.com', password: 'secret123' });
+const response = await client.auth.login({ email: 'valid@email.com', password: 'secret123' });
 
-  console.log(response.access_token);
-}
-
-main();
+console.log(response.access_token);
 ```
 
 ### Request & Response types
@@ -46,12 +42,8 @@ import Qanapi from 'qanapi';
 
 const client = new Qanapi();
 
-async function main() {
-  const params: Qanapi.AuthLoginParams = { email: 'valid@email.com', password: 'secret123' };
-  const response: Qanapi.AuthLoginResponse = await client.auth.login(params);
-}
-
-main();
+const params: Qanapi.AuthLoginParams = { email: 'valid@email.com', password: 'secret123' };
+const response: Qanapi.AuthLoginResponse = await client.auth.login(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -64,21 +56,17 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const response = await client.auth
-    .login({ email: 'valid@email.com', password: 'secret123' })
-    .catch(async (err) => {
-      if (err instanceof Qanapi.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.headers); // {server: 'nginx', ...}
-      } else {
-        throw err;
-      }
-    });
-}
-
-main();
+const response = await client.auth
+  .login({ email: 'valid@email.com', password: 'secret123' })
+  .catch(async (err) => {
+    if (err instanceof Qanapi.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
 Error codes are as follows:
