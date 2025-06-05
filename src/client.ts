@@ -32,6 +32,7 @@ import { Decrypt, DecryptDecryptPayloadParams, DecryptDecryptPayloadResponse } f
 import { Encrypt, EncryptEncryptDataParams, EncryptEncryptDataResponse } from './resources/encrypt';
 import {
   ScopeCreateParams,
+  ScopeCreateResponse,
   ScopeListResponse,
   ScopeRetrieveResponse,
   ScopeUpdateParams,
@@ -40,7 +41,7 @@ import {
 import { readEnv } from './internal/utils/env';
 import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
-import { APIKeys } from './resources/api-keys/api-keys';
+import { APIKeyRevokeResponse, APIKeyRotateResponse, APIKeys } from './resources/api-keys/api-keys';
 
 export interface ClientOptions {
   /**
@@ -778,10 +779,15 @@ export declare namespace Qanapi {
     type DecryptDecryptPayloadParams as DecryptDecryptPayloadParams,
   };
 
-  export { APIKeys as APIKeys };
+  export {
+    APIKeys as APIKeys,
+    type APIKeyRevokeResponse as APIKeyRevokeResponse,
+    type APIKeyRotateResponse as APIKeyRotateResponse,
+  };
 
   export {
     Scopes as Scopes,
+    type ScopeCreateResponse as ScopeCreateResponse,
     type ScopeRetrieveResponse as ScopeRetrieveResponse,
     type ScopeListResponse as ScopeListResponse,
     type ScopeCreateParams as ScopeCreateParams,

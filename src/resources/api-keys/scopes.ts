@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../core/resource';
 import { APIPromise } from '../../core/api-promise';
-import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
@@ -24,15 +23,13 @@ export class Scopes extends APIResource {
    *
    * @example
    * ```ts
-   * await client.apiKeys.scopes.attach(0, { scope_ids: [25] });
+   * const response = await client.apiKeys.scopes.attach(0, {
+   *   scope_ids: [25],
+   * });
    * ```
    */
-  attach(apiKey: number, body: ScopeAttachParams, options?: RequestOptions): APIPromise<void> {
-    return this._client.post(path`/api-keys/${apiKey}/scopes/attach`, {
-      body,
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-    });
+  attach(apiKey: number, body: ScopeAttachParams, options?: RequestOptions): APIPromise<ScopeAttachResponse> {
+    return this._client.post(path`/api-keys/${apiKey}/scopes/attach`, { body, ...options });
   }
 
   /**
@@ -40,15 +37,13 @@ export class Scopes extends APIResource {
    *
    * @example
    * ```ts
-   * await client.apiKeys.scopes.detach(0, { scope_ids: [1] });
+   * const response = await client.apiKeys.scopes.detach(0, {
+   *   scope_ids: [1],
+   * });
    * ```
    */
-  detach(apiKey: number, body: ScopeDetachParams, options?: RequestOptions): APIPromise<void> {
-    return this._client.post(path`/api-keys/${apiKey}/scopes/detach`, {
-      body,
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-    });
+  detach(apiKey: number, body: ScopeDetachParams, options?: RequestOptions): APIPromise<ScopeDetachResponse> {
+    return this._client.post(path`/api-keys/${apiKey}/scopes/detach`, { body, ...options });
   }
 }
 
@@ -58,10 +53,32 @@ export namespace ScopeRetrieveResponse {
   export interface ScopeRetrieveResponseItem {
     id?: number;
 
+    created_at?: string;
+
     name?: string;
 
+    pivot?: ScopeRetrieveResponseItem.Pivot;
+
     route?: string;
+
+    updated_at?: string;
   }
+
+  export namespace ScopeRetrieveResponseItem {
+    export interface Pivot {
+      api_key_id?: number;
+
+      scope_id?: number;
+    }
+  }
+}
+
+export interface ScopeAttachResponse {
+  message?: string;
+}
+
+export interface ScopeDetachResponse {
+  message?: string;
 }
 
 export interface ScopeAttachParams {
@@ -81,6 +98,8 @@ export interface ScopeDetachParams {
 export declare namespace Scopes {
   export {
     type ScopeRetrieveResponse as ScopeRetrieveResponse,
+    type ScopeAttachResponse as ScopeAttachResponse,
+    type ScopeDetachResponse as ScopeDetachResponse,
     type ScopeAttachParams as ScopeAttachParams,
     type ScopeDetachParams as ScopeDetachParams,
   };
