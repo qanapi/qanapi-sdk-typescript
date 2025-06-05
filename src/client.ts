@@ -24,6 +24,7 @@ import {
   Auth,
   AuthLoginParams,
   AuthLoginResponse,
+  AuthLogoutResponse,
   AuthRefreshTokenResponse,
   AuthRetrieveUserDetailsResponse,
   AuthRevokeTokenResponse,
@@ -763,6 +764,7 @@ export declare namespace Qanapi {
   export {
     Auth as Auth,
     type AuthLoginResponse as AuthLoginResponse,
+    type AuthLogoutResponse as AuthLogoutResponse,
     type AuthRefreshTokenResponse as AuthRefreshTokenResponse,
     type AuthRetrieveUserDetailsResponse as AuthRetrieveUserDetailsResponse,
     type AuthRevokeTokenResponse as AuthRevokeTokenResponse,
