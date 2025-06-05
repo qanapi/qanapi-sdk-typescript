@@ -2,6 +2,7 @@
 
 import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
+import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
 export class Decrypt extends APIResource {
@@ -10,27 +11,20 @@ export class Decrypt extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.decrypt.decryptPayload({
+   * await client.decrypt.decryptPayload({
    *   data: { password: 'enc$::abc123::...' },
    *   sensitiveFields: ['password'],
    * });
    * ```
    */
-  decryptPayload(
-    body: DecryptDecryptPayloadParams,
-    options?: RequestOptions,
-  ): APIPromise<DecryptDecryptPayloadResponse> {
-    return this._client.post('/decrypt', { body, ...options });
+  decryptPayload(body: DecryptDecryptPayloadParams, options?: RequestOptions): APIPromise<void> {
+    return this._client.post('/decrypt', {
+      body,
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
   }
 }
-
-/**
- * The encrypted payload to decrypt.
- *
- * - Can be a string or an object/array with encrypted fields.
- * - Decryption is selective if `sensitiveFields` is provided.
- */
-export type DecryptDecryptPayloadResponse = string | unknown | Array<unknown>;
 
 export interface DecryptDecryptPayloadParams {
   /**
@@ -56,8 +50,5 @@ export interface DecryptDecryptPayloadParams {
 }
 
 export declare namespace Decrypt {
-  export {
-    type DecryptDecryptPayloadResponse as DecryptDecryptPayloadResponse,
-    type DecryptDecryptPayloadParams as DecryptDecryptPayloadParams,
-  };
+  export { type DecryptDecryptPayloadParams as DecryptDecryptPayloadParams };
 }

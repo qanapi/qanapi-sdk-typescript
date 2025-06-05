@@ -2,6 +2,7 @@
 
 import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
+import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
 export class Encrypt extends APIResource {
@@ -10,7 +11,7 @@ export class Encrypt extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.encrypt.encryptData({
+   * await client.encrypt.encryptData({
    *   data: { password: 'secret' },
    *   access: { acl: ['admin'] },
    *   attributes: {
@@ -22,22 +23,14 @@ export class Encrypt extends APIResource {
    * });
    * ```
    */
-  encryptData(
-    body: EncryptEncryptDataParams,
-    options?: RequestOptions,
-  ): APIPromise<EncryptEncryptDataResponse> {
-    return this._client.post('/encrypt', { body, ...options });
+  encryptData(body: EncryptEncryptDataParams, options?: RequestOptions): APIPromise<void> {
+    return this._client.post('/encrypt', {
+      body,
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
   }
 }
-
-/**
- * The actual data to encrypt.
- *
- * - Can be a scalar (string/number), object, or array.
- * - If the value is an object or array, only the specified `sensitiveFields` are
- *   encrypted.
- */
-export type EncryptEncryptDataResponse = string | number | unknown | Array<unknown>;
 
 export interface EncryptEncryptDataParams {
   /**
@@ -95,8 +88,5 @@ export namespace EncryptEncryptDataParams {
 }
 
 export declare namespace Encrypt {
-  export {
-    type EncryptEncryptDataResponse as EncryptEncryptDataResponse,
-    type EncryptEncryptDataParams as EncryptEncryptDataParams,
-  };
+  export { type EncryptEncryptDataParams as EncryptEncryptDataParams };
 }

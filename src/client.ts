@@ -20,31 +20,20 @@ import { APIPromise } from './core/api-promise';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
-import {
-  Auth,
-  AuthLoginParams,
-  AuthLoginResponse,
-  AuthLogoutResponse,
-  AuthRefreshTokenResponse,
-  AuthRetrieveUserDetailsResponse,
-  AuthRevokeTokenResponse,
-} from './resources/auth';
-import { Decrypt, DecryptDecryptPayloadParams, DecryptDecryptPayloadResponse } from './resources/decrypt';
-import { Encrypt, EncryptEncryptDataParams, EncryptEncryptDataResponse } from './resources/encrypt';
+import { Auth, AuthLoginParams, AuthLoginResponse } from './resources/auth';
+import { Decrypt, DecryptDecryptPayloadParams } from './resources/decrypt';
+import { Encrypt, EncryptEncryptDataParams } from './resources/encrypt';
 import {
   ScopeCreateParams,
-  ScopeCreateResponse,
-  ScopeDeleteResponse,
   ScopeListResponse,
   ScopeRetrieveResponse,
   ScopeUpdateParams,
-  ScopeUpdateResponse,
   Scopes,
 } from './resources/scopes';
 import { readEnv } from './internal/utils/env';
 import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
-import { APIKeyRevokeResponse, APIKeyRotateResponse, APIKeys } from './resources/api-keys/api-keys';
+import { APIKeys } from './resources/api-keys/api-keys';
 
 export interface ClientOptions {
   /**
@@ -764,38 +753,19 @@ export declare namespace Qanapi {
   export {
     Auth as Auth,
     type AuthLoginResponse as AuthLoginResponse,
-    type AuthLogoutResponse as AuthLogoutResponse,
-    type AuthRefreshTokenResponse as AuthRefreshTokenResponse,
-    type AuthRetrieveUserDetailsResponse as AuthRetrieveUserDetailsResponse,
-    type AuthRevokeTokenResponse as AuthRevokeTokenResponse,
     type AuthLoginParams as AuthLoginParams,
   };
 
-  export {
-    Encrypt as Encrypt,
-    type EncryptEncryptDataResponse as EncryptEncryptDataResponse,
-    type EncryptEncryptDataParams as EncryptEncryptDataParams,
-  };
+  export { Encrypt as Encrypt, type EncryptEncryptDataParams as EncryptEncryptDataParams };
 
-  export {
-    Decrypt as Decrypt,
-    type DecryptDecryptPayloadResponse as DecryptDecryptPayloadResponse,
-    type DecryptDecryptPayloadParams as DecryptDecryptPayloadParams,
-  };
+  export { Decrypt as Decrypt, type DecryptDecryptPayloadParams as DecryptDecryptPayloadParams };
 
-  export {
-    APIKeys as APIKeys,
-    type APIKeyRevokeResponse as APIKeyRevokeResponse,
-    type APIKeyRotateResponse as APIKeyRotateResponse,
-  };
+  export { APIKeys as APIKeys };
 
   export {
     Scopes as Scopes,
-    type ScopeCreateResponse as ScopeCreateResponse,
     type ScopeRetrieveResponse as ScopeRetrieveResponse,
-    type ScopeUpdateResponse as ScopeUpdateResponse,
     type ScopeListResponse as ScopeListResponse,
-    type ScopeDeleteResponse as ScopeDeleteResponse,
     type ScopeCreateParams as ScopeCreateParams,
     type ScopeUpdateParams as ScopeUpdateParams,
   };
