@@ -21,18 +21,6 @@ export class Auth extends APIResource {
   }
 
   /**
-   * Log out the current user
-   *
-   * @example
-   * ```ts
-   * const response = await client.auth.logout();
-   * ```
-   */
-  logout(options?: RequestOptions): APIPromise<AuthLogoutResponse> {
-    return this._client.post('/auth/logout', options);
-  }
-
-  /**
    * Refresh access token using refresh token
    *
    * @example
@@ -86,12 +74,6 @@ export interface AuthLoginResponse {
   token_type?: string;
 }
 
-export interface AuthLogoutResponse {
-  message?: string;
-
-  user?: string;
-}
-
 export interface AuthRefreshTokenResponse {
   /**
    * JWT access token
@@ -135,7 +117,6 @@ export interface AuthLoginParams {
 export declare namespace Auth {
   export {
     type AuthLoginResponse as AuthLoginResponse,
-    type AuthLogoutResponse as AuthLogoutResponse,
     type AuthRefreshTokenResponse as AuthRefreshTokenResponse,
     type AuthRetrieveUserDetailsResponse as AuthRetrieveUserDetailsResponse,
     type AuthRevokeTokenResponse as AuthRevokeTokenResponse,
