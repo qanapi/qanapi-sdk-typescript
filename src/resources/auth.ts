@@ -72,6 +72,16 @@ export interface AuthLoginResponse {
    * JWT Bearer token
    */
   access_token?: string;
+
+  /**
+   * Token expiration in seconds
+   */
+  expires_in?: number;
+
+  /**
+   * Token Type
+   */
+  token_type?: string;
 }
 
 export interface AuthLoginParams {
