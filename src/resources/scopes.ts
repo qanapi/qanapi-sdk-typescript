@@ -93,9 +93,13 @@ export interface ScopeCreateResponse {
 export interface ScopeRetrieveResponse {
   id?: number;
 
+  created_at?: string;
+
   name?: string;
 
   route?: string;
+
+  updated_at?: string;
 }
 
 export type ScopeListResponse = Array<ScopeListResponse.ScopeListResponseItem>;
