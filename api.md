@@ -26,9 +26,13 @@ Methods:
 
 # Decrypt
 
+Types:
+
+- <code><a href="./src/resources/decrypt.ts">DecryptDecryptPayloadResponse</a></code>
+
 Methods:
 
-- <code title="post /decrypt">client.decrypt.<a href="./src/resources/decrypt.ts">decryptPayload</a>({ ...params }) -> void</code>
+- <code title="post /decrypt">client.decrypt.<a href="./src/resources/decrypt.ts">decryptPayload</a>({ ...params }) -> DecryptDecryptPayloadResponse</code>
 
 # APIKeys
 

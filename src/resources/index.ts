@@ -9,7 +9,7 @@ export {
   type AuthRevokeTokenResponse,
   type AuthLoginParams,
 } from './auth';
-export { Decrypt, type DecryptDecryptPayloadParams } from './decrypt';
+export { Decrypt, type DecryptDecryptPayloadResponse, type DecryptDecryptPayloadParams } from './decrypt';
 export { Encrypt, type EncryptEncryptDataResponse, type EncryptEncryptDataParams } from './encrypt';
 export {
   Scopes,
