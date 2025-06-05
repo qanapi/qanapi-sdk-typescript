@@ -15,7 +15,9 @@ export {
   Scopes,
   type ScopeCreateResponse,
   type ScopeRetrieveResponse,
+  type ScopeUpdateResponse,
   type ScopeListResponse,
+  type ScopeDeleteResponse,
   type ScopeCreateParams,
   type ScopeUpdateParams,
 } from './scopes';
