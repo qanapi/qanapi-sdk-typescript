@@ -679,7 +679,6 @@ export class Qanapi {
         'X-Stainless-Retry-Count': String(retryCount),
         ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
         ...getPlatformHeaders(),
-        authorization: this.bearerToken,
       },
       this.authHeaders(options),
       this._options.defaultHeaders,
