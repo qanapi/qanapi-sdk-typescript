@@ -66,12 +66,14 @@ Types:
 
 - <code><a href="./src/resources/scopes.ts">ScopeCreateResponse</a></code>
 - <code><a href="./src/resources/scopes.ts">ScopeRetrieveResponse</a></code>
+- <code><a href="./src/resources/scopes.ts">ScopeUpdateResponse</a></code>
 - <code><a href="./src/resources/scopes.ts">ScopeListResponse</a></code>
+- <code><a href="./src/resources/scopes.ts">ScopeDeleteResponse</a></code>
 
 Methods:
 
 - <code title="post /scopes">client.scopes.<a href="./src/resources/scopes.ts">create</a>({ ...params }) -> ScopeCreateResponse</code>
 - <code title="get /scopes/{id}">client.scopes.<a href="./src/resources/scopes.ts">retrieve</a>(id) -> ScopeRetrieveResponse</code>
-- <code title="put /scopes/{id}">client.scopes.<a href="./src/resources/scopes.ts">update</a>(id, { ...params }) -> void</code>
+- <code title="put /scopes/{id}">client.scopes.<a href="./src/resources/scopes.ts">update</a>(id, { ...params }) -> ScopeUpdateResponse</code>
 - <code title="get /scopes">client.scopes.<a href="./src/resources/scopes.ts">list</a>() -> ScopeListResponse</code>
-- <code title="delete /scopes/{id}">client.scopes.<a href="./src/resources/scopes.ts">delete</a>(id) -> void</code>
+- <code title="delete /scopes/{id}">client.scopes.<a href="./src/resources/scopes.ts">delete</a>(id) -> ScopeDeleteResponse</code>

@@ -33,9 +33,11 @@ import { Encrypt, EncryptEncryptDataParams, EncryptEncryptDataResponse } from '.
 import {
   ScopeCreateParams,
   ScopeCreateResponse,
+  ScopeDeleteResponse,
   ScopeListResponse,
   ScopeRetrieveResponse,
   ScopeUpdateParams,
+  ScopeUpdateResponse,
   Scopes,
 } from './resources/scopes';
 import { readEnv } from './internal/utils/env';
@@ -789,7 +791,9 @@ export declare namespace Qanapi {
     Scopes as Scopes,
     type ScopeCreateResponse as ScopeCreateResponse,
     type ScopeRetrieveResponse as ScopeRetrieveResponse,
+    type ScopeUpdateResponse as ScopeUpdateResponse,
     type ScopeListResponse as ScopeListResponse,
+    type ScopeDeleteResponse as ScopeDeleteResponse,
     type ScopeCreateParams as ScopeCreateParams,
     type ScopeUpdateParams as ScopeUpdateParams,
   };
