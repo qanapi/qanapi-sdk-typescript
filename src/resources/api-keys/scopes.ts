@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../core/resource';
 import { APIPromise } from '../../core/api-promise';
+import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
@@ -23,13 +24,15 @@ export class Scopes extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.apiKeys.scopes.attach(0, {
-   *   scope_ids: [25],
-   * });
+   * await client.apiKeys.scopes.attach(0, { scope_ids: [25] });
    * ```
    */
-  attach(apiKey: number, body: ScopeAttachParams, options?: RequestOptions): APIPromise<ScopeAttachResponse> {
-    return this._client.post(path`/api-keys/${apiKey}/scopes/attach`, { body, ...options });
+  attach(apiKey: number, body: ScopeAttachParams, options?: RequestOptions): APIPromise<void> {
+    return this._client.post(path`/api-keys/${apiKey}/scopes/attach`, {
+      body,
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
   }
 
   /**
@@ -37,27 +40,15 @@ export class Scopes extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.apiKeys.scopes.detach(0, {
-   *   scope_ids: [1],
-   * });
+   * await client.apiKeys.scopes.detach(0, { scope_ids: [1] });
    * ```
    */
-  detach(apiKey: number, body: ScopeDetachParams, options?: RequestOptions): APIPromise<ScopeDetachResponse> {
-    return this._client.post(path`/api-keys/${apiKey}/scopes/detach`, { body, ...options });
-  }
-
-  /**
-   * Sync scopes of an API Key
-   *
-   * @example
-   * ```ts
-   * const response = await client.apiKeys.scopes.sync(0, {
-   *   scope_ids: [25],
-   * });
-   * ```
-   */
-  sync(apiKey: number, body: ScopeSyncParams, options?: RequestOptions): APIPromise<ScopeSyncResponse> {
-    return this._client.post(path`/api-keys/${apiKey}/scopes/sync`, { body, ...options });
+  detach(apiKey: number, body: ScopeDetachParams, options?: RequestOptions): APIPromise<void> {
+    return this._client.post(path`/api-keys/${apiKey}/scopes/detach`, {
+      body,
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
   }
 }
 
@@ -67,36 +58,10 @@ export namespace ScopeRetrieveResponse {
   export interface ScopeRetrieveResponseItem {
     id?: number;
 
-    created_at?: string;
-
     name?: string;
 
-    pivot?: ScopeRetrieveResponseItem.Pivot;
-
     route?: string;
-
-    updated_at?: string;
   }
-
-  export namespace ScopeRetrieveResponseItem {
-    export interface Pivot {
-      api_key_id?: number;
-
-      scope_id?: number;
-    }
-  }
-}
-
-export interface ScopeAttachResponse {
-  message?: string;
-}
-
-export interface ScopeDetachResponse {
-  message?: string;
-}
-
-export interface ScopeSyncResponse {
-  message?: string;
 }
 
 export interface ScopeAttachParams {
@@ -113,21 +78,10 @@ export interface ScopeDetachParams {
   scope_ids: Array<number>;
 }
 
-export interface ScopeSyncParams {
-  /**
-   * List of scope IDs to sync
-   */
-  scope_ids: Array<number>;
-}
-
 export declare namespace Scopes {
   export {
     type ScopeRetrieveResponse as ScopeRetrieveResponse,
-    type ScopeAttachResponse as ScopeAttachResponse,
-    type ScopeDetachResponse as ScopeDetachResponse,
-    type ScopeSyncResponse as ScopeSyncResponse,
     type ScopeAttachParams as ScopeAttachParams,
     type ScopeDetachParams as ScopeDetachParams,
-    type ScopeSyncParams as ScopeSyncParams,
   };
 }

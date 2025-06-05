@@ -54,21 +54,4 @@ describe('resource scopes', () => {
   test.skip('detach: required and optional params', async () => {
     const response = await client.apiKeys.scopes.detach(0, { scope_ids: [1] });
   });
-
-  // skipped: tests are disabled for the time being
-  test.skip('sync: only required params', async () => {
-    const responsePromise = client.apiKeys.scopes.sync(0, { scope_ids: [25] });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('sync: required and optional params', async () => {
-    const response = await client.apiKeys.scopes.sync(0, { scope_ids: [25] });
-  });
 });

@@ -2,17 +2,9 @@
 
 import { APIResource } from '../../core/resource';
 import * as ScopesAPI from './scopes';
-import {
-  ScopeAttachParams,
-  ScopeAttachResponse,
-  ScopeDetachParams,
-  ScopeDetachResponse,
-  ScopeRetrieveResponse,
-  ScopeSyncParams,
-  ScopeSyncResponse,
-  Scopes,
-} from './scopes';
+import { ScopeAttachParams, ScopeDetachParams, ScopeRetrieveResponse, Scopes } from './scopes';
 import { APIPromise } from '../../core/api-promise';
+import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
@@ -24,11 +16,14 @@ export class APIKeys extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.apiKeys.revoke('apiKey');
+   * await client.apiKeys.revoke('apiKey');
    * ```
    */
-  revoke(apiKey: string, options?: RequestOptions): APIPromise<APIKeyRevokeResponse> {
-    return this._client.patch(path`/api-keys/${apiKey}/revoke`, options);
+  revoke(apiKey: string, options?: RequestOptions): APIPromise<void> {
+    return this._client.patch(path`/api-keys/${apiKey}/revoke`, {
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
   }
 
   /**
@@ -36,40 +31,24 @@ export class APIKeys extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.apiKeys.rotate('apiKey');
+   * await client.apiKeys.rotate('apiKey');
    * ```
    */
-  rotate(apiKey: string, options?: RequestOptions): APIPromise<APIKeyRotateResponse> {
-    return this._client.patch(path`/api-keys/${apiKey}/rotate`, options);
+  rotate(apiKey: string, options?: RequestOptions): APIPromise<void> {
+    return this._client.patch(path`/api-keys/${apiKey}/rotate`, {
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
   }
-}
-
-export interface APIKeyRevokeResponse {
-  message?: string;
-}
-
-export interface APIKeyRotateResponse {
-  api_key?: string;
-
-  message?: string;
 }
 
 APIKeys.Scopes = Scopes;
 
 export declare namespace APIKeys {
   export {
-    type APIKeyRevokeResponse as APIKeyRevokeResponse,
-    type APIKeyRotateResponse as APIKeyRotateResponse,
-  };
-
-  export {
     Scopes as Scopes,
     type ScopeRetrieveResponse as ScopeRetrieveResponse,
-    type ScopeAttachResponse as ScopeAttachResponse,
-    type ScopeDetachResponse as ScopeDetachResponse,
-    type ScopeSyncResponse as ScopeSyncResponse,
     type ScopeAttachParams as ScopeAttachParams,
     type ScopeDetachParams as ScopeDetachParams,
-    type ScopeSyncParams as ScopeSyncParams,
   };
 }
