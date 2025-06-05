@@ -1,4 +1,4 @@
-configured_endpoints: 16
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/qanapi%2Fqanapi-d67a3f88f007095ada183c0d52fe724764a3d59285ce150ec407afd4d4342591.yml
-openapi_spec_hash: 4f7a2eba29f0551cb7e0bc012432c2a2
-config_hash: dfc558ac9f7b7b450ef1a79732d06888
+configured_endpoints: 18
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/qanapi%2Fqanapi-60bc98942ea6fd17afa6588b1bb9a6a91db60b77bdbbdb65120981c9350b2d35.yml
+openapi_spec_hash: b450e6acd3ed9e0675346c0025182341
+config_hash: 4ae594053bf3f195180747aa1b118fba
