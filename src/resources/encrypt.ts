@@ -30,60 +30,14 @@ export class Encrypt extends APIResource {
   }
 }
 
-export interface EncryptEncryptDataResponse {
-  /**
-   * The actual data to encrypt.
-   *
-   * - Can be a scalar (string/number), object, or array.
-   * - If the value is an object or array, only the specified `sensitiveFields` are
-   *   encrypted.
-   */
-  data: string | number | unknown | Array<unknown>;
-
-  access?: EncryptEncryptDataResponse.Access;
-
-  /**
-   * Optional metadata describing the data's context.
-   */
-  attributes?: EncryptEncryptDataResponse.Attributes;
-
-  /**
-   * Laravel-style dot-notated paths to fields that should be encrypted.
-   *
-   * Supports:
-   *
-   * - Dot notation for nested fields: `user.profile.ssn`
-   * - Wildcard `*` for arrays or dynamic keys: `users.*.token`
-   *
-   * Examples:
-   *
-   * - `password`
-   * - `user.credentials.secret`
-   * - `accounts.*.secret`
-   * - `teams.*.members.*.email`
-   */
-  sensitiveFields?: Array<string>;
-}
-
-export namespace EncryptEncryptDataResponse {
-  export interface Access {
-    /**
-     * Access control list — list of user roles authorized to decrypt this data.
-     */
-    acl?: Array<string>;
-  }
-
-  /**
-   * Optional metadata describing the data's context.
-   */
-  export interface Attributes {
-    classification?: 'public' | 'internal' | 'confidential' | 'restricted';
-
-    owner?: string;
-
-    tags?: Array<string>;
-  }
-}
+/**
+ * The actual data to encrypt.
+ *
+ * - Can be a scalar (string/number), object, or array.
+ * - If the value is an object or array, only the specified `sensitiveFields` are
+ *   encrypted.
+ */
+export type EncryptEncryptDataResponse = string | number | unknown | Array<unknown>;
 
 export interface EncryptEncryptDataParams {
   /**
