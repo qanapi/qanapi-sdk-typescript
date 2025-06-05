@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { APIKeys } from './api-keys/api-keys';
+export { APIKeys, type APIKeyRevokeResponse, type APIKeyRotateResponse } from './api-keys/api-keys';
 export {
   Auth,
   type AuthLoginResponse,
@@ -13,6 +13,7 @@ export { Decrypt, type DecryptDecryptPayloadResponse, type DecryptDecryptPayload
 export { Encrypt, type EncryptEncryptDataResponse, type EncryptEncryptDataParams } from './encrypt';
 export {
   Scopes,
+  type ScopeCreateResponse,
   type ScopeRetrieveResponse,
   type ScopeListResponse,
   type ScopeCreateParams,

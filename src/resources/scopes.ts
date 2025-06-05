@@ -12,18 +12,14 @@ export class Scopes extends APIResource {
    *
    * @example
    * ```ts
-   * await client.scopes.create({
+   * const scope = await client.scopes.create({
    *   name: 'read:secrets',
    *   route: 'decrypt',
    * });
    * ```
    */
-  create(body: ScopeCreateParams, options?: RequestOptions): APIPromise<void> {
-    return this._client.post('/scopes', {
-      body,
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-    });
+  create(body: ScopeCreateParams, options?: RequestOptions): APIPromise<ScopeCreateResponse> {
+    return this._client.post('/scopes', { body, ...options });
   }
 
   /**
@@ -82,6 +78,18 @@ export class Scopes extends APIResource {
   }
 }
 
+export interface ScopeCreateResponse {
+  id?: number;
+
+  created_at?: string;
+
+  name?: string;
+
+  route?: string;
+
+  updated_at?: string;
+}
+
 export interface ScopeRetrieveResponse {
   id?: number;
 
@@ -96,9 +104,13 @@ export namespace ScopeListResponse {
   export interface ScopeListResponseItem {
     id?: number;
 
+    created_at?: string;
+
     name?: string;
 
     route?: string;
+
+    updated_at?: string;
   }
 }
 
@@ -116,6 +128,7 @@ export interface ScopeUpdateParams {
 
 export declare namespace Scopes {
   export {
+    type ScopeCreateResponse as ScopeCreateResponse,
     type ScopeRetrieveResponse as ScopeRetrieveResponse,
     type ScopeListResponse as ScopeListResponse,
     type ScopeCreateParams as ScopeCreateParams,
