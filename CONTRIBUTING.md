@@ -42,15 +42,15 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```sh
-$ npm install git+ssh://git@github.com:stainless-sdks/qanapi-typescript.git
+$ npm install git+ssh://git@github.com:qanapi/qanapi-sdk-typescript.git
 ```
 
 Alternatively, to link a local copy of the repo:
 
 ```sh
 # Clone
-$ git clone https://www.github.com/stainless-sdks/qanapi-typescript
-$ cd qanapi-typescript
+$ git clone https://www.github.com/qanapi/qanapi-sdk-typescript
+$ cd qanapi-sdk-typescript
 
 # With yarn
 $ yarn link
