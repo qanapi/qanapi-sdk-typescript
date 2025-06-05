@@ -53,12 +53,14 @@ Types:
 - <code><a href="./src/resources/api-keys/scopes.ts">ScopeRetrieveResponse</a></code>
 - <code><a href="./src/resources/api-keys/scopes.ts">ScopeAttachResponse</a></code>
 - <code><a href="./src/resources/api-keys/scopes.ts">ScopeDetachResponse</a></code>
+- <code><a href="./src/resources/api-keys/scopes.ts">ScopeSyncResponse</a></code>
 
 Methods:
 
 - <code title="get /api-keys/{apiKey}/scopes">client.apiKeys.scopes.<a href="./src/resources/api-keys/scopes.ts">retrieve</a>(apiKey) -> ScopeRetrieveResponse</code>
 - <code title="post /api-keys/{apiKey}/scopes/attach">client.apiKeys.scopes.<a href="./src/resources/api-keys/scopes.ts">attach</a>(apiKey, { ...params }) -> ScopeAttachResponse</code>
 - <code title="post /api-keys/{apiKey}/scopes/detach">client.apiKeys.scopes.<a href="./src/resources/api-keys/scopes.ts">detach</a>(apiKey, { ...params }) -> ScopeDetachResponse</code>
+- <code title="post /api-keys/{apiKey}/scopes/sync">client.apiKeys.scopes.<a href="./src/resources/api-keys/scopes.ts">sync</a>(apiKey, { ...params }) -> ScopeSyncResponse</code>
 
 # Scopes
 

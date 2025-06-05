@@ -6,6 +6,8 @@ export {
   type ScopeRetrieveResponse,
   type ScopeAttachResponse,
   type ScopeDetachResponse,
+  type ScopeSyncResponse,
   type ScopeAttachParams,
   type ScopeDetachParams,
+  type ScopeSyncParams,
 } from './scopes';
