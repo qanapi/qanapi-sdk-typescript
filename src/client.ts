@@ -24,7 +24,6 @@ import {
   Auth,
   AuthLoginParams,
   AuthLoginResponse,
-  AuthLogoutResponse,
   AuthRefreshTokenResponse,
   AuthRetrieveUserDetailsResponse,
   AuthRevokeTokenResponse,
@@ -679,7 +678,6 @@ export class Qanapi {
         'X-Stainless-Retry-Count': String(retryCount),
         ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
         ...getPlatformHeaders(),
-        authorization: this.bearerToken,
       },
       this.authHeaders(options),
       this._options.defaultHeaders,
@@ -765,7 +763,6 @@ export declare namespace Qanapi {
   export {
     Auth as Auth,
     type AuthLoginResponse as AuthLoginResponse,
-    type AuthLogoutResponse as AuthLogoutResponse,
     type AuthRefreshTokenResponse as AuthRefreshTokenResponse,
     type AuthRetrieveUserDetailsResponse as AuthRetrieveUserDetailsResponse,
     type AuthRevokeTokenResponse as AuthRevokeTokenResponse,
