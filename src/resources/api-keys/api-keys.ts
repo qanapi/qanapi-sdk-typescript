@@ -8,6 +8,8 @@ import {
   ScopeDetachParams,
   ScopeDetachResponse,
   ScopeRetrieveResponse,
+  ScopeSyncParams,
+  ScopeSyncResponse,
   Scopes,
 } from './scopes';
 import { APIPromise } from '../../core/api-promise';
@@ -65,7 +67,9 @@ export declare namespace APIKeys {
     type ScopeRetrieveResponse as ScopeRetrieveResponse,
     type ScopeAttachResponse as ScopeAttachResponse,
     type ScopeDetachResponse as ScopeDetachResponse,
+    type ScopeSyncResponse as ScopeSyncResponse,
     type ScopeAttachParams as ScopeAttachParams,
     type ScopeDetachParams as ScopeDetachParams,
+    type ScopeSyncParams as ScopeSyncParams,
   };
 }
