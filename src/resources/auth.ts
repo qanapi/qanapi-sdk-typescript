@@ -2,7 +2,6 @@
 
 import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
-import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
 export class Auth extends APIResource {
@@ -26,14 +25,11 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * await client.auth.refreshToken();
+   * const response = await client.auth.refreshToken();
    * ```
    */
-  refreshToken(options?: RequestOptions): APIPromise<void> {
-    return this._client.post('/auth/refresh', {
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-    });
+  refreshToken(options?: RequestOptions): APIPromise<AuthRefreshTokenResponse> {
+    return this._client.post('/auth/refresh', options);
   }
 
   /**
@@ -41,14 +37,11 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * await client.auth.retrieveUserDetails();
+   * const response = await client.auth.retrieveUserDetails();
    * ```
    */
-  retrieveUserDetails(options?: RequestOptions): APIPromise<void> {
-    return this._client.get('/auth/userdetails', {
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-    });
+  retrieveUserDetails(options?: RequestOptions): APIPromise<AuthRetrieveUserDetailsResponse> {
+    return this._client.get('/auth/userdetails', options);
   }
 
   /**
@@ -56,14 +49,11 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * await client.auth.revokeToken();
+   * const response = await client.auth.revokeToken();
    * ```
    */
-  revokeToken(options?: RequestOptions): APIPromise<void> {
-    return this._client.post('/auth/revoke', {
-      ...options,
-      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
-    });
+  revokeToken(options?: RequestOptions): APIPromise<AuthRevokeTokenResponse> {
+    return this._client.post('/auth/revoke', options);
   }
 }
 
@@ -84,6 +74,40 @@ export interface AuthLoginResponse {
   token_type?: string;
 }
 
+export interface AuthRefreshTokenResponse {
+  /**
+   * JWT access token
+   */
+  access_token?: string;
+
+  /**
+   * Token expiration time in seconds
+   */
+  expires_in?: number;
+
+  token_type?: string;
+}
+
+export interface AuthRetrieveUserDetailsResponse {
+  id?: number;
+
+  email?: string;
+
+  email_verified_at?: string | null;
+
+  first_login?: number;
+
+  gravatar_url?: string;
+
+  name?: string;
+
+  roles?: Array<string>;
+}
+
+export interface AuthRevokeTokenResponse {
+  message?: string;
+}
+
 export interface AuthLoginParams {
   email: string;
 
@@ -91,5 +115,11 @@ export interface AuthLoginParams {
 }
 
 export declare namespace Auth {
-  export { type AuthLoginResponse as AuthLoginResponse, type AuthLoginParams as AuthLoginParams };
+  export {
+    type AuthLoginResponse as AuthLoginResponse,
+    type AuthRefreshTokenResponse as AuthRefreshTokenResponse,
+    type AuthRetrieveUserDetailsResponse as AuthRetrieveUserDetailsResponse,
+    type AuthRevokeTokenResponse as AuthRevokeTokenResponse,
+    type AuthLoginParams as AuthLoginParams,
+  };
 }
