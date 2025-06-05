@@ -3,6 +3,7 @@
 Types:
 
 - <code><a href="./src/resources/auth.ts">AuthLoginResponse</a></code>
+- <code><a href="./src/resources/auth.ts">AuthLogoutResponse</a></code>
 - <code><a href="./src/resources/auth.ts">AuthRefreshTokenResponse</a></code>
 - <code><a href="./src/resources/auth.ts">AuthRetrieveUserDetailsResponse</a></code>
 - <code><a href="./src/resources/auth.ts">AuthRevokeTokenResponse</a></code>
@@ -10,6 +11,7 @@ Types:
 Methods:
 
 - <code title="post /auth/login">client.auth.<a href="./src/resources/auth.ts">login</a>({ ...params }) -> AuthLoginResponse</code>
+- <code title="post /auth/logout">client.auth.<a href="./src/resources/auth.ts">logout</a>() -> AuthLogoutResponse</code>
 - <code title="post /auth/refresh">client.auth.<a href="./src/resources/auth.ts">refreshToken</a>() -> AuthRefreshTokenResponse</code>
 - <code title="get /auth/userdetails">client.auth.<a href="./src/resources/auth.ts">retrieveUserDetails</a>() -> AuthRetrieveUserDetailsResponse</code>
 - <code title="post /auth/revoke">client.auth.<a href="./src/resources/auth.ts">revokeToken</a>() -> AuthRevokeTokenResponse</code>
