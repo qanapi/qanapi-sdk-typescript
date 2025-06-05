@@ -4,6 +4,7 @@ export { APIKeys, type APIKeyRevokeResponse, type APIKeyRotateResponse } from '.
 export {
   Auth,
   type AuthLoginResponse,
+  type AuthLogoutResponse,
   type AuthRefreshTokenResponse,
   type AuthRetrieveUserDetailsResponse,
   type AuthRevokeTokenResponse,
