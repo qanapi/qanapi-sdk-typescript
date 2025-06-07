@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.1 (2025-06-07)
+
+Full Changelog: [v1.0.0...v1.0.1](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.0.0...v1.0.1)
+
+### Chores
+
+* avoid type error in certain environments ([fd34aac](https://github.com/qanapi/qanapi-sdk-typescript/commit/fd34aac595489b8eb264e8a5d8cefb8b8e30e839))
+
 ## 1.0.0 (2025-06-05)
 
 Full Changelog: [v0.0.1-alpha.0...v1.0.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v0.0.1-alpha.0...v1.0.0)
