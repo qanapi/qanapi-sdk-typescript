@@ -30,7 +30,7 @@ export class Decrypt extends APIResource {
  * - Can be a string or an object/array with encrypted fields.
  * - Decryption is selective if `sensitiveFields` is provided.
  */
-export type DecryptDecryptPayloadResponse = string | unknown | Array<unknown>;
+export type DecryptDecryptPayloadResponse = string | Record<string, unknown> | Array<unknown>;
 
 export interface DecryptDecryptPayloadParams {
   /**
@@ -39,7 +39,7 @@ export interface DecryptDecryptPayloadParams {
    * - Can be a string or an object/array with encrypted fields.
    * - Decryption is selective if `sensitiveFields` is provided.
    */
-  data: string | unknown | Array<unknown>;
+  data: string | Record<string, unknown> | Array<unknown>;
 
   /**
    * Laravel-style dot-notated paths to fields to decrypt.
