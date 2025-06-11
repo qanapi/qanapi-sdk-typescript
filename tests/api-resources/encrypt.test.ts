@@ -11,7 +11,7 @@ const client = new Qanapi({
 describe('resource encrypt', () => {
   // skipped: tests are disabled for the time being
   test.skip('encryptData: only required params', async () => {
-    const responsePromise = client.encrypt.encryptData({ data: { password: 'secret' } });
+    const responsePromise = client.encrypt.encryptData({ data: { password: 'bar' } });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -24,7 +24,7 @@ describe('resource encrypt', () => {
   // skipped: tests are disabled for the time being
   test.skip('encryptData: required and optional params', async () => {
     const response = await client.encrypt.encryptData({
-      data: { password: 'secret' },
+      data: { password: 'bar' },
       access: { acl: ['admin'] },
       attributes: { classification: 'confidential', owner: 'alice@example.com', tags: ['legal'] },
       sensitiveFields: ['password'],
