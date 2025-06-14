@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.2.0 (2025-06-14)
+
+Full Changelog: [v1.1.0...v1.2.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.1.0...v1.2.0)
+
+### Features
+
+* **api:** update via SDK Studio ([9bd0857](https://github.com/qanapi/qanapi-sdk-typescript/commit/9bd0857fc7e67e069a2e1adedf425e898d5d77b5))
+* **api:** update via SDK Studio ([cf81b3a](https://github.com/qanapi/qanapi-sdk-typescript/commit/cf81b3a9bd661d683540bc630abaa46427560474))
+
+
+### Bug Fixes
+
+* publish script — handle NPM errors correctly ([30b54bd](https://github.com/qanapi/qanapi-sdk-typescript/commit/30b54bdd1d9ee74c4135c574d458f42976c4c3ca))
+
+
+### Chores
+
+* **internal:** add pure annotations, make base APIResource abstract ([6620485](https://github.com/qanapi/qanapi-sdk-typescript/commit/6620485f179830fc6420e92f36040b7fcf603145))
+
 ## 1.1.0 (2025-06-11)
 
 Full Changelog: [v1.0.0...v1.1.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.0.0...v1.1.0)
