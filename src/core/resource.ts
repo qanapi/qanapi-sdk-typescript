@@ -2,7 +2,7 @@
 
 import type { Qanapi } from '../client';
 
-export class APIResource {
+export abstract class APIResource {
   protected _client: Qanapi;
 
   constructor(client: Qanapi) {
