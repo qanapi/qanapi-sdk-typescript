@@ -20,7 +20,7 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/encrypt.ts">Encrypt</a></code>
+- <code><a href="./src/resources/encrypt.ts">EncryptedData</a></code>
 - <code><a href="./src/resources/encrypt.ts">EncryptEncryptDataResponse</a></code>
 
 Methods:
@@ -31,7 +31,7 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/decrypt.ts">Decrypt</a></code>
+- <code><a href="./src/resources/decrypt.ts">DecryptedPayload</a></code>
 - <code><a href="./src/resources/decrypt.ts">DecryptDecryptPayloadResponse</a></code>
 
 Methods:

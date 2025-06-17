@@ -11,14 +11,14 @@ export {
   type AuthLoginParams,
 } from './auth';
 export {
-  DecryptResource,
-  type Decrypt,
+  Decrypt,
+  type DecryptedPayload,
   type DecryptDecryptPayloadResponse,
   type DecryptDecryptPayloadParams,
 } from './decrypt';
 export {
-  EncryptResource,
-  type Encrypt,
+  Encrypt,
+  type EncryptedData,
   type EncryptEncryptDataResponse,
   type EncryptEncryptDataParams,
 } from './encrypt';

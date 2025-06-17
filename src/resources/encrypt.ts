@@ -4,7 +4,7 @@ import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
-export class EncryptResource extends APIResource {
+export class Encrypt extends APIResource {
   /**
    * Encrypt data with optional ACL
    *
@@ -30,7 +30,7 @@ export class EncryptResource extends APIResource {
   }
 }
 
-export interface Encrypt {
+export interface EncryptedData {
   /**
    * The actual data to encrypt.
    *
@@ -40,12 +40,12 @@ export interface Encrypt {
    */
   data: string | number | Record<string, unknown> | Array<unknown>;
 
-  access?: Encrypt.Access;
+  access?: EncryptedData.Access;
 
   /**
    * Optional metadata describing the data's context.
    */
-  attributes?: Encrypt.Attributes;
+  attributes?: EncryptedData.Attributes;
 
   /**
    * Laravel-style dot-notated paths to fields that should be encrypted.
@@ -65,7 +65,7 @@ export interface Encrypt {
   sensitiveFields?: Array<string>;
 }
 
-export namespace Encrypt {
+export namespace EncryptedData {
   export interface Access {
     /**
      * Access control list — list of user roles authorized to decrypt this data.
@@ -149,9 +149,9 @@ export namespace EncryptEncryptDataParams {
   }
 }
 
-export declare namespace EncryptResource {
+export declare namespace Encrypt {
   export {
-    type Encrypt as Encrypt,
+    type EncryptedData as EncryptedData,
     type EncryptEncryptDataResponse as EncryptEncryptDataResponse,
     type EncryptEncryptDataParams as EncryptEncryptDataParams,
   };

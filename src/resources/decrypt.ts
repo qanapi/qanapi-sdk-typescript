@@ -4,7 +4,7 @@ import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
-export class DecryptResource extends APIResource {
+export class Decrypt extends APIResource {
   /**
    * Decrypt encrypted payload
    *
@@ -24,7 +24,7 @@ export class DecryptResource extends APIResource {
   }
 }
 
-export interface Decrypt {
+export interface DecryptedPayload {
   /**
    * The encrypted payload to decrypt.
    *
@@ -78,9 +78,9 @@ export interface DecryptDecryptPayloadParams {
   sensitiveFields?: Array<string>;
 }
 
-export declare namespace DecryptResource {
+export declare namespace Decrypt {
   export {
-    type Decrypt as Decrypt,
+    type DecryptedPayload as DecryptedPayload,
     type DecryptDecryptPayloadResponse as DecryptDecryptPayloadResponse,
     type DecryptDecryptPayloadParams as DecryptDecryptPayloadParams,
   };
