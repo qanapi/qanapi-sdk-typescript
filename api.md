@@ -31,7 +31,7 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/decrypt.ts">Descrypt</a></code>
+- <code><a href="./src/resources/decrypt.ts">Decrypt</a></code>
 - <code><a href="./src/resources/decrypt.ts">DecryptDecryptPayloadResponse</a></code>
 
 Methods:

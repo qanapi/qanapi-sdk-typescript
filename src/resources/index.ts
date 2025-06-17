@@ -11,8 +11,8 @@ export {
   type AuthLoginParams,
 } from './auth';
 export {
-  Decrypt,
-  type Descrypt,
+  DecryptResource,
+  type Decrypt,
   type DecryptDecryptPayloadResponse,
   type DecryptDecryptPayloadParams,
 } from './decrypt';

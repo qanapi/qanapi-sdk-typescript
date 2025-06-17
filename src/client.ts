@@ -29,7 +29,7 @@ import {
   Decrypt,
   DecryptDecryptPayloadParams,
   DecryptDecryptPayloadResponse,
-  Descrypt,
+  DecryptResource,
 } from './resources/decrypt';
 import {
   Encrypt,
@@ -776,13 +776,13 @@ export class Qanapi {
 
   auth: API.Auth = new API.Auth(this);
   encrypt: API.EncryptResource = new API.EncryptResource(this);
-  decrypt: API.Decrypt = new API.Decrypt(this);
+  decrypt: API.DecryptResource = new API.DecryptResource(this);
   apiKeys: API.APIKeys = new API.APIKeys(this);
   scopes: API.Scopes = new API.Scopes(this);
 }
 Qanapi.Auth = Auth;
 Qanapi.EncryptResource = EncryptResource;
-Qanapi.Decrypt = Decrypt;
+Qanapi.DecryptResource = DecryptResource;
 Qanapi.APIKeys = APIKeys;
 Qanapi.Scopes = Scopes;
 export declare namespace Qanapi {
@@ -806,8 +806,8 @@ export declare namespace Qanapi {
   };
 
   export {
-    Decrypt as Decrypt,
-    type Descrypt as Descrypt,
+    DecryptResource as DecryptResource,
+    type Decrypt as Decrypt,
     type DecryptDecryptPayloadResponse as DecryptDecryptPayloadResponse,
     type DecryptDecryptPayloadParams as DecryptDecryptPayloadParams,
   };
