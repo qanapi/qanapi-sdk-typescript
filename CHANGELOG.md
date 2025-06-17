@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.0 (2025-06-17)
+
+Full Changelog: [v1.2.0...v1.3.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.2.0...v1.3.0)
+
+### Features
+
+* **api:** update via SDK Studio ([085b4bb](https://github.com/qanapi/qanapi-sdk-typescript/commit/085b4bbcdbc31379ddc6f75782bbd4c93a880199))
+
 ## 1.2.0 (2025-06-17)
 
 Full Changelog: [v1.1.0...v1.2.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.1.0...v1.2.0)
