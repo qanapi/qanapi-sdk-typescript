@@ -24,6 +24,29 @@ export class Decrypt extends APIResource {
   }
 }
 
+export interface Descrypt {
+  /**
+   * The encrypted payload to decrypt.
+   *
+   * - Can be a string or an object/array with encrypted fields.
+   * - Decryption is selective if `sensitiveFields` is provided.
+   */
+  data: string | Record<string, unknown> | Array<unknown>;
+
+  /**
+   * Laravel-style dot-notated paths to fields to decrypt.
+   *
+   * - Same syntax and behavior as in EncryptRequest.
+   * - If omitted, all string values matching encryption prefix are attempted.
+   *
+   * Examples:
+   *
+   * - `user.ssn`
+   * - `employees.*.payroll.token`
+   */
+  sensitiveFields?: Array<string>;
+}
+
 /**
  * The encrypted payload to decrypt.
  *
@@ -57,6 +80,7 @@ export interface DecryptDecryptPayloadParams {
 
 export declare namespace Decrypt {
   export {
+    type Descrypt as Descrypt,
     type DecryptDecryptPayloadResponse as DecryptDecryptPayloadResponse,
     type DecryptDecryptPayloadParams as DecryptDecryptPayloadParams,
   };
