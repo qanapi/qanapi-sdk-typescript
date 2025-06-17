@@ -29,13 +29,13 @@ import {
   Decrypt,
   DecryptDecryptPayloadParams,
   DecryptDecryptPayloadResponse,
-  Descrypt,
+  DecryptedPayload,
 } from './resources/decrypt';
 import {
   Encrypt,
   EncryptEncryptDataParams,
   EncryptEncryptDataResponse,
-  EncryptResource,
+  EncryptedData,
 } from './resources/encrypt';
 import {
   ScopeCreateParams,
@@ -775,13 +775,13 @@ export class Qanapi {
   static toFile = Uploads.toFile;
 
   auth: API.Auth = new API.Auth(this);
-  encrypt: API.EncryptResource = new API.EncryptResource(this);
+  encrypt: API.Encrypt = new API.Encrypt(this);
   decrypt: API.Decrypt = new API.Decrypt(this);
   apiKeys: API.APIKeys = new API.APIKeys(this);
   scopes: API.Scopes = new API.Scopes(this);
 }
 Qanapi.Auth = Auth;
-Qanapi.EncryptResource = EncryptResource;
+Qanapi.Encrypt = Encrypt;
 Qanapi.Decrypt = Decrypt;
 Qanapi.APIKeys = APIKeys;
 Qanapi.Scopes = Scopes;
@@ -799,15 +799,15 @@ export declare namespace Qanapi {
   };
 
   export {
-    EncryptResource as EncryptResource,
-    type Encrypt as Encrypt,
+    Encrypt as Encrypt,
+    type EncryptedData as EncryptedData,
     type EncryptEncryptDataResponse as EncryptEncryptDataResponse,
     type EncryptEncryptDataParams as EncryptEncryptDataParams,
   };
 
   export {
     Decrypt as Decrypt,
-    type Descrypt as Descrypt,
+    type DecryptedPayload as DecryptedPayload,
     type DecryptDecryptPayloadResponse as DecryptDecryptPayloadResponse,
     type DecryptDecryptPayloadParams as DecryptDecryptPayloadParams,
   };
