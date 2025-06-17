@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.2.0 (2025-06-17)
+
+Full Changelog: [v1.1.0...v1.2.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.1.0...v1.2.0)
+
+### Features
+
+* **api:** update via SDK Studio ([9bd0857](https://github.com/qanapi/qanapi-sdk-typescript/commit/9bd0857fc7e67e069a2e1adedf425e898d5d77b5))
+* **api:** update via SDK Studio ([cf81b3a](https://github.com/qanapi/qanapi-sdk-typescript/commit/cf81b3a9bd661d683540bc630abaa46427560474))
+* **client:** add support for endpoint-specific base URLs ([41b68a8](https://github.com/qanapi/qanapi-sdk-typescript/commit/41b68a8fcc1e80550bfc9a7fed155c28a29eb78b))
+
+
+### Bug Fixes
+
+* publish script — handle NPM errors correctly ([30b54bd](https://github.com/qanapi/qanapi-sdk-typescript/commit/30b54bdd1d9ee74c4135c574d458f42976c4c3ca))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([a1c1c70](https://github.com/qanapi/qanapi-sdk-typescript/commit/a1c1c7011cf8b35e127080a30cff33ee691dbf66))
+* **client:** refactor imports ([caecb68](https://github.com/qanapi/qanapi-sdk-typescript/commit/caecb686daddd3de9394a49483a2614fa8041e59))
+* **internal:** add pure annotations, make base APIResource abstract ([6620485](https://github.com/qanapi/qanapi-sdk-typescript/commit/6620485f179830fc6420e92f36040b7fcf603145))
+
 ## 1.1.0 (2025-06-11)
 
 Full Changelog: [v1.0.0...v1.1.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.0.0...v1.1.0)
