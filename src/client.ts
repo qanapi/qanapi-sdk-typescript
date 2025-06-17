@@ -25,18 +25,8 @@ import {
   AuthRetrieveUserDetailsResponse,
   AuthRevokeTokenResponse,
 } from './resources/auth';
-import {
-  Decrypt,
-  DecryptDecryptPayloadParams,
-  DecryptDecryptPayloadResponse,
-  DecryptedPayload,
-} from './resources/decrypt';
-import {
-  Encrypt,
-  EncryptEncryptDataParams,
-  EncryptEncryptDataResponse,
-  EncryptedData,
-} from './resources/encrypt';
+import { Decrypt, DecryptDecryptPayloadParams, DecryptDecryptPayloadResponse } from './resources/decrypt';
+import { Encrypt, EncryptEncryptDataParams, EncryptEncryptDataResponse } from './resources/encrypt';
 import {
   ScopeCreateParams,
   ScopeCreateResponse,
@@ -800,14 +790,12 @@ export declare namespace Qanapi {
 
   export {
     Encrypt as Encrypt,
-    type EncryptedData as EncryptedData,
     type EncryptEncryptDataResponse as EncryptEncryptDataResponse,
     type EncryptEncryptDataParams as EncryptEncryptDataParams,
   };
 
   export {
     Decrypt as Decrypt,
-    type DecryptedPayload as DecryptedPayload,
     type DecryptDecryptPayloadResponse as DecryptDecryptPayloadResponse,
     type DecryptDecryptPayloadParams as DecryptDecryptPayloadParams,
   };

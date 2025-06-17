@@ -10,18 +10,8 @@ export {
   type AuthRevokeTokenResponse,
   type AuthLoginParams,
 } from './auth';
-export {
-  Decrypt,
-  type DecryptedPayload,
-  type DecryptDecryptPayloadResponse,
-  type DecryptDecryptPayloadParams,
-} from './decrypt';
-export {
-  Encrypt,
-  type EncryptedData,
-  type EncryptEncryptDataResponse,
-  type EncryptEncryptDataParams,
-} from './encrypt';
+export { Decrypt, type DecryptDecryptPayloadResponse, type DecryptDecryptPayloadParams } from './decrypt';
+export { Encrypt, type EncryptEncryptDataResponse, type EncryptEncryptDataParams } from './encrypt';
 export {
   Scopes,
   type ScopeCreateResponse,
