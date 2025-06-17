@@ -12,13 +12,13 @@ export {
 } from './auth';
 export {
   Decrypt,
-  type Descrypt,
+  type DecryptedPayload,
   type DecryptDecryptPayloadResponse,
   type DecryptDecryptPayloadParams,
 } from './decrypt';
 export {
-  EncryptResource,
-  type Encrypt,
+  Encrypt,
+  type EncryptedData,
   type EncryptEncryptDataResponse,
   type EncryptEncryptDataParams,
 } from './encrypt';

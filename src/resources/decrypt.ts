@@ -24,7 +24,7 @@ export class Decrypt extends APIResource {
   }
 }
 
-export interface Descrypt {
+export interface DecryptedPayload {
   /**
    * The encrypted payload to decrypt.
    *
@@ -80,7 +80,7 @@ export interface DecryptDecryptPayloadParams {
 
 export declare namespace Decrypt {
   export {
-    type Descrypt as Descrypt,
+    type DecryptedPayload as DecryptedPayload,
     type DecryptDecryptPayloadResponse as DecryptDecryptPayloadResponse,
     type DecryptDecryptPayloadParams as DecryptDecryptPayloadParams,
   };
