@@ -11,7 +11,7 @@ const client = new Qanapi({
 describe('resource auth', () => {
   // skipped: tests are disabled for the time being
   test.skip('login: only required params', async () => {
-    const responsePromise = client.auth.login({ email: 'valid@email.com', password: 'secret123' });
+    const responsePromise = client.auth.login({ email: 'valid@email.com', password: 'secret1234' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,7 +23,7 @@ describe('resource auth', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('login: required and optional params', async () => {
-    const response = await client.auth.login({ email: 'valid@email.com', password: 'secret123' });
+    const response = await client.auth.login({ email: 'valid@email.com', password: 'secret1234' });
   });
 
   // skipped: tests are disabled for the time being

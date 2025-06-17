@@ -12,7 +12,7 @@ export class Auth extends APIResource {
    * ```ts
    * const response = await client.auth.login({
    *   email: 'valid@email.com',
-   *   password: 'secret123',
+   *   password: 'secret1234',
    * });
    * ```
    */
