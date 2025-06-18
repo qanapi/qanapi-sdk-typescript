@@ -1,6 +1,6 @@
 # Qanapi TypeScript API Library
 
-[![NPM version](https://img.shields.io/npm/v/qanapi.svg)](https://npmjs.org/package/qanapi) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/qanapi)
+[![NPM version](<https://img.shields.io/npm/v/qanapi.svg?label=npm%20(stable)>)](https://npmjs.org/package/qanapi) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/qanapi)
 
 This library provides convenient access to the Qanapi REST API from server-side TypeScript or JavaScript.
 
