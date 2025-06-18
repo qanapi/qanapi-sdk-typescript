@@ -1,6 +1,6 @@
 {
   "name": "qanapi",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "The official TypeScript library for the Qanapi API",
   "author": "Qanapi <support@qanapi.com>",
   "types": "dist/index.d.ts",
