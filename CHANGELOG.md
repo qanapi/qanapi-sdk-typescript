@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.2 (2025-06-18)
+
+Full Changelog: [v1.5.1...v1.5.2](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.5.1...v1.5.2)
+
+### Chores
+
+* **readme:** update badges ([3e3727c](https://github.com/qanapi/qanapi-sdk-typescript/commit/3e3727c8f59fcfffeb477004f6014c0d4a723f55))
+
 ## 1.5.1 (2025-06-17)
 
 Full Changelog: [v1.5.0...v1.5.1](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.5.0...v1.5.1)
