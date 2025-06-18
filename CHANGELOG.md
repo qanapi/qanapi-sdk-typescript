@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.3 (2025-06-18)
+
+Full Changelog: [v1.5.2...v1.5.3](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.5.2...v1.5.3)
+
 ## 1.5.2 (2025-06-18)
 
 Full Changelog: [v1.5.1...v1.5.2](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.5.1...v1.5.2)
