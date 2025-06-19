@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.1 (2025-06-19)
+
+Full Changelog: [v1.6.0...v1.6.1](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.0...v1.6.1)
+
+### Chores
+
+* **readme:** use better example snippet for undocumented params ([bb5a60f](https://github.com/qanapi/qanapi-sdk-typescript/commit/bb5a60f67277edefc0f6497e398356b3c05fa699))
+
 ## 1.6.0 (2025-06-18)
 
 Full Changelog: [v1.5.4...v1.6.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.5.4...v1.6.0)
