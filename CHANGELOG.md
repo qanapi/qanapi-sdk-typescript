@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.2 (2025-06-21)
+
+Full Changelog: [v1.6.1...v1.6.2](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.1...v1.6.2)
+
+### Bug Fixes
+
+* **client:** explicitly copy fetch in withOptions ([e603e35](https://github.com/qanapi/qanapi-sdk-typescript/commit/e603e35297b69f8974533761b6488a81c012598e))
+
 ## 1.6.1 (2025-06-19)
 
 Full Changelog: [v1.6.0...v1.6.1](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.0...v1.6.1)
