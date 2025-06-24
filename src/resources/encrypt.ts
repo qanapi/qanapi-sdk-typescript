@@ -37,7 +37,7 @@ export class Encrypt extends APIResource {
  * - If the value is an object or array, only the specified `sensitiveFields` are
  *   encrypted.
  */
-export type EncryptEncryptDataResponse = string | number | Record<string, unknown> | Array<unknown>;
+export type EncryptEncryptDataResponse = string | number | { [key: string]: unknown } | Array<unknown>;
 
 export interface EncryptEncryptDataParams {
   /**
@@ -47,7 +47,7 @@ export interface EncryptEncryptDataParams {
    * - If the value is an object or array, only the specified `sensitiveFields` are
    *   encrypted.
    */
-  data: string | number | Record<string, unknown> | Array<unknown>;
+  data: string | number | { [key: string]: unknown } | Array<unknown>;
 
   access?: EncryptEncryptDataParams.Access;
 
