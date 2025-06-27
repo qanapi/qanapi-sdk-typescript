@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.4 (2025-06-27)
+
+Full Changelog: [v1.6.3...v1.6.4](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.3...v1.6.4)
+
+### Bug Fixes
+
+* **client:** get fetchOptions type more reliably ([5ef0d43](https://github.com/qanapi/qanapi-sdk-typescript/commit/5ef0d43be85794a3e49f6a11d7334ea561b94ff1))
+
 ## 1.6.3 (2025-06-27)
 
 Full Changelog: [v1.6.2...v1.6.3](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.2...v1.6.3)
