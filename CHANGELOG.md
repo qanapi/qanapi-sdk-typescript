@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.6.3 (2025-06-27)
+
+Full Changelog: [v1.6.2...v1.6.3](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.2...v1.6.3)
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([43d7411](https://github.com/qanapi/qanapi-sdk-typescript/commit/43d741195aaf0421d3467f6481df2a92e849868b))
+
+
+### Refactors
+
+* **types:** replace Record with mapped types ([2f22dfe](https://github.com/qanapi/qanapi-sdk-typescript/commit/2f22dfe9f53bfeff538f131b1697a99a2649bb2d))
+
 ## 1.6.2 (2025-06-21)
 
 Full Changelog: [v1.6.1...v1.6.2](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.1...v1.6.2)
