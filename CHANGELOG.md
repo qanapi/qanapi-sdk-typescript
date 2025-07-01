@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.6.5 (2025-07-01)
+
+Full Changelog: [v1.6.4...v1.6.5](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.4...v1.6.5)
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([dadda3a](https://github.com/qanapi/qanapi-sdk-typescript/commit/dadda3add92625ea44342032f8224d00c05d05c9))
+* **client:** improve path param validation ([50c8937](https://github.com/qanapi/qanapi-sdk-typescript/commit/50c8937188cde44a82d2cd39abc3b8d22aa91276))
+
 ## 1.6.4 (2025-06-27)
 
 Full Changelog: [v1.6.3...v1.6.4](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.3...v1.6.4)
