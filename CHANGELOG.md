@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.6 (2025-07-03)
+
+Full Changelog: [v1.6.5...v1.6.6](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.5...v1.6.6)
+
+### Chores
+
+* add docs to RequestOptions type ([e1edfd7](https://github.com/qanapi/qanapi-sdk-typescript/commit/e1edfd7dca598af3204ead9eea4c3e14e4ff68c4))
+
 ## 1.6.5 (2025-07-01)
 
 Full Changelog: [v1.6.4...v1.6.5](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.4...v1.6.5)
