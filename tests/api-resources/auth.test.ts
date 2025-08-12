@@ -9,7 +9,7 @@ const client = new Qanapi({
 });
 
 describe('resource auth', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('login: only required params', async () => {
     const responsePromise = client.auth.login({ email: 'valid@email.com', password: 'secret1234' });
     const rawResponse = await responsePromise.asResponse();
@@ -21,12 +21,12 @@ describe('resource auth', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('login: required and optional params', async () => {
     const response = await client.auth.login({ email: 'valid@email.com', password: 'secret1234' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('logout', async () => {
     const responsePromise = client.auth.logout();
     const rawResponse = await responsePromise.asResponse();
@@ -38,7 +38,7 @@ describe('resource auth', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('refreshToken', async () => {
     const responsePromise = client.auth.refreshToken();
     const rawResponse = await responsePromise.asResponse();
@@ -50,7 +50,7 @@ describe('resource auth', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieveUserDetails', async () => {
     const responsePromise = client.auth.retrieveUserDetails();
     const rawResponse = await responsePromise.asResponse();
@@ -62,7 +62,7 @@ describe('resource auth', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('revokeToken', async () => {
     const responsePromise = client.auth.revokeToken();
     const rawResponse = await responsePromise.asResponse();
