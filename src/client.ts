@@ -776,11 +776,13 @@ export class Qanapi {
   apiKeys: API.APIKeys = new API.APIKeys(this);
   scopes: API.Scopes = new API.Scopes(this);
 }
+
 Qanapi.Auth = Auth;
 Qanapi.Encrypt = Encrypt;
 Qanapi.Decrypt = Decrypt;
 Qanapi.APIKeys = APIKeys;
 Qanapi.Scopes = Scopes;
+
 export declare namespace Qanapi {
   export type RequestOptions = Opts.RequestOptions;
 
