@@ -7,10 +7,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "qanapi/*": ["src/*"],
-      "qanapi": ["src/index.ts"]
+      "qanapi/*": ["./src/*"],
+      "qanapi": ["./src/index.ts"]
     },
     "noEmit": true,
 

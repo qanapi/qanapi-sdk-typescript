@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "qanapi/*": ["dist/src/*"],
-      "qanapi": ["dist/src/index.ts"]
+      "qanapi/*": ["./dist/src/*"],
+      "qanapi": ["./dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
