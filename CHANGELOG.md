@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.7.0 (2025-10-08)
+
+Full Changelog: [v1.6.5...v1.7.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.5...v1.7.0)
+
+### Features
+
+* clean up environment call outs ([b903064](https://github.com/qanapi/qanapi-sdk-typescript/commit/b903064c5883e8eb359e3db9140132649b52be23))
+* **mcp:** add code execution tool ([0161f69](https://github.com/qanapi/qanapi-sdk-typescript/commit/0161f69a604a21641bfa14805364ee9e883ae77e))
+
+
+### Chores
+
+* add docs to RequestOptions type ([e1edfd7](https://github.com/qanapi/qanapi-sdk-typescript/commit/e1edfd7dca598af3204ead9eea4c3e14e4ff68c4))
+* add package to package.json ([a30fce2](https://github.com/qanapi/qanapi-sdk-typescript/commit/a30fce2be60ff23b8d1043b2f1cf60f0cf8cf491))
+* **client:** qualify global Blob ([6aefc15](https://github.com/qanapi/qanapi-sdk-typescript/commit/6aefc1520afd02a47747f6f6bf5085de02897e5e))
+* **deps:** update dependency @types/node to v20.17.58 ([c05e152](https://github.com/qanapi/qanapi-sdk-typescript/commit/c05e152c26e5a0538bdd54be46a74f7d5be55e4f))
+* **internal:** codegen related update ([099a303](https://github.com/qanapi/qanapi-sdk-typescript/commit/099a3032a5922c43eaf8b361b4f1777ade31cdad))
+* **internal:** codegen related update ([fa1a9fd](https://github.com/qanapi/qanapi-sdk-typescript/commit/fa1a9fd95670c8b1d8ba274cda166b6ecd5803b9))
+* **internal:** formatting change ([2747be2](https://github.com/qanapi/qanapi-sdk-typescript/commit/2747be2a8142fd3e2047a590e270be5f466cffcc))
+* **internal:** move publish config ([fd34513](https://github.com/qanapi/qanapi-sdk-typescript/commit/fd34513157a896d8a4afe54585bc1ef7c5d843dc))
+* **internal:** remove redundant imports config ([510fa88](https://github.com/qanapi/qanapi-sdk-typescript/commit/510fa88f4d9668089abaf503bcd0f07e50b9b9e5))
+* **internal:** update comment in script ([311624b](https://github.com/qanapi/qanapi-sdk-typescript/commit/311624b2e2d20655139d5189c749f888bb56bf16))
+* **internal:** update global Error reference ([3cbe30e](https://github.com/qanapi/qanapi-sdk-typescript/commit/3cbe30ead9dfd3f2d73e253bf1fbd0722aade0b7))
+* make some internal functions async ([505929b](https://github.com/qanapi/qanapi-sdk-typescript/commit/505929bdb9626d3715fc463cee42e19634a67047))
+* **ts:** reorder package.json imports ([a7c5609](https://github.com/qanapi/qanapi-sdk-typescript/commit/a7c56096373aae24881beb6f970aa5b9be8606c2))
+* update @stainless-api/prism-cli to v5.15.0 ([0aa1d67](https://github.com/qanapi/qanapi-sdk-typescript/commit/0aa1d67126ce2bf2fd34b5889e1b879dcbed8089))
+* update CI script ([012c996](https://github.com/qanapi/qanapi-sdk-typescript/commit/012c9960ee36c024a612843bff451952e38db714))
+
 ## 1.6.5 (2025-07-01)
 
 Full Changelog: [v1.6.4...v1.6.5](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.4...v1.6.5)
