@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.8.0 (2026-07-23)
+
+Full Changelog: [v1.7.0...v1.8.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.7.0...v1.8.0)
+
+### Features
+
+* **api:** remove scopes entity ([e169b13](https://github.com/qanapi/qanapi-sdk-typescript/commit/e169b137c01d6cc730e22b8bef0832dc2ffb3e67))
+
+
+### Chores
+
+* remove custom code ([607ad58](https://github.com/qanapi/qanapi-sdk-typescript/commit/607ad5899626da5b6f06adc006fd8fa19e3e17a1))
+
 ## 1.7.0 (2025-10-08)
 
 Full Changelog: [v1.6.5...v1.7.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.6.5...v1.7.0)
