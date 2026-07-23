@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Qanapi REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [www.qanapi.com](https://www.qanapi.com/docs). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.qanapi.com](https://docs.qanapi.com/). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -143,7 +143,9 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new Qanapi();
 
-const response = await client.auth.login({ email: 'valid@email.com', password: 'secret1234' }).asResponse();
+const response = await client.auth
+  .login({ email: 'valid@email.com', password: 'secret1234' })
+  .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 

@@ -134,7 +134,11 @@ describe('instantiate client', () => {
       };
 
       process.env['QANAPI_LOG'] = 'debug';
-      const client = new Qanapi({ logger: logger, apiKey: 'My API Key', subdomain: 'My-Subdomain' });
+      const client = new Qanapi({
+        logger: logger,
+        apiKey: 'My API Key',
+        subdomain: 'My-Subdomain',
+      });
       expect(client.logLevel).toBe('debug');
 
       await forceAPIResponseForClient(client);
@@ -151,7 +155,11 @@ describe('instantiate client', () => {
       };
 
       process.env['QANAPI_LOG'] = 'not a log level';
-      const client = new Qanapi({ logger: logger, apiKey: 'My API Key', subdomain: 'My-Subdomain' });
+      const client = new Qanapi({
+        logger: logger,
+        apiKey: 'My API Key',
+        subdomain: 'My-Subdomain',
+      });
       expect(client.logLevel).toBe('warn');
       expect(warnMock).toHaveBeenCalledWith(
         'process.env[\'QANAPI_LOG\'] was set to "not a log level", expected one of ["off","error","warn","info","debug"]',
@@ -357,7 +365,11 @@ describe('instantiate client', () => {
   });
 
   test('maxRetries option is correctly set', () => {
-    const client = new Qanapi({ maxRetries: 4, apiKey: 'My API Key', subdomain: 'My-Subdomain' });
+    const client = new Qanapi({
+      maxRetries: 4,
+      apiKey: 'My API Key',
+      subdomain: 'My-Subdomain',
+    });
     expect(client.maxRetries).toEqual(4);
 
     // default
@@ -735,7 +747,11 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Qanapi({ apiKey: 'My API Key', subdomain: 'My-Subdomain', fetch: testFetch });
+    const client = new Qanapi({
+      apiKey: 'My API Key',
+      subdomain: 'My-Subdomain',
+      fetch: testFetch,
+    });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -765,7 +781,11 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Qanapi({ apiKey: 'My API Key', subdomain: 'My-Subdomain', fetch: testFetch });
+    const client = new Qanapi({
+      apiKey: 'My API Key',
+      subdomain: 'My-Subdomain',
+      fetch: testFetch,
+    });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);

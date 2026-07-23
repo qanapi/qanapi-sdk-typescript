@@ -9,7 +9,7 @@ const client = new Qanapi({
 });
 
 describe('resource decrypt', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('decryptPayload: only required params', async () => {
     const responsePromise = client.decrypt.decryptPayload({ data: { password: 'bar' } });
     const rawResponse = await responsePromise.asResponse();
@@ -21,7 +21,7 @@ describe('resource decrypt', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('decryptPayload: required and optional params', async () => {
     const response = await client.decrypt.decryptPayload({
       data: { password: 'bar' },
