@@ -9,7 +9,7 @@ const client = new Qanapi({
 });
 
 describe('resource encrypt', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('encryptData: only required params', async () => {
     const responsePromise = client.encrypt.encryptData({ data: { password: 'bar' } });
     const rawResponse = await responsePromise.asResponse();
@@ -21,12 +21,16 @@ describe('resource encrypt', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('encryptData: required and optional params', async () => {
     const response = await client.encrypt.encryptData({
       data: { password: 'bar' },
       access: { acl: ['admin'] },
-      attributes: { classification: 'confidential', owner: 'alice@example.com', tags: ['legal'] },
+      attributes: {
+        classification: 'confidential',
+        owner: 'alice@example.com',
+        tags: ['legal'],
+      },
       sensitiveFields: ['password'],
     });
   });
