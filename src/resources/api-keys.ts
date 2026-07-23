@@ -1,3 +1,39 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export * from './api-keys/index';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
+
+export class APIKeys extends APIResource {
+  /**
+   * Revoke an API Key
+   */
+  revoke(apiKey: string, options?: RequestOptions): APIPromise<APIKeyRevokeResponse> {
+    return this._client.patch(path`/api-keys/${apiKey}/revoke`, options);
+  }
+
+  /**
+   * Rotate an API Key
+   */
+  rotate(apiKey: string, options?: RequestOptions): APIPromise<APIKeyRotateResponse> {
+    return this._client.patch(path`/api-keys/${apiKey}/rotate`, options);
+  }
+}
+
+export interface APIKeyRevokeResponse {
+  message?: string;
+}
+
+export interface APIKeyRotateResponse {
+  api_key?: string;
+
+  message?: string;
+}
+
+export declare namespace APIKeys {
+  export {
+    type APIKeyRevokeResponse as APIKeyRevokeResponse,
+    type APIKeyRotateResponse as APIKeyRotateResponse,
+  };
+}
