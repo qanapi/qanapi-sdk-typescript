@@ -9,7 +9,7 @@ const client = new Qanapi({
 });
 
 describe('resource apiKeys', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('revoke', async () => {
     const responsePromise = client.apiKeys.revoke('apiKey');
     const rawResponse = await responsePromise.asResponse();
@@ -21,7 +21,7 @@ describe('resource apiKeys', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('rotate', async () => {
     const responsePromise = client.apiKeys.rotate('apiKey');
     const rawResponse = await responsePromise.asResponse();
