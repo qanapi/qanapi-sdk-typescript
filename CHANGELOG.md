@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.0 (2026-07-24)
+
+Full Changelog: [v1.8.0...v1.9.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.8.0...v1.9.0)
+
+### Features
+
+* **api:** setup npm oidc ([57cf24c](https://github.com/qanapi/qanapi-sdk-typescript/commit/57cf24c087edee0d746715bd64ea87c36591831d))
+
 ## 1.8.0 (2026-07-23)
 
 Full Changelog: [v1.7.0...v1.8.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.7.0...v1.8.0)
