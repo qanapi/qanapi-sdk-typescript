@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.9.1 (2026-07-31)
+
+Full Changelog: [v1.9.0...v1.9.1](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.9.0...v1.9.1)
+
+### Bug Fixes
+
+* **stlc:** stop hand-edited CI workflows from blocking seals and builds ([7e99766](https://github.com/qanapi/qanapi-sdk-typescript/commit/7e997660a15294ac63c62ed2397a73758be9a62b))
+
+
+### Chores
+
+* **internal:** codegen related update ([bd7efdf](https://github.com/qanapi/qanapi-sdk-typescript/commit/bd7efdfe265759081c992349a87a9171ecdcf7f4))
+
 ## 1.9.0 (2026-07-24)
 
 Full Changelog: [v1.8.0...v1.9.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.8.0...v1.9.0)
