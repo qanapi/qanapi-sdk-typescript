@@ -1,49 +1,51 @@
-# Auth
+# V2
+
+## Auth
 
 Types:
 
-- <code><a href="./src/resources/auth.ts">AuthLoginResponse</a></code>
-- <code><a href="./src/resources/auth.ts">AuthLogoutResponse</a></code>
-- <code><a href="./src/resources/auth.ts">AuthRefreshTokenResponse</a></code>
-- <code><a href="./src/resources/auth.ts">AuthRetrieveUserDetailsResponse</a></code>
-- <code><a href="./src/resources/auth.ts">AuthRevokeTokenResponse</a></code>
+- <code><a href="./src/resources/v2/auth.ts">AuthLoginResponse</a></code>
+- <code><a href="./src/resources/v2/auth.ts">AuthLogoutResponse</a></code>
+- <code><a href="./src/resources/v2/auth.ts">AuthRefreshTokenResponse</a></code>
+- <code><a href="./src/resources/v2/auth.ts">AuthRetrieveUserDetailsResponse</a></code>
+- <code><a href="./src/resources/v2/auth.ts">AuthRevokeTokenResponse</a></code>
 
 Methods:
 
-- <code title="post /auth/login">client.auth.<a href="./src/resources/auth.ts">login</a>({ ...params }) -> AuthLoginResponse</code>
-- <code title="post /auth/logout">client.auth.<a href="./src/resources/auth.ts">logout</a>() -> AuthLogoutResponse</code>
-- <code title="post /auth/refresh">client.auth.<a href="./src/resources/auth.ts">refreshToken</a>() -> AuthRefreshTokenResponse</code>
-- <code title="get /auth/userdetails">client.auth.<a href="./src/resources/auth.ts">retrieveUserDetails</a>() -> AuthRetrieveUserDetailsResponse</code>
-- <code title="post /auth/revoke">client.auth.<a href="./src/resources/auth.ts">revokeToken</a>() -> AuthRevokeTokenResponse</code>
+- <code title="post /auth/login">client.v2.auth.<a href="./src/resources/v2/auth.ts">login</a>({ ...params }) -> AuthLoginResponse</code>
+- <code title="post /auth/logout">client.v2.auth.<a href="./src/resources/v2/auth.ts">logout</a>() -> AuthLogoutResponse</code>
+- <code title="post /auth/refresh">client.v2.auth.<a href="./src/resources/v2/auth.ts">refreshToken</a>() -> AuthRefreshTokenResponse</code>
+- <code title="get /auth/userdetails">client.v2.auth.<a href="./src/resources/v2/auth.ts">retrieveUserDetails</a>() -> AuthRetrieveUserDetailsResponse</code>
+- <code title="post /auth/revoke">client.v2.auth.<a href="./src/resources/v2/auth.ts">revokeToken</a>() -> AuthRevokeTokenResponse</code>
 
-# Encrypt
+## Encrypt
 
 Types:
 
-- <code><a href="./src/resources/encrypt.ts">EncryptEncryptDataResponse</a></code>
+- <code><a href="./src/resources/v2/encrypt.ts">EncryptEncryptDataResponse</a></code>
 
 Methods:
 
-- <code title="post /encrypt">client.encrypt.<a href="./src/resources/encrypt.ts">encryptData</a>({ ...params }) -> EncryptEncryptDataResponse</code>
+- <code title="post /encrypt">client.v2.encrypt.<a href="./src/resources/v2/encrypt.ts">encryptData</a>({ ...params }) -> EncryptEncryptDataResponse</code>
 
-# Decrypt
+## Decrypt
 
 Types:
 
-- <code><a href="./src/resources/decrypt.ts">DecryptDecryptPayloadResponse</a></code>
+- <code><a href="./src/resources/v2/decrypt.ts">DecryptDecryptPayloadResponse</a></code>
 
 Methods:
 
-- <code title="post /decrypt">client.decrypt.<a href="./src/resources/decrypt.ts">decryptPayload</a>({ ...params }) -> DecryptDecryptPayloadResponse</code>
+- <code title="post /decrypt">client.v2.decrypt.<a href="./src/resources/v2/decrypt.ts">decryptPayload</a>({ ...params }) -> DecryptDecryptPayloadResponse</code>
 
-# APIKeys
+## APIKeys
 
 Types:
 
-- <code><a href="./src/resources/api-keys.ts">APIKeyRevokeResponse</a></code>
-- <code><a href="./src/resources/api-keys.ts">APIKeyRotateResponse</a></code>
+- <code><a href="./src/resources/v2/api-keys.ts">APIKeyRevokeResponse</a></code>
+- <code><a href="./src/resources/v2/api-keys.ts">APIKeyRotateResponse</a></code>
 
 Methods:
 
-- <code title="patch /api-keys/{apiKey}/revoke">client.apiKeys.<a href="./src/resources/api-keys.ts">revoke</a>(apiKey) -> APIKeyRevokeResponse</code>
-- <code title="patch /api-keys/{apiKey}/rotate">client.apiKeys.<a href="./src/resources/api-keys.ts">rotate</a>(apiKey) -> APIKeyRotateResponse</code>
+- <code title="patch /api-keys/{apiKey}/revoke">client.v2.apiKeys.<a href="./src/resources/v2/api-keys.ts">revoke</a>(apiKey) -> APIKeyRevokeResponse</code>
+- <code title="patch /api-keys/{apiKey}/rotate">client.v2.apiKeys.<a href="./src/resources/v2/api-keys.ts">rotate</a>(apiKey) -> APIKeyRotateResponse</code>

@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../core/resource';
-import { APIPromise } from '../core/api-promise';
-import { RequestOptions } from '../internal/request-options';
+import { APIResource } from '../../core/resource';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class Auth extends APIResource {
   /**
@@ -10,7 +10,7 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.auth.login({
+   * const response = await client.v2.auth.login({
    *   email: 'valid@email.com',
    *   password: 'secret1234',
    * });
@@ -25,7 +25,7 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.auth.logout();
+   * const response = await client.v2.auth.logout();
    * ```
    */
   logout(options?: RequestOptions): APIPromise<AuthLogoutResponse> {
@@ -37,7 +37,7 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.auth.refreshToken();
+   * const response = await client.v2.auth.refreshToken();
    * ```
    */
   refreshToken(options?: RequestOptions): APIPromise<AuthRefreshTokenResponse> {
@@ -49,7 +49,7 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.auth.retrieveUserDetails();
+   * const response = await client.v2.auth.retrieveUserDetails();
    * ```
    */
   retrieveUserDetails(options?: RequestOptions): APIPromise<AuthRetrieveUserDetailsResponse> {
@@ -61,7 +61,7 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.auth.revokeToken();
+   * const response = await client.v2.auth.revokeToken();
    * ```
    */
   revokeToken(options?: RequestOptions): APIPromise<AuthRevokeTokenResponse> {

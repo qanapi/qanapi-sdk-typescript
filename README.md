@@ -27,7 +27,7 @@ const client = new Qanapi({
   apiKey: process.env['QANAPI_API_KEY'], // This is the default and can be omitted
 });
 
-const response = await client.auth.login({ email: 'valid@email.com', password: 'secret1234' });
+const response = await client.v2.auth.login({ email: 'valid@email.com', password: 'secret1234' });
 
 console.log(response.access_token);
 ```
@@ -45,8 +45,8 @@ const client = new Qanapi({
   apiKey: process.env['QANAPI_API_KEY'], // This is the default and can be omitted
 });
 
-const params: Qanapi.AuthLoginParams = { email: 'valid@email.com', password: 'secret1234' };
-const response: Qanapi.AuthLoginResponse = await client.auth.login(params);
+const params: Qanapi.V2.AuthLoginParams = { email: 'valid@email.com', password: 'secret1234' };
+const response: Qanapi.V2.AuthLoginResponse = await client.v2.auth.login(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -59,7 +59,7 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const response = await client.auth
+const response = await client.v2.auth
   .login({ email: 'valid@email.com', password: 'secret1234' })
   .catch(async (err) => {
     if (err instanceof Qanapi.APIError) {
@@ -102,7 +102,7 @@ const client = new Qanapi({
 });
 
 // Or, configure per-request:
-await client.auth.login({ email: 'valid@email.com', password: 'secret1234' }, {
+await client.v2.auth.login({ email: 'valid@email.com', password: 'secret1234' }, {
   maxRetries: 5,
 });
 ```
@@ -120,7 +120,7 @@ const client = new Qanapi({
 });
 
 // Override per-request:
-await client.auth.login({ email: 'valid@email.com', password: 'secret1234' }, {
+await client.v2.auth.login({ email: 'valid@email.com', password: 'secret1234' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -143,13 +143,13 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new Qanapi();
 
-const response = await client.auth
+const response = await client.v2.auth
   .login({ email: 'valid@email.com', password: 'secret1234' })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.auth
+const { data: response, response: raw } = await client.v2.auth
   .login({ email: 'valid@email.com', password: 'secret1234' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
@@ -233,7 +233,7 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.auth.login({
+client.v2.auth.login({
   // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',
