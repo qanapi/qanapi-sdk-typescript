@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../core/resource';
-import { APIPromise } from '../core/api-promise';
-import { RequestOptions } from '../internal/request-options';
+import { APIResource } from '../../core/resource';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class Decrypt extends APIResource {
   /**
@@ -10,7 +10,7 @@ export class Decrypt extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.decrypt.decryptPayload({
+   * const response = await client.v2.decrypt.decryptPayload({
    *   data: { password: 'enc$::abc123::...' },
    *   sensitiveFields: ['password'],
    * });
