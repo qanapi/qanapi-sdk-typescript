@@ -9,22 +9,6 @@ import { path } from '../../internal/utils/path';
 export class Encryption extends APIResource {
   /**
    * Decrypt data
-   *
-   * @example
-   * ```ts
-   * const response = await client.v3.encryption.decrypt(
-   *   'proxy',
-   *   {
-   *     body: {
-   *       name: 'bar',
-   *       email: 'bar',
-   *       ssn: 'bar',
-   *       dob: 'bar',
-   *       address: 'bar',
-   *     },
-   *   },
-   * );
-   * ```
    */
   decrypt(
     proxy: string,
@@ -44,23 +28,6 @@ export class Encryption extends APIResource {
 
   /**
    * Encrypt data
-   *
-   * @example
-   * ```ts
-   * const response = await client.v3.encryption.encrypt(
-   *   'proxy',
-   *   {
-   *     body: {
-   *       name: 'bar',
-   *       email: 'bar',
-   *       ssn: 'bar',
-   *       dob: 'bar',
-   *       address: 'bar',
-   *     },
-   *     'x-qanapi-fields': 'x-qanapi-fields',
-   *   },
-   * );
-   * ```
    */
   encrypt(
     proxy: string,

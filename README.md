@@ -28,13 +28,7 @@ const client = new Qanapi({
 });
 
 const response = await client.v3.encryption.encrypt('proxy', {
-  body: {
-    name: 'bar',
-    email: 'bar',
-    ssn: 'bar',
-    dob: 'bar',
-    address: 'bar',
-  },
+  body: { foo: 'bar' },
   'x-qanapi-fields': 'x-qanapi-fields',
 });
 ```
@@ -53,13 +47,7 @@ const client = new Qanapi({
 });
 
 const params: Qanapi.V3.EncryptionEncryptParams = {
-  body: {
-    name: 'bar',
-    email: 'bar',
-    ssn: 'bar',
-    dob: 'bar',
-    address: 'bar',
-  },
+  body: { foo: 'bar' },
   'x-qanapi-fields': 'x-qanapi-fields',
 };
 const response: Qanapi.V3.EncryptionEncryptResponse = await client.v3.encryption.encrypt(
@@ -80,13 +68,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 const response = await client.v3.encryption
   .encrypt('proxy', {
-    body: {
-      name: 'bar',
-      email: 'bar',
-      ssn: 'bar',
-      dob: 'bar',
-      address: 'bar',
-    },
+    body: { foo: 'bar' },
     'x-qanapi-fields': 'x-qanapi-fields',
   })
   .catch(async (err) => {
@@ -131,13 +113,7 @@ const client = new Qanapi({
 
 // Or, configure per-request:
 await client.v3.encryption.encrypt('proxy', {
-  body: {
-  name: 'bar',
-  email: 'bar',
-  ssn: 'bar',
-  dob: 'bar',
-  address: 'bar',
-},
+  body: { foo: 'bar' },
   'x-qanapi-fields': 'x-qanapi-fields',
 }, {
   maxRetries: 5,
@@ -158,13 +134,7 @@ const client = new Qanapi({
 
 // Override per-request:
 await client.v3.encryption.encrypt('proxy', {
-  body: {
-  name: 'bar',
-  email: 'bar',
-  ssn: 'bar',
-  dob: 'bar',
-  address: 'bar',
-},
+  body: { foo: 'bar' },
   'x-qanapi-fields': 'x-qanapi-fields',
 }, {
   timeout: 5 * 1000,
@@ -191,13 +161,7 @@ const client = new Qanapi();
 
 const response = await client.v3.encryption
   .encrypt('proxy', {
-    body: {
-      name: 'bar',
-      email: 'bar',
-      ssn: 'bar',
-      dob: 'bar',
-      address: 'bar',
-    },
+    body: { foo: 'bar' },
     'x-qanapi-fields': 'x-qanapi-fields',
   })
   .asResponse();
@@ -206,13 +170,7 @@ console.log(response.statusText); // access the underlying Response object
 
 const { data: response, response: raw } = await client.v3.encryption
   .encrypt('proxy', {
-    body: {
-      name: 'bar',
-      email: 'bar',
-      ssn: 'bar',
-      dob: 'bar',
-      address: 'bar',
-    },
+    body: { foo: 'bar' },
     'x-qanapi-fields': 'x-qanapi-fields',
   })
   .withResponse();

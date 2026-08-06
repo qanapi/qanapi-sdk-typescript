@@ -8,11 +8,6 @@ import { RequestOptions } from '../../internal/request-options';
 export class Logs extends APIResource {
   /**
    * Get activity logs
-   *
-   * @example
-   * ```ts
-   * const response = await client.v3.logs.activity();
-   * ```
    */
   activity(
     query: LogActivityParams | null | undefined = {},
@@ -23,11 +18,6 @@ export class Logs extends APIResource {
 
   /**
    * Get API logs
-   *
-   * @example
-   * ```ts
-   * const response = await client.v3.logs.api();
-   * ```
    */
   api(query: LogAPIParams | null | undefined = {}, options?: RequestOptions): APIPromise<LogAPIResponse> {
     return this._client.get('/v3/logs/api', { query, ...options });
@@ -35,11 +25,6 @@ export class Logs extends APIResource {
 
   /**
    * Get Qanapi Flow logs
-   *
-   * @example
-   * ```ts
-   * const response = await client.v3.logs.qanapiFlow();
-   * ```
    */
   qanapiFlow(
     query: LogQanapiFlowParams | null | undefined = {},
@@ -50,11 +35,6 @@ export class Logs extends APIResource {
 
   /**
    * Get unified logs
-   *
-   * @example
-   * ```ts
-   * const response = await client.v3.logs.unified();
-   * ```
    */
   unified(
     query: LogUnifiedParams | null | undefined = {},
