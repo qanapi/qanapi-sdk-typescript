@@ -2,15 +2,12 @@
 
 import { APIResource } from '../../core/resource';
 import * as APIKeysAPI from './api-keys';
-import { APIKeyListResponse, APIKeyRotateResponse, APIKeyShowResponse, APIKeys } from './api-keys';
+import { APIKeyListResponse, APIKeyRotateResponse, APIKeys } from './api-keys';
 import * as ConfigurationsAPI from './configurations';
 import {
   ConfigurationCreateParams,
-  ConfigurationCreateResponse,
   ConfigurationListResponse,
-  ConfigurationShowResponse,
   ConfigurationUpdateParams,
-  ConfigurationUpdateResponse,
   Configurations,
 } from './configurations';
 import * as EncryptionAPI from './encryption';
@@ -36,18 +33,7 @@ import {
 import * as RolesAPI from './roles';
 import { RoleListResponse, Roles } from './roles';
 import * as UsersAPI from './users';
-import {
-  UserCreateParams,
-  UserCreateResponse,
-  UserListResponse,
-  UserMeResponse,
-  UserPatchParams,
-  UserPatchResponse,
-  UserRestoreParams,
-  UserRestoreResponse,
-  UserShowResponse,
-  Users,
-} from './users';
+import { UserCreateParams, UserListResponse, UserPatchParams, Users } from './users';
 
 export class V3 extends APIResource {
   roles: RolesAPI.Roles = new RolesAPI.Roles(this._client);
@@ -58,6 +44,70 @@ export class V3 extends APIResource {
   encryption: EncryptionAPI.Encryption = new EncryptionAPI.Encryption(this._client);
 }
 
+export interface APIKey {
+  id: string;
+
+  prefix: string;
+
+  status: 'active' | 'revoked';
+
+  configurations?: Array<Configuration>;
+
+  created_at?: string;
+
+  permissions?: Array<Permission>;
+
+  revoked_at?: string | null;
+
+  updated_at?: string;
+
+  user?: User;
+}
+
+export interface Configuration {
+  id: string;
+
+  name: string;
+
+  type: string;
+
+  values?: Array<Value>;
+}
+
+export interface Permission {
+  name: string;
+}
+
+export interface Role {
+  name: string;
+
+  description?: string | null;
+
+  permissions?: Array<Permission>;
+}
+
+export interface User {
+  id: number;
+
+  email: string;
+
+  name: string;
+
+  created_at?: string;
+
+  roles?: Array<Role>;
+
+  two_factor_enabled?: boolean;
+
+  updated_at?: string;
+}
+
+export interface Value {
+  key: string;
+
+  value: string;
+}
+
 V3.Roles = Roles;
 V3.Configurations = Configurations;
 V3.Users = Users;
@@ -66,36 +116,35 @@ V3.Logs = Logs;
 V3.Encryption = Encryption;
 
 export declare namespace V3 {
+  export {
+    type APIKey as APIKey,
+    type Configuration as Configuration,
+    type Permission as Permission,
+    type Role as Role,
+    type User as User,
+    type Value as Value,
+  };
+
   export { Roles as Roles, type RoleListResponse as RoleListResponse };
 
   export {
     Configurations as Configurations,
-    type ConfigurationCreateResponse as ConfigurationCreateResponse,
-    type ConfigurationUpdateResponse as ConfigurationUpdateResponse,
     type ConfigurationListResponse as ConfigurationListResponse,
-    type ConfigurationShowResponse as ConfigurationShowResponse,
     type ConfigurationCreateParams as ConfigurationCreateParams,
     type ConfigurationUpdateParams as ConfigurationUpdateParams,
   };
 
   export {
     Users as Users,
-    type UserCreateResponse as UserCreateResponse,
     type UserListResponse as UserListResponse,
-    type UserMeResponse as UserMeResponse,
-    type UserPatchResponse as UserPatchResponse,
-    type UserRestoreResponse as UserRestoreResponse,
-    type UserShowResponse as UserShowResponse,
     type UserCreateParams as UserCreateParams,
     type UserPatchParams as UserPatchParams,
-    type UserRestoreParams as UserRestoreParams,
   };
 
   export {
     APIKeys as APIKeys,
     type APIKeyListResponse as APIKeyListResponse,
     type APIKeyRotateResponse as APIKeyRotateResponse,
-    type APIKeyShowResponse as APIKeyShowResponse,
   };
 
   export {
