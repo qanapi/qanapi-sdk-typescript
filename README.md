@@ -27,9 +27,16 @@ const client = new Qanapi({
   apiKey: process.env['QANAPI_API_KEY'], // This is the default and can be omitted
 });
 
-const response = await client.v2.auth.login({ email: 'valid@email.com', password: 'secret1234' });
-
-console.log(response.access_token);
+const response = await client.v3.encryption.encrypt('proxy', {
+  body: {
+    name: 'bar',
+    email: 'bar',
+    ssn: 'bar',
+    dob: 'bar',
+    address: 'bar',
+  },
+  'x-qanapi-fields': 'x-qanapi-fields',
+});
 ```
 
 ### Request & Response types
@@ -45,8 +52,20 @@ const client = new Qanapi({
   apiKey: process.env['QANAPI_API_KEY'], // This is the default and can be omitted
 });
 
-const params: Qanapi.V2.AuthLoginParams = { email: 'valid@email.com', password: 'secret1234' };
-const response: Qanapi.V2.AuthLoginResponse = await client.v2.auth.login(params);
+const params: Qanapi.V3.EncryptionEncryptParams = {
+  body: {
+    name: 'bar',
+    email: 'bar',
+    ssn: 'bar',
+    dob: 'bar',
+    address: 'bar',
+  },
+  'x-qanapi-fields': 'x-qanapi-fields',
+};
+const response: Qanapi.V3.EncryptionEncryptResponse = await client.v3.encryption.encrypt(
+  'proxy',
+  params,
+);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -59,8 +78,17 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const response = await client.v2.auth
-  .login({ email: 'valid@email.com', password: 'secret1234' })
+const response = await client.v3.encryption
+  .encrypt('proxy', {
+    body: {
+      name: 'bar',
+      email: 'bar',
+      ssn: 'bar',
+      dob: 'bar',
+      address: 'bar',
+    },
+    'x-qanapi-fields': 'x-qanapi-fields',
+  })
   .catch(async (err) => {
     if (err instanceof Qanapi.APIError) {
       console.log(err.status); // 400
@@ -102,7 +130,16 @@ const client = new Qanapi({
 });
 
 // Or, configure per-request:
-await client.v2.auth.login({ email: 'valid@email.com', password: 'secret1234' }, {
+await client.v3.encryption.encrypt('proxy', {
+  body: {
+  name: 'bar',
+  email: 'bar',
+  ssn: 'bar',
+  dob: 'bar',
+  address: 'bar',
+},
+  'x-qanapi-fields': 'x-qanapi-fields',
+}, {
   maxRetries: 5,
 });
 ```
@@ -120,7 +157,16 @@ const client = new Qanapi({
 });
 
 // Override per-request:
-await client.v2.auth.login({ email: 'valid@email.com', password: 'secret1234' }, {
+await client.v3.encryption.encrypt('proxy', {
+  body: {
+  name: 'bar',
+  email: 'bar',
+  ssn: 'bar',
+  dob: 'bar',
+  address: 'bar',
+},
+  'x-qanapi-fields': 'x-qanapi-fields',
+}, {
   timeout: 5 * 1000,
 });
 ```
@@ -143,17 +189,35 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new Qanapi();
 
-const response = await client.v2.auth
-  .login({ email: 'valid@email.com', password: 'secret1234' })
+const response = await client.v3.encryption
+  .encrypt('proxy', {
+    body: {
+      name: 'bar',
+      email: 'bar',
+      ssn: 'bar',
+      dob: 'bar',
+      address: 'bar',
+    },
+    'x-qanapi-fields': 'x-qanapi-fields',
+  })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.v2.auth
-  .login({ email: 'valid@email.com', password: 'secret1234' })
+const { data: response, response: raw } = await client.v3.encryption
+  .encrypt('proxy', {
+    body: {
+      name: 'bar',
+      email: 'bar',
+      ssn: 'bar',
+      dob: 'bar',
+      address: 'bar',
+    },
+    'x-qanapi-fields': 'x-qanapi-fields',
+  })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(response.access_token);
+console.log(response);
 ```
 
 ### Logging
@@ -233,7 +297,7 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.v2.auth.login({
+client.v3.encryption.encrypt({
   // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',
