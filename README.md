@@ -28,8 +28,8 @@ const client = new Qanapi({
 });
 
 const response = await client.v3.encryption.encrypt('proxy', {
-  data: { foo: 'bar' },
-  'x-qanapi-fields': 'x-qanapi-fields',
+  data: { password: 'secret123' },
+  'x-qanapi-fields': 'password',
 });
 ```
 
@@ -47,8 +47,8 @@ const client = new Qanapi({
 });
 
 const params: Qanapi.V3.EncryptionEncryptParams = {
-  data: { foo: 'bar' },
-  'x-qanapi-fields': 'x-qanapi-fields',
+  data: { password: 'secret123' },
+  'x-qanapi-fields': 'password',
 };
 const response: Qanapi.V3.EncryptionEncryptResponse = await client.v3.encryption.encrypt(
   'proxy',
@@ -68,8 +68,8 @@ a subclass of `APIError` will be thrown:
 ```ts
 const response = await client.v3.encryption
   .encrypt('proxy', {
-    data: { foo: 'bar' },
-    'x-qanapi-fields': 'x-qanapi-fields',
+    data: { password: 'secret123' },
+    'x-qanapi-fields': 'password',
   })
   .catch(async (err) => {
     if (err instanceof Qanapi.APIError) {
@@ -113,8 +113,8 @@ const client = new Qanapi({
 
 // Or, configure per-request:
 await client.v3.encryption.encrypt('proxy', {
-  data: { foo: 'bar' },
-  'x-qanapi-fields': 'x-qanapi-fields',
+  data: { password: 'secret123' },
+  'x-qanapi-fields': 'password',
 }, {
   maxRetries: 5,
 });
@@ -134,8 +134,8 @@ const client = new Qanapi({
 
 // Override per-request:
 await client.v3.encryption.encrypt('proxy', {
-  data: { foo: 'bar' },
-  'x-qanapi-fields': 'x-qanapi-fields',
+  data: { password: 'secret123' },
+  'x-qanapi-fields': 'password',
 }, {
   timeout: 5 * 1000,
 });
@@ -161,8 +161,8 @@ const client = new Qanapi();
 
 const response = await client.v3.encryption
   .encrypt('proxy', {
-    data: { foo: 'bar' },
-    'x-qanapi-fields': 'x-qanapi-fields',
+    data: { password: 'secret123' },
+    'x-qanapi-fields': 'password',
   })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
@@ -170,8 +170,8 @@ console.log(response.statusText); // access the underlying Response object
 
 const { data: response, response: raw } = await client.v3.encryption
   .encrypt('proxy', {
-    data: { foo: 'bar' },
-    'x-qanapi-fields': 'x-qanapi-fields',
+    data: { password: 'secret123' },
+    'x-qanapi-fields': 'password',
   })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
