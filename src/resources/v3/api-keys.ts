@@ -10,11 +10,6 @@ import { path } from '../../internal/utils/path';
 export class APIKeys extends APIResource {
   /**
    * List API Keys
-   *
-   * @example
-   * ```ts
-   * const apiKeys = await client.v3.apiKeys.list();
-   * ```
    */
   list(options?: RequestOptions): APIPromise<APIKeyListResponse> {
     return this._client.get('/v3/api-keys', options);
@@ -22,11 +17,6 @@ export class APIKeys extends APIResource {
 
   /**
    * Revoke API Key
-   *
-   * @example
-   * ```ts
-   * await client.v3.apiKeys.revoke(0);
-   * ```
    */
   revoke(apiKey: number, options?: RequestOptions): APIPromise<void> {
     return this._client.post(path`/v3/api-keys/${apiKey}/revoke`, {
@@ -37,11 +27,6 @@ export class APIKeys extends APIResource {
 
   /**
    * Rotate API Key
-   *
-   * @example
-   * ```ts
-   * const response = await client.v3.apiKeys.rotate(0);
-   * ```
    */
   rotate(apiKey: number, options?: RequestOptions): APIPromise<APIKeyRotateResponse> {
     return this._client.post(path`/v3/api-keys/${apiKey}/rotate`, options);
@@ -49,11 +34,6 @@ export class APIKeys extends APIResource {
 
   /**
    * Get API Key
-   *
-   * @example
-   * ```ts
-   * const apiKey = await client.v3.apiKeys.show(0);
-   * ```
    */
   show(apiKey: number, options?: RequestOptions): APIPromise<V3API.APIKey> {
     return this._client.get(path`/v3/api-keys/${apiKey}`, options);

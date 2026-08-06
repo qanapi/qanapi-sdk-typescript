@@ -10,14 +10,6 @@ import { path } from '../../internal/utils/path';
 export class Users extends APIResource {
   /**
    * Create user
-   *
-   * @example
-   * ```ts
-   * const user = await client.v3.users.create({
-   *   email: 'dev@stainless.com',
-   *   role: 'role',
-   * });
-   * ```
    */
   create(body: UserCreateParams, options?: RequestOptions): APIPromise<V3API.User> {
     return this._client.post('/v3/users', { body, ...options });
@@ -25,11 +17,6 @@ export class Users extends APIResource {
 
   /**
    * List users
-   *
-   * @example
-   * ```ts
-   * const users = await client.v3.users.list();
-   * ```
    */
   list(options?: RequestOptions): APIPromise<UserListResponse> {
     return this._client.get('/v3/users', options);
@@ -37,11 +24,6 @@ export class Users extends APIResource {
 
   /**
    * Delete user
-   *
-   * @example
-   * ```ts
-   * await client.v3.users.delete(0);
-   * ```
    */
   delete(user: number, options?: RequestOptions): APIPromise<void> {
     return this._client.delete(path`/v3/users/${user}`, {
@@ -52,11 +34,6 @@ export class Users extends APIResource {
 
   /**
    * Get current user
-   *
-   * @example
-   * ```ts
-   * const user = await client.v3.users.me();
-   * ```
    */
   me(options?: RequestOptions): APIPromise<V3API.User> {
     return this._client.get('/v3/users/me', options);
@@ -64,11 +41,6 @@ export class Users extends APIResource {
 
   /**
    * Update user
-   *
-   * @example
-   * ```ts
-   * const user = await client.v3.users.patch(0);
-   * ```
    */
   patch(user: number, body: UserPatchParams, options?: RequestOptions): APIPromise<V3API.User> {
     return this._client.patch(path`/v3/users/${user}`, { body, ...options });
@@ -76,11 +48,6 @@ export class Users extends APIResource {
 
   /**
    * Restore user
-   *
-   * @example
-   * ```ts
-   * const user = await client.v3.users.restore(0);
-   * ```
    */
   restore(user: number, options?: RequestOptions): APIPromise<V3API.User> {
     return this._client.patch(path`/v3/users/${user}/restore`, options);
@@ -88,11 +55,6 @@ export class Users extends APIResource {
 
   /**
    * Get user
-   *
-   * @example
-   * ```ts
-   * const user = await client.v3.users.show(0);
-   * ```
    */
   show(user: number, options?: RequestOptions): APIPromise<V3API.User> {
     return this._client.get(path`/v3/users/${user}`, options);
