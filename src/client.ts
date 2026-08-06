@@ -18,7 +18,7 @@ import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
 import { V2 } from './resources/v2/v2';
-import { V3 } from './resources/v3/v3';
+import { APIKey, Configuration, Permission, Role, User, V3, Value } from './resources/v3/v3';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
@@ -786,5 +786,13 @@ export declare namespace Qanapi {
 
   export { V2 as V2 };
 
-  export { V3 as V3 };
+  export {
+    V3 as V3,
+    type APIKey as APIKey,
+    type Configuration as Configuration,
+    type Permission as Permission,
+    type Role as Role,
+    type User as User,
+    type Value as Value,
+  };
 }

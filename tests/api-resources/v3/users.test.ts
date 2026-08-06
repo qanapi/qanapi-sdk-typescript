@@ -76,7 +76,7 @@ describe('resource users', () => {
 
   // Mock server tests are disabled
   test.skip('restore', async () => {
-    const responsePromise = client.v3.users.restore(0, {});
+    const responsePromise = client.v3.users.restore(0);
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

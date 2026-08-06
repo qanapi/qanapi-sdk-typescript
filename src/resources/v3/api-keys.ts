@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as V3API from './v3';
 import { APIPromise } from '../../core/api-promise';
 import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
@@ -51,178 +52,20 @@ export class APIKeys extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.v3.apiKeys.show(0);
+   * const apiKey = await client.v3.apiKeys.show(0);
    * ```
    */
-  show(apiKey: number, options?: RequestOptions): APIPromise<APIKeyShowResponse> {
+  show(apiKey: number, options?: RequestOptions): APIPromise<V3API.APIKey> {
     return this._client.get(path`/v3/api-keys/${apiKey}`, options);
   }
 }
 
-export type APIKeyListResponse = Array<APIKeyListResponse.APIKeyListResponseItem>;
-
-export namespace APIKeyListResponse {
-  export interface APIKeyListResponseItem {
-    id: string;
-
-    prefix: string;
-
-    status: 'active' | 'revoked';
-
-    configurations?: Array<APIKeyListResponseItem.Configuration>;
-
-    created_at?: string;
-
-    permissions?: Array<APIKeyListResponseItem.Permission>;
-
-    revoked_at?: string | null;
-
-    updated_at?: string;
-
-    user?: APIKeyListResponseItem.User;
-  }
-
-  export namespace APIKeyListResponseItem {
-    export interface Configuration {
-      id: string;
-
-      name: string;
-
-      type: string;
-
-      values?: Array<Configuration.Value>;
-    }
-
-    export namespace Configuration {
-      export interface Value {
-        key: string;
-
-        value: string;
-      }
-    }
-
-    export interface Permission {
-      name: string;
-    }
-
-    export interface User {
-      id: number;
-
-      email: string;
-
-      name: string;
-
-      created_at?: string;
-
-      roles?: Array<User.Role>;
-
-      two_factor_enabled?: boolean;
-
-      updated_at?: string;
-    }
-
-    export namespace User {
-      export interface Role {
-        name: string;
-
-        description?: string | null;
-
-        permissions?: Array<Role.Permission>;
-      }
-
-      export namespace Role {
-        export interface Permission {
-          name: string;
-        }
-      }
-    }
-  }
-}
+export type APIKeyListResponse = Array<V3API.APIKey>;
 
 export interface APIKeyRotateResponse {
   key?: string;
 }
 
-export interface APIKeyShowResponse {
-  id: string;
-
-  prefix: string;
-
-  status: 'active' | 'revoked';
-
-  configurations?: Array<APIKeyShowResponse.Configuration>;
-
-  created_at?: string;
-
-  permissions?: Array<APIKeyShowResponse.Permission>;
-
-  revoked_at?: string | null;
-
-  updated_at?: string;
-
-  user?: APIKeyShowResponse.User;
-}
-
-export namespace APIKeyShowResponse {
-  export interface Configuration {
-    id: string;
-
-    name: string;
-
-    type: string;
-
-    values?: Array<Configuration.Value>;
-  }
-
-  export namespace Configuration {
-    export interface Value {
-      key: string;
-
-      value: string;
-    }
-  }
-
-  export interface Permission {
-    name: string;
-  }
-
-  export interface User {
-    id: number;
-
-    email: string;
-
-    name: string;
-
-    created_at?: string;
-
-    roles?: Array<User.Role>;
-
-    two_factor_enabled?: boolean;
-
-    updated_at?: string;
-  }
-
-  export namespace User {
-    export interface Role {
-      name: string;
-
-      description?: string | null;
-
-      permissions?: Array<Role.Permission>;
-    }
-
-    export namespace Role {
-      export interface Permission {
-        name: string;
-      }
-    }
-  }
-}
-
 export declare namespace APIKeys {
-  export {
-    type APIKeyListResponse as APIKeyListResponse,
-    type APIKeyRotateResponse as APIKeyRotateResponse,
-    type APIKeyShowResponse as APIKeyShowResponse,
-  };
+  export { type APIKeyListResponse as APIKeyListResponse, type APIKeyRotateResponse as APIKeyRotateResponse };
 }

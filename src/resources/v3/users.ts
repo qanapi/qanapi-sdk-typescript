@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as V3API from './v3';
 import { APIPromise } from '../../core/api-promise';
 import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
@@ -18,7 +19,7 @@ export class Users extends APIResource {
    * });
    * ```
    */
-  create(body: UserCreateParams, options?: RequestOptions): APIPromise<UserCreateResponse> {
+  create(body: UserCreateParams, options?: RequestOptions): APIPromise<V3API.User> {
     return this._client.post('/v3/users', { body, ...options });
   }
 
@@ -54,10 +55,10 @@ export class Users extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.v3.users.me();
+   * const user = await client.v3.users.me();
    * ```
    */
-  me(options?: RequestOptions): APIPromise<UserMeResponse> {
+  me(options?: RequestOptions): APIPromise<V3API.User> {
     return this._client.get('/v3/users/me', options);
   }
 
@@ -66,23 +67,23 @@ export class Users extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.v3.users.patch(0);
+   * const user = await client.v3.users.patch(0);
    * ```
    */
-  patch(user: number, body: UserPatchParams, options?: RequestOptions): APIPromise<UserPatchResponse> {
+  patch(user: number, body: UserPatchParams, options?: RequestOptions): APIPromise<V3API.User> {
     return this._client.patch(path`/v3/users/${user}`, { body, ...options });
   }
 
   /**
-   * Update user
+   * Restore user
    *
    * @example
    * ```ts
-   * const response = await client.v3.users.restore(0);
+   * const user = await client.v3.users.restore(0);
    * ```
    */
-  restore(user: number, body: UserRestoreParams, options?: RequestOptions): APIPromise<UserRestoreResponse> {
-    return this._client.patch(path`/v3/users/${user}`, { body, ...options });
+  restore(user: number, options?: RequestOptions): APIPromise<V3API.User> {
+    return this._client.patch(path`/v3/users/${user}/restore`, options);
   }
 
   /**
@@ -90,209 +91,15 @@ export class Users extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.v3.users.show(0);
+   * const user = await client.v3.users.show(0);
    * ```
    */
-  show(user: number, options?: RequestOptions): APIPromise<UserShowResponse> {
+  show(user: number, options?: RequestOptions): APIPromise<V3API.User> {
     return this._client.get(path`/v3/users/${user}`, options);
   }
 }
 
-export interface UserCreateResponse {
-  id: number;
-
-  email: string;
-
-  name: string;
-
-  created_at?: string;
-
-  roles?: Array<UserCreateResponse.Role>;
-
-  two_factor_enabled?: boolean;
-
-  updated_at?: string;
-}
-
-export namespace UserCreateResponse {
-  export interface Role {
-    name: string;
-
-    description?: string | null;
-
-    permissions?: Array<Role.Permission>;
-  }
-
-  export namespace Role {
-    export interface Permission {
-      name: string;
-    }
-  }
-}
-
-export type UserListResponse = Array<UserListResponse.UserListResponseItem>;
-
-export namespace UserListResponse {
-  export interface UserListResponseItem {
-    id: number;
-
-    email: string;
-
-    name: string;
-
-    created_at?: string;
-
-    roles?: Array<UserListResponseItem.Role>;
-
-    two_factor_enabled?: boolean;
-
-    updated_at?: string;
-  }
-
-  export namespace UserListResponseItem {
-    export interface Role {
-      name: string;
-
-      description?: string | null;
-
-      permissions?: Array<Role.Permission>;
-    }
-
-    export namespace Role {
-      export interface Permission {
-        name: string;
-      }
-    }
-  }
-}
-
-export interface UserMeResponse {
-  id: number;
-
-  email: string;
-
-  name: string;
-
-  created_at?: string;
-
-  roles?: Array<UserMeResponse.Role>;
-
-  two_factor_enabled?: boolean;
-
-  updated_at?: string;
-}
-
-export namespace UserMeResponse {
-  export interface Role {
-    name: string;
-
-    description?: string | null;
-
-    permissions?: Array<Role.Permission>;
-  }
-
-  export namespace Role {
-    export interface Permission {
-      name: string;
-    }
-  }
-}
-
-export interface UserPatchResponse {
-  id: number;
-
-  email: string;
-
-  name: string;
-
-  created_at?: string;
-
-  roles?: Array<UserPatchResponse.Role>;
-
-  two_factor_enabled?: boolean;
-
-  updated_at?: string;
-}
-
-export namespace UserPatchResponse {
-  export interface Role {
-    name: string;
-
-    description?: string | null;
-
-    permissions?: Array<Role.Permission>;
-  }
-
-  export namespace Role {
-    export interface Permission {
-      name: string;
-    }
-  }
-}
-
-export interface UserRestoreResponse {
-  id: number;
-
-  email: string;
-
-  name: string;
-
-  created_at?: string;
-
-  roles?: Array<UserRestoreResponse.Role>;
-
-  two_factor_enabled?: boolean;
-
-  updated_at?: string;
-}
-
-export namespace UserRestoreResponse {
-  export interface Role {
-    name: string;
-
-    description?: string | null;
-
-    permissions?: Array<Role.Permission>;
-  }
-
-  export namespace Role {
-    export interface Permission {
-      name: string;
-    }
-  }
-}
-
-export interface UserShowResponse {
-  id: number;
-
-  email: string;
-
-  name: string;
-
-  created_at?: string;
-
-  roles?: Array<UserShowResponse.Role>;
-
-  two_factor_enabled?: boolean;
-
-  updated_at?: string;
-}
-
-export namespace UserShowResponse {
-  export interface Role {
-    name: string;
-
-    description?: string | null;
-
-    permissions?: Array<Role.Permission>;
-  }
-
-  export namespace Role {
-    export interface Permission {
-      name: string;
-    }
-  }
-}
+export type UserListResponse = Array<V3API.User>;
 
 export interface UserCreateParams {
   email: string;
@@ -313,26 +120,10 @@ export interface UserPatchParams {
   two_factor_enabled?: boolean;
 }
 
-export interface UserRestoreParams {
-  email?: string;
-
-  name?: string;
-
-  role?: string;
-
-  two_factor_enabled?: boolean;
-}
-
 export declare namespace Users {
   export {
-    type UserCreateResponse as UserCreateResponse,
     type UserListResponse as UserListResponse,
-    type UserMeResponse as UserMeResponse,
-    type UserPatchResponse as UserPatchResponse,
-    type UserRestoreResponse as UserRestoreResponse,
-    type UserShowResponse as UserShowResponse,
     type UserCreateParams as UserCreateParams,
     type UserPatchParams as UserPatchParams,
-    type UserRestoreParams as UserRestoreParams,
   };
 }

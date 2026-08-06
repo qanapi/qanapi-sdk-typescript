@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as V3API from './v3';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
 
@@ -101,43 +102,9 @@ export namespace LogActivityResponse {
 
     timestamp?: string;
 
-    user?: Data.User;
+    user?: V3API.User;
 
     when?: string;
-  }
-
-  export namespace Data {
-    export interface User {
-      id: number;
-
-      email: string;
-
-      name: string;
-
-      created_at?: string;
-
-      roles?: Array<User.Role>;
-
-      two_factor_enabled?: boolean;
-
-      updated_at?: string;
-    }
-
-    export namespace User {
-      export interface Role {
-        name: string;
-
-        description?: string | null;
-
-        permissions?: Array<Role.Permission>;
-      }
-
-      export namespace Role {
-        export interface Permission {
-          name: string;
-        }
-      }
-    }
   }
 
   export interface Link {
@@ -181,7 +148,7 @@ export interface LogAPIResponse {
 
 export namespace LogAPIResponse {
   export interface Data {
-    api_key?: Data.APIKey;
+    api_key?: V3API.APIKey;
 
     api_key_id?: number;
 
@@ -202,84 +169,6 @@ export namespace LogAPIResponse {
     request_id?: string | null;
 
     status_code?: number;
-  }
-
-  export namespace Data {
-    export interface APIKey {
-      id: string;
-
-      prefix: string;
-
-      status: 'active' | 'revoked';
-
-      configurations?: Array<APIKey.Configuration>;
-
-      created_at?: string;
-
-      permissions?: Array<APIKey.Permission>;
-
-      revoked_at?: string | null;
-
-      updated_at?: string;
-
-      user?: APIKey.User;
-    }
-
-    export namespace APIKey {
-      export interface Configuration {
-        id: string;
-
-        name: string;
-
-        type: string;
-
-        values?: Array<Configuration.Value>;
-      }
-
-      export namespace Configuration {
-        export interface Value {
-          key: string;
-
-          value: string;
-        }
-      }
-
-      export interface Permission {
-        name: string;
-      }
-
-      export interface User {
-        id: number;
-
-        email: string;
-
-        name: string;
-
-        created_at?: string;
-
-        roles?: Array<User.Role>;
-
-        two_factor_enabled?: boolean;
-
-        updated_at?: string;
-      }
-
-      export namespace User {
-        export interface Role {
-          name: string;
-
-          description?: string | null;
-
-          permissions?: Array<Role.Permission>;
-        }
-
-        export namespace Role {
-          export interface Permission {
-            name: string;
-          }
-        }
-      }
-    }
   }
 
   export interface Link {
@@ -381,7 +270,7 @@ export namespace LogUnifiedResponse {
 
     causer_email?: string | null;
 
-    configuration?: Data.Configuration;
+    configuration?: V3API.Configuration;
 
     description?: string;
 
@@ -397,28 +286,10 @@ export namespace LogUnifiedResponse {
 
     timestamp?: string;
 
-    user?: Data.User;
+    user?: V3API.User;
   }
 
   export namespace Data {
-    export interface Configuration {
-      id: string;
-
-      name: string;
-
-      type: string;
-
-      values?: Array<Configuration.Value>;
-    }
-
-    export namespace Configuration {
-      export interface Value {
-        key: string;
-
-        value: string;
-      }
-    }
-
     export interface ActivityLog {
       action?: string;
 
@@ -428,47 +299,13 @@ export namespace LogUnifiedResponse {
 
       timestamp?: string;
 
-      user?: ActivityLog.User;
+      user?: V3API.User;
 
       when?: string;
     }
 
-    export namespace ActivityLog {
-      export interface User {
-        id: number;
-
-        email: string;
-
-        name: string;
-
-        created_at?: string;
-
-        roles?: Array<User.Role>;
-
-        two_factor_enabled?: boolean;
-
-        updated_at?: string;
-      }
-
-      export namespace User {
-        export interface Role {
-          name: string;
-
-          description?: string | null;
-
-          permissions?: Array<Role.Permission>;
-        }
-
-        export namespace Role {
-          export interface Permission {
-            name: string;
-          }
-        }
-      }
-    }
-
     export interface APILog {
-      api_key?: APILog.APIKey;
+      api_key?: V3API.APIKey;
 
       api_key_id?: number;
 
@@ -491,84 +328,6 @@ export namespace LogUnifiedResponse {
       status_code?: number;
     }
 
-    export namespace APILog {
-      export interface APIKey {
-        id: string;
-
-        prefix: string;
-
-        status: 'active' | 'revoked';
-
-        configurations?: Array<APIKey.Configuration>;
-
-        created_at?: string;
-
-        permissions?: Array<APIKey.Permission>;
-
-        revoked_at?: string | null;
-
-        updated_at?: string;
-
-        user?: APIKey.User;
-      }
-
-      export namespace APIKey {
-        export interface Configuration {
-          id: string;
-
-          name: string;
-
-          type: string;
-
-          values?: Array<Configuration.Value>;
-        }
-
-        export namespace Configuration {
-          export interface Value {
-            key: string;
-
-            value: string;
-          }
-        }
-
-        export interface Permission {
-          name: string;
-        }
-
-        export interface User {
-          id: number;
-
-          email: string;
-
-          name: string;
-
-          created_at?: string;
-
-          roles?: Array<User.Role>;
-
-          two_factor_enabled?: boolean;
-
-          updated_at?: string;
-        }
-
-        export namespace User {
-          export interface Role {
-            name: string;
-
-            description?: string | null;
-
-            permissions?: Array<Role.Permission>;
-          }
-
-          export namespace Role {
-            export interface Permission {
-              name: string;
-            }
-          }
-        }
-      }
-    }
-
     export interface QanapiFlowLog {
       action?: string;
 
@@ -581,38 +340,6 @@ export namespace LogUnifiedResponse {
       request_id?: string | null;
 
       type?: string;
-    }
-
-    export interface User {
-      id: number;
-
-      email: string;
-
-      name: string;
-
-      created_at?: string;
-
-      roles?: Array<User.Role>;
-
-      two_factor_enabled?: boolean;
-
-      updated_at?: string;
-    }
-
-    export namespace User {
-      export interface Role {
-        name: string;
-
-        description?: string | null;
-
-        permissions?: Array<Role.Permission>;
-      }
-
-      export namespace Role {
-        export interface Permission {
-          name: string;
-        }
-      }
     }
   }
 
