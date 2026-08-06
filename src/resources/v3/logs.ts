@@ -274,7 +274,7 @@ export namespace LogUnifiedResponse {
 
     description?: string;
 
-    details?: unknown | null;
+    details?: string | null;
 
     full_log?: Data.ActivityLog | Data.APILog | Data.QanapiFlowLog;
 
