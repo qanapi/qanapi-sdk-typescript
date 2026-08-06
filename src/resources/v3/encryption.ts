@@ -15,9 +15,9 @@ export class Encryption extends APIResource {
     params: EncryptionDecryptParams,
     options?: RequestOptions,
   ): APIPromise<EncryptionDecryptResponse> {
-    const { body, 'x-qanapi-fields': xQanapiFields } = params;
+    const { data, 'x-qanapi-fields': xQanapiFields } = params;
     return this._client.post(path`/v3/encryption/${proxy}/decrypt`, {
-      body: body,
+      body: data,
       ...options,
       headers: buildHeaders([
         { ...(xQanapiFields != null ? { 'x-qanapi-fields': xQanapiFields } : undefined) },
@@ -34,9 +34,9 @@ export class Encryption extends APIResource {
     params: EncryptionEncryptParams,
     options?: RequestOptions,
   ): APIPromise<EncryptionEncryptResponse> {
-    const { body, 'x-qanapi-fields': xQanapiFields, 'x-qanapi-destination': xQanapiDestination } = params;
+    const { data, 'x-qanapi-fields': xQanapiFields, 'x-qanapi-destination': xQanapiDestination } = params;
     return this._client.post(path`/v3/encryption/${proxy}/encrypt`, {
-      body: body,
+      body: data,
       ...options,
       headers: buildHeaders([
         {
@@ -58,7 +58,7 @@ export interface EncryptionDecryptParams {
    * Body param: A JSON object to decrypt fields on. A maximum depth of 32 is
    * allowed.
    */
-  body: { [key: string]: unknown };
+  data: { [key: string]: unknown };
 
   /**
    * Header param: Comma separated list of fields to decrypt. You can use dot
@@ -72,7 +72,7 @@ export interface EncryptionEncryptParams {
    * Body param: A JSON object to encrypt fields on. A maximum depth of 32 is
    * allowed.
    */
-  body: { [key: string]: unknown };
+  data: { [key: string]: unknown };
 
   /**
    * Header param: Comma separated list of fields to encrypt. You can use dot
