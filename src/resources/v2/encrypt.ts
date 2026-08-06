@@ -26,7 +26,7 @@ export class Encrypt extends APIResource {
     body: EncryptEncryptDataParams,
     options?: RequestOptions,
   ): APIPromise<EncryptEncryptDataResponse> {
-    return this._client.post('/encrypt', { body, ...options });
+    return this._client.post('/v2/encrypt', { body, ...options });
   }
 }
 

@@ -20,7 +20,7 @@ export class Decrypt extends APIResource {
     body: DecryptDecryptPayloadParams,
     options?: RequestOptions,
   ): APIPromise<DecryptDecryptPayloadResponse> {
-    return this._client.post('/decrypt', { body, ...options });
+    return this._client.post('/v2/decrypt', { body, ...options });
   }
 }
 

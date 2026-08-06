@@ -15,7 +15,7 @@ export class APIKeys extends APIResource {
    * ```
    */
   revoke(apiKey: string, options?: RequestOptions): APIPromise<APIKeyRevokeResponse> {
-    return this._client.patch(path`/api-keys/${apiKey}/revoke`, options);
+    return this._client.patch(path`/v2/api-keys/${apiKey}/revoke`, options);
   }
 
   /**
@@ -27,7 +27,7 @@ export class APIKeys extends APIResource {
    * ```
    */
   rotate(apiKey: string, options?: RequestOptions): APIPromise<APIKeyRotateResponse> {
-    return this._client.patch(path`/api-keys/${apiKey}/rotate`, options);
+    return this._client.patch(path`/v2/api-keys/${apiKey}/rotate`, options);
   }
 }
 
