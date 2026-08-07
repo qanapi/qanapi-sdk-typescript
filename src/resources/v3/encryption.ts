@@ -9,6 +9,17 @@ import { path } from '../../internal/utils/path';
 export class Encryption extends APIResource {
   /**
    * Decrypt data
+   *
+   * @example
+   * ```ts
+   * const response = await client.v3.encryption.decrypt(
+   *   'proxy',
+   *   {
+   *     data: { foo: 'bar' },
+   *     'x-qanapi-fields': 'x-qanapi-fields',
+   *   },
+   * );
+   * ```
    */
   decrypt(
     proxy: string,
@@ -25,6 +36,17 @@ export class Encryption extends APIResource {
 
   /**
    * Encrypt data
+   *
+   * @example
+   * ```ts
+   * const response = await client.v3.encryption.encrypt(
+   *   'proxy',
+   *   {
+   *     data: { foo: 'bar' },
+   *     'x-qanapi-fields': 'x-qanapi-fields',
+   *   },
+   * );
+   * ```
    */
   encrypt(
     proxy: string,
@@ -58,7 +80,7 @@ export interface EncryptionDecryptParams {
   data: { [key: string]: unknown };
 
   /**
-   * Header param: Comma separated list of fields to decrypt. You can use dot
+   * Header param: Comma separated list of fields to encrypt. You can use dot
    * notation to access nested fields.
    */
   'x-qanapi-fields': string;

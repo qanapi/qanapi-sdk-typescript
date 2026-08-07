@@ -8,6 +8,11 @@ import { RequestOptions } from '../../internal/request-options';
 export class Roles extends APIResource {
   /**
    * List roles
+   *
+   * @example
+   * ```ts
+   * const roles = await client.v3.roles.list();
+   * ```
    */
   list(options?: RequestOptions): APIPromise<RoleListResponse> {
     return this._client.get('/v3/roles', options);
