@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../core/resource';
-import { APIPromise } from '../core/api-promise';
-import { RequestOptions } from '../internal/request-options';
+import { APIResource } from '../../core/resource';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class Auth extends APIResource {
   /**
@@ -10,14 +10,14 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.auth.login({
+   * const response = await client.v2.auth.login({
    *   email: 'valid@email.com',
    *   password: 'secret1234',
    * });
    * ```
    */
   login(body: AuthLoginParams, options?: RequestOptions): APIPromise<AuthLoginResponse> {
-    return this._client.post('/auth/login', { body, ...options });
+    return this._client.post('/v2/auth/login', { body, ...options });
   }
 
   /**
@@ -25,11 +25,11 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.auth.logout();
+   * const response = await client.v2.auth.logout();
    * ```
    */
   logout(options?: RequestOptions): APIPromise<AuthLogoutResponse> {
-    return this._client.post('/auth/logout', options);
+    return this._client.post('/v2/auth/logout', options);
   }
 
   /**
@@ -37,11 +37,11 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.auth.refreshToken();
+   * const response = await client.v2.auth.refreshToken();
    * ```
    */
   refreshToken(options?: RequestOptions): APIPromise<AuthRefreshTokenResponse> {
-    return this._client.post('/auth/refresh', options);
+    return this._client.post('/v2/auth/refresh', options);
   }
 
   /**
@@ -49,11 +49,11 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.auth.retrieveUserDetails();
+   * const response = await client.v2.auth.retrieveUserDetails();
    * ```
    */
   retrieveUserDetails(options?: RequestOptions): APIPromise<AuthRetrieveUserDetailsResponse> {
-    return this._client.get('/auth/userdetails', options);
+    return this._client.get('/v2/auth/userdetails', options);
   }
 
   /**
@@ -61,11 +61,11 @@ export class Auth extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.auth.revokeToken();
+   * const response = await client.v2.auth.revokeToken();
    * ```
    */
   revokeToken(options?: RequestOptions): APIPromise<AuthRevokeTokenResponse> {
-    return this._client.post('/auth/revoke', options);
+    return this._client.post('/v2/auth/revoke', options);
   }
 }
 

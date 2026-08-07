@@ -17,18 +17,8 @@ import * as Errors from './core/error';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
-import { APIKeyRevokeResponse, APIKeyRotateResponse, APIKeys } from './resources/api-keys';
-import {
-  Auth,
-  AuthLoginParams,
-  AuthLoginResponse,
-  AuthLogoutResponse,
-  AuthRefreshTokenResponse,
-  AuthRetrieveUserDetailsResponse,
-  AuthRevokeTokenResponse,
-} from './resources/auth';
-import { Decrypt, DecryptDecryptPayloadParams, DecryptDecryptPayloadResponse } from './resources/decrypt';
-import { Encrypt, EncryptEncryptDataParams, EncryptEncryptDataResponse } from './resources/encrypt';
+import { V2 } from './resources/v2/v2';
+import { APIKey, Configuration, Permission, Role, User, V3, Value } from './resources/v3/v3';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
@@ -150,7 +140,7 @@ export class Qanapi {
    * @param {string | undefined} [opts.apiKey=process.env['QANAPI_API_KEY'] ?? undefined]
    * @param {string | undefined} [opts.subdomain=process.env['QANAPI_SUBDOMAIN'] ?? undefined]
    * @param {string | null | undefined} [opts.bearerToken]
-   * @param {string} [opts.baseURL=process.env['QANAPI_BASE_URL'] ?? https://{subdomain}.qanapi.cloud/api/v2] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['QANAPI_BASE_URL'] ?? https://{subdomain}.qanapi.cloud/api] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -181,7 +171,7 @@ export class Qanapi {
       subdomain,
       bearerToken,
       ...opts,
-      baseURL: baseURL || `https://${subdomain}.qanapi.cloud/api/v2`,
+      baseURL: baseURL || `https://${subdomain}.qanapi.cloud/api`,
     };
 
     this.baseURL = options.baseURL!;
@@ -243,7 +233,7 @@ export class Qanapi {
    * Check whether the base URL is set to its default.
    */
   #baseURLOverridden(): boolean {
-    return this.baseURL !== 'https://{subdomain}.qanapi.cloud/api/v2';
+    return this.baseURL !== 'https://{subdomain}.qanapi.cloud/api';
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {
@@ -784,45 +774,25 @@ export class Qanapi {
 
   static toFile = Uploads.toFile;
 
-  auth: API.Auth = new API.Auth(this);
-  encrypt: API.Encrypt = new API.Encrypt(this);
-  decrypt: API.Decrypt = new API.Decrypt(this);
-  apiKeys: API.APIKeys = new API.APIKeys(this);
+  v3: API.V3 = new API.V3(this);
+  v2: API.V2 = new API.V2(this);
 }
 
-Qanapi.Auth = Auth;
-Qanapi.Encrypt = Encrypt;
-Qanapi.Decrypt = Decrypt;
-Qanapi.APIKeys = APIKeys;
+Qanapi.V3 = V3;
+Qanapi.V2 = V2;
 
 export declare namespace Qanapi {
   export type RequestOptions = Opts.RequestOptions;
 
   export {
-    Auth as Auth,
-    type AuthLoginResponse as AuthLoginResponse,
-    type AuthLogoutResponse as AuthLogoutResponse,
-    type AuthRefreshTokenResponse as AuthRefreshTokenResponse,
-    type AuthRetrieveUserDetailsResponse as AuthRetrieveUserDetailsResponse,
-    type AuthRevokeTokenResponse as AuthRevokeTokenResponse,
-    type AuthLoginParams as AuthLoginParams,
+    V3 as V3,
+    type APIKey as APIKey,
+    type Configuration as Configuration,
+    type Permission as Permission,
+    type Role as Role,
+    type User as User,
+    type Value as Value,
   };
 
-  export {
-    Encrypt as Encrypt,
-    type EncryptEncryptDataResponse as EncryptEncryptDataResponse,
-    type EncryptEncryptDataParams as EncryptEncryptDataParams,
-  };
-
-  export {
-    Decrypt as Decrypt,
-    type DecryptDecryptPayloadResponse as DecryptDecryptPayloadResponse,
-    type DecryptDecryptPayloadParams as DecryptDecryptPayloadParams,
-  };
-
-  export {
-    APIKeys as APIKeys,
-    type APIKeyRevokeResponse as APIKeyRevokeResponse,
-    type APIKeyRotateResponse as APIKeyRotateResponse,
-  };
+  export { V2 as V2 };
 }

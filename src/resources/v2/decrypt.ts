@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../core/resource';
-import { APIPromise } from '../core/api-promise';
-import { RequestOptions } from '../internal/request-options';
+import { APIResource } from '../../core/resource';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
 
 export class Decrypt extends APIResource {
   /**
@@ -10,7 +10,7 @@ export class Decrypt extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.decrypt.decryptPayload({
+   * const response = await client.v2.decrypt.decryptPayload({
    *   data: { password: 'enc$::abc123::...' },
    *   sensitiveFields: ['password'],
    * });
@@ -20,7 +20,7 @@ export class Decrypt extends APIResource {
     body: DecryptDecryptPayloadParams,
     options?: RequestOptions,
   ): APIPromise<DecryptDecryptPayloadResponse> {
-    return this._client.post('/decrypt', { body, ...options });
+    return this._client.post('/v2/decrypt', { body, ...options });
   }
 }
 
@@ -44,7 +44,7 @@ export interface DecryptDecryptPayloadParams {
   /**
    * Laravel-style dot-notated paths to fields to decrypt.
    *
-   * - Same syntax and behavior as in EncryptRequest.
+   * - Same syntax and behavior as in V2EncryptRequest.
    * - If omitted, all string values matching encryption prefix are attempted.
    *
    * Examples:

@@ -8,10 +8,10 @@ const client = new Qanapi({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource auth', () => {
+describe('resource users', () => {
   // Mock server tests are disabled
-  test.skip('login: only required params', async () => {
-    const responsePromise = client.auth.login({ email: 'valid@email.com', password: 'secret1234' });
+  test.skip('create: only required params', async () => {
+    const responsePromise = client.v3.users.create({ email: 'dev@stainless.com', role: 'role' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,13 +22,13 @@ describe('resource auth', () => {
   });
 
   // Mock server tests are disabled
-  test.skip('login: required and optional params', async () => {
-    const response = await client.auth.login({ email: 'valid@email.com', password: 'secret1234' });
+  test.skip('create: required and optional params', async () => {
+    const response = await client.v3.users.create({ email: 'dev@stainless.com', role: 'role' });
   });
 
   // Mock server tests are disabled
-  test.skip('logout', async () => {
-    const responsePromise = client.auth.logout();
+  test.skip('list', async () => {
+    const responsePromise = client.v3.users.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -39,8 +39,8 @@ describe('resource auth', () => {
   });
 
   // Mock server tests are disabled
-  test.skip('refreshToken', async () => {
-    const responsePromise = client.auth.refreshToken();
+  test.skip('delete', async () => {
+    const responsePromise = client.v3.users.delete(0);
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -51,8 +51,8 @@ describe('resource auth', () => {
   });
 
   // Mock server tests are disabled
-  test.skip('retrieveUserDetails', async () => {
-    const responsePromise = client.auth.retrieveUserDetails();
+  test.skip('me', async () => {
+    const responsePromise = client.v3.users.me();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -63,8 +63,32 @@ describe('resource auth', () => {
   });
 
   // Mock server tests are disabled
-  test.skip('revokeToken', async () => {
-    const responsePromise = client.auth.revokeToken();
+  test.skip('patch', async () => {
+    const responsePromise = client.v3.users.patch(0, {});
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Mock server tests are disabled
+  test.skip('restore', async () => {
+    const responsePromise = client.v3.users.restore(0);
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Mock server tests are disabled
+  test.skip('show', async () => {
+    const responsePromise = client.v3.users.show(0);
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
