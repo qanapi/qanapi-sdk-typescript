@@ -27,7 +27,7 @@ const client = new Qanapi({
   apiKey: process.env['QANAPI_API_KEY'], // This is the default and can be omitted
 });
 
-const response = await client.v3.encryption.encrypt('proxy', {
+const response = await client.v3.encryption.encrypt('{proxy}', {
   data: { password: 'secret123' },
   'x-qanapi-fields': 'password',
 });
@@ -51,7 +51,7 @@ const params: Qanapi.V3.EncryptionEncryptParams = {
   'x-qanapi-fields': 'password',
 };
 const response: Qanapi.V3.EncryptionEncryptResponse = await client.v3.encryption.encrypt(
-  'proxy',
+  '{proxy}',
   params,
 );
 ```
@@ -67,7 +67,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 const response = await client.v3.encryption
-  .encrypt('proxy', {
+  .encrypt('{proxy}', {
     data: { password: 'secret123' },
     'x-qanapi-fields': 'password',
   })
@@ -112,7 +112,7 @@ const client = new Qanapi({
 });
 
 // Or, configure per-request:
-await client.v3.encryption.encrypt('proxy', {
+await client.v3.encryption.encrypt('{proxy}', {
   data: { password: 'secret123' },
   'x-qanapi-fields': 'password',
 }, {
@@ -133,7 +133,7 @@ const client = new Qanapi({
 });
 
 // Override per-request:
-await client.v3.encryption.encrypt('proxy', {
+await client.v3.encryption.encrypt('{proxy}', {
   data: { password: 'secret123' },
   'x-qanapi-fields': 'password',
 }, {
@@ -160,7 +160,7 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 const client = new Qanapi();
 
 const response = await client.v3.encryption
-  .encrypt('proxy', {
+  .encrypt('{proxy}', {
     data: { password: 'secret123' },
     'x-qanapi-fields': 'password',
   })
@@ -169,7 +169,7 @@ console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: response, response: raw } = await client.v3.encryption
-  .encrypt('proxy', {
+  .encrypt('{proxy}', {
     data: { password: 'secret123' },
     'x-qanapi-fields': 'password',
   })

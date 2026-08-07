@@ -774,17 +774,15 @@ export class Qanapi {
 
   static toFile = Uploads.toFile;
 
-  v2: API.V2 = new API.V2(this);
   v3: API.V3 = new API.V3(this);
+  v2: API.V2 = new API.V2(this);
 }
 
-Qanapi.V2 = V2;
 Qanapi.V3 = V3;
+Qanapi.V2 = V2;
 
 export declare namespace Qanapi {
   export type RequestOptions = Opts.RequestOptions;
-
-  export { V2 as V2 };
 
   export {
     V3 as V3,
@@ -795,4 +793,6 @@ export declare namespace Qanapi {
     type User as User,
     type Value as Value,
   };
+
+  export { V2 as V2 };
 }

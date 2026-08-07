@@ -19,10 +19,7 @@ export class Encryption extends APIResource {
     return this._client.post(path`/v3/encryption/${proxy}/decrypt`, {
       body: data,
       ...options,
-      headers: buildHeaders([
-        { ...(xQanapiFields != null ? { 'x-qanapi-fields': xQanapiFields } : undefined) },
-        options?.headers,
-      ]),
+      headers: buildHeaders([{ 'x-qanapi-fields': xQanapiFields }, options?.headers]),
     });
   }
 
@@ -64,7 +61,7 @@ export interface EncryptionDecryptParams {
    * Header param: Comma separated list of fields to decrypt. You can use dot
    * notation to access nested fields.
    */
-  'x-qanapi-fields'?: string;
+  'x-qanapi-fields': string;
 }
 
 export interface EncryptionEncryptParams {
