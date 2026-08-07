@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.10.0 (2026-08-07)
+
+Full Changelog: [v1.9.1...v1.10.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.9.1...v1.10.0)
+
+### Features
+
+* **api:** add all v2 routes to a sub resource ([35d2dee](https://github.com/qanapi/qanapi-sdk-typescript/commit/35d2dee6f8aae077eab6d41a798d721fb3d946c1))
+* **api:** Add API V3 support ([e69f341](https://github.com/qanapi/qanapi-sdk-typescript/commit/e69f34161ddba498aeb3cb4a646f0d37855d919c))
+* **api:** add schema models ([bf05511](https://github.com/qanapi/qanapi-sdk-typescript/commit/bf05511024bddc548256ecd351e52c4622a25a6a))
+* **api:** Add v2 routes as sub resources ([776eaa5](https://github.com/qanapi/qanapi-sdk-typescript/commit/776eaa5b35f0abf6ec1b55ef7d64af2b3a1bb694))
+* **api:** examples ([35f1b18](https://github.com/qanapi/qanapi-sdk-typescript/commit/35f1b185560d0a9b5fde1eaae0c27e5c2573470b))
+* **api:** manual updates ([f84e609](https://github.com/qanapi/qanapi-sdk-typescript/commit/f84e6094e32d6c2626b9e65b9c50419f7e0c6119))
+* **api:** move v3 to the top ([44c48cc](https://github.com/qanapi/qanapi-sdk-typescript/commit/44c48ccdad99cce1e9c8a7326189aac56c2598ba))
+* **api:** rename V2 encryption schemas ([c4d14ba](https://github.com/qanapi/qanapi-sdk-typescript/commit/c4d14ba7a75c47e515038204e4e779e57ceadbff))
+* **api:** set v3 encryption routes body param name ([f12111a](https://github.com/qanapi/qanapi-sdk-typescript/commit/f12111a8ecec08abf52cc9a7fa922ede8a1166b0))
+* **api:** V3 Encryption Schemas ([3b47a7d](https://github.com/qanapi/qanapi-sdk-typescript/commit/3b47a7df50228d0fdaa1ab114cc6c0b8012628a6))
+
 ## 1.9.1 (2026-07-31)
 
 Full Changelog: [v1.9.0...v1.9.1](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.9.0...v1.9.1)
