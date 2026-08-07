@@ -11,7 +11,10 @@ const client = new Qanapi({
 describe('resource encryption', () => {
   // Mock server tests are disabled
   test.skip('decrypt: only required params', async () => {
-    const responsePromise = client.v3.encryption.decrypt('proxy', { data: { foo: 'bar' } });
+    const responsePromise = client.v3.encryption.decrypt('proxy', {
+      data: { foo: 'bar' },
+      'x-qanapi-fields': 'x-qanapi-fields',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
