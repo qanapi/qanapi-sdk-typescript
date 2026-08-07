@@ -10,6 +10,13 @@ import { path } from '../../internal/utils/path';
 export class Configurations extends APIResource {
   /**
    * Create configuration
+   *
+   * @example
+   * ```ts
+   * const configuration = await client.v3.configurations.create(
+   *   { name: 'name', type: 'provider' },
+   * );
+   * ```
    */
   create(body: ConfigurationCreateParams, options?: RequestOptions): APIPromise<V3API.Configuration> {
     return this._client.post('/v3/configurations', { body, ...options });
@@ -17,6 +24,14 @@ export class Configurations extends APIResource {
 
   /**
    * Update configuration
+   *
+   * @example
+   * ```ts
+   * const configuration = await client.v3.configurations.update(
+   *   '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+   *   { name: 'name' },
+   * );
+   * ```
    */
   update(
     configuration: string,
@@ -28,6 +43,12 @@ export class Configurations extends APIResource {
 
   /**
    * List configurations
+   *
+   * @example
+   * ```ts
+   * const configurations =
+   *   await client.v3.configurations.list();
+   * ```
    */
   list(options?: RequestOptions): APIPromise<ConfigurationListResponse> {
     return this._client.get('/v3/configurations', options);
@@ -35,6 +56,13 @@ export class Configurations extends APIResource {
 
   /**
    * Delete configuration
+   *
+   * @example
+   * ```ts
+   * await client.v3.configurations.delete(
+   *   '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+   * );
+   * ```
    */
   delete(configuration: string, options?: RequestOptions): APIPromise<void> {
     return this._client.delete(path`/v3/configurations/${configuration}`, {
@@ -45,6 +73,13 @@ export class Configurations extends APIResource {
 
   /**
    * Get configuration
+   *
+   * @example
+   * ```ts
+   * const configuration = await client.v3.configurations.show(
+   *   '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+   * );
+   * ```
    */
   show(configuration: string, options?: RequestOptions): APIPromise<V3API.Configuration> {
     return this._client.get(path`/v3/configurations/${configuration}`, options);
