@@ -6,7 +6,7 @@ import { RequestOptions } from '../../internal/request-options';
 
 export class Decrypt extends APIResource {
   /**
-   * Decrypt encrypted payload
+   * Decrypt data
    *
    * @example
    * ```ts

@@ -7,7 +7,7 @@ import { path } from '../../internal/utils/path';
 
 export class APIKeys extends APIResource {
   /**
-   * Revoke an API Key
+   * Revoke API Key
    *
    * @example
    * ```ts
@@ -19,7 +19,7 @@ export class APIKeys extends APIResource {
   }
 
   /**
-   * Rotate an API Key
+   * Rotate API Key
    *
    * @example
    * ```ts
@@ -32,7 +32,11 @@ export class APIKeys extends APIResource {
 }
 
 export interface APIKeyRevokeResponse {
+  id?: string;
+
   message?: string;
+
+  revoked_at?: string;
 }
 
 export interface APIKeyRotateResponse {

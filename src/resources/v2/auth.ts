@@ -6,7 +6,7 @@ import { RequestOptions } from '../../internal/request-options';
 
 export class Auth extends APIResource {
   /**
-   * Authenticate user and return JWT
+   * Login
    *
    * @example
    * ```ts
@@ -21,7 +21,7 @@ export class Auth extends APIResource {
   }
 
   /**
-   * Log out the current user
+   * Logout
    *
    * @example
    * ```ts
@@ -33,7 +33,7 @@ export class Auth extends APIResource {
   }
 
   /**
-   * Refresh access token using refresh token
+   * Refresh token
    *
    * @example
    * ```ts
@@ -45,7 +45,7 @@ export class Auth extends APIResource {
   }
 
   /**
-   * Retrieve user profile and roles
+   * Get user details
    *
    * @example
    * ```ts
@@ -57,7 +57,7 @@ export class Auth extends APIResource {
   }
 
   /**
-   * Revoke the current token
+   * Revoke token
    *
    * @example
    * ```ts
