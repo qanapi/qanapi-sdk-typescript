@@ -6,7 +6,7 @@ import { RequestOptions } from '../../internal/request-options';
 
 export class Encrypt extends APIResource {
   /**
-   * Encrypt data with optional ACL
+   * Encrypt data
    *
    * @example
    * ```ts

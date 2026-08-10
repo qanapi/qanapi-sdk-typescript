@@ -15,7 +15,13 @@ export class Encryption extends APIResource {
    * const response = await client.v3.encryption.decrypt(
    *   'proxy',
    *   {
-   *     data: { foo: 'bar' },
+   *     data: {
+   *       name: 'bar',
+   *       email: 'bar',
+   *       ssn: 'bar',
+   *       dob: 'bar',
+   *       address: 'bar',
+   *     },
    *     'x-qanapi-fields': 'x-qanapi-fields',
    *   },
    * );
@@ -42,7 +48,13 @@ export class Encryption extends APIResource {
    * const response = await client.v3.encryption.encrypt(
    *   'proxy',
    *   {
-   *     data: { foo: 'bar' },
+   *     data: {
+   *       name: 'bar',
+   *       email: 'bar',
+   *       ssn: 'bar',
+   *       dob: 'bar',
+   *       address: 'bar',
+   *     },
    *     'x-qanapi-fields': 'x-qanapi-fields',
    *   },
    * );

@@ -12,7 +12,13 @@ describe('resource encryption', () => {
   // Mock server tests are disabled
   test.skip('decrypt: only required params', async () => {
     const responsePromise = client.v3.encryption.decrypt('proxy', {
-      data: { foo: 'bar' },
+      data: {
+        name: 'bar',
+        email: 'bar',
+        ssn: 'bar',
+        dob: 'bar',
+        address: 'bar',
+      },
       'x-qanapi-fields': 'x-qanapi-fields',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -27,7 +33,13 @@ describe('resource encryption', () => {
   // Mock server tests are disabled
   test.skip('decrypt: required and optional params', async () => {
     const response = await client.v3.encryption.decrypt('proxy', {
-      data: { foo: 'bar' },
+      data: {
+        name: 'bar',
+        email: 'bar',
+        ssn: 'bar',
+        dob: 'bar',
+        address: 'bar',
+      },
       'x-qanapi-fields': 'x-qanapi-fields',
     });
   });
@@ -35,7 +47,13 @@ describe('resource encryption', () => {
   // Mock server tests are disabled
   test.skip('encrypt: only required params', async () => {
     const responsePromise = client.v3.encryption.encrypt('proxy', {
-      data: { foo: 'bar' },
+      data: {
+        name: 'bar',
+        email: 'bar',
+        ssn: 'bar',
+        dob: 'bar',
+        address: 'bar',
+      },
       'x-qanapi-fields': 'x-qanapi-fields',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -50,7 +68,13 @@ describe('resource encryption', () => {
   // Mock server tests are disabled
   test.skip('encrypt: required and optional params', async () => {
     const response = await client.v3.encryption.encrypt('proxy', {
-      data: { foo: 'bar' },
+      data: {
+        name: 'bar',
+        email: 'bar',
+        ssn: 'bar',
+        dob: 'bar',
+        address: 'bar',
+      },
       'x-qanapi-fields': 'x-qanapi-fields',
       'x-qanapi-destination': 'x-qanapi-destination',
     });
