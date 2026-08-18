@@ -5,6 +5,7 @@ export {
   V3,
   type APIKey,
   type Configuration,
+  type GoogleGroup,
   type Permission,
   type Role,
   type User,
