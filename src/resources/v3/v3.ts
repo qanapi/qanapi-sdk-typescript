@@ -3,6 +3,17 @@
 import { APIResource } from '../../core/resource';
 import * as APIKeysAPI from './api-keys';
 import { APIKeyListResponse, APIKeyRotateResponse, APIKeys } from './api-keys';
+import * as ClassificationsAPI from './classifications';
+import {
+  ClassificationCreateParams,
+  ClassificationCreateResponse,
+  ClassificationListParams,
+  ClassificationListResponse,
+  ClassificationShowResponse,
+  ClassificationUpdateParams,
+  ClassificationUpdateResponse,
+  Classifications,
+} from './classifications';
 import * as ConfigurationsAPI from './configurations';
 import {
   ConfigurationCreateParams,
@@ -33,7 +44,7 @@ import {
 import * as RolesAPI from './roles';
 import { RoleListResponse, Roles } from './roles';
 import * as UsersAPI from './users';
-import { UserCreateParams, UserListResponse, UserPatchParams, Users } from './users';
+import { UserCreateParams, UserListResponse, UserUpdateParams, Users } from './users';
 
 export class V3 extends APIResource {
   roles: RolesAPI.Roles = new RolesAPI.Roles(this._client);
@@ -42,6 +53,7 @@ export class V3 extends APIResource {
   apiKeys: APIKeysAPI.APIKeys = new APIKeysAPI.APIKeys(this._client);
   logs: LogsAPI.Logs = new LogsAPI.Logs(this._client);
   encryption: EncryptionAPI.Encryption = new EncryptionAPI.Encryption(this._client);
+  classifications: ClassificationsAPI.Classifications = new ClassificationsAPI.Classifications(this._client);
 }
 
 export interface APIKey {
@@ -72,6 +84,14 @@ export interface Configuration {
   type: string;
 
   values?: Array<Value>;
+}
+
+export interface GoogleGroup {
+  id: string;
+
+  email?: string;
+
+  name?: string;
 }
 
 export interface Permission {
@@ -114,11 +134,13 @@ V3.Users = Users;
 V3.APIKeys = APIKeys;
 V3.Logs = Logs;
 V3.Encryption = Encryption;
+V3.Classifications = Classifications;
 
 export declare namespace V3 {
   export {
     type APIKey as APIKey,
     type Configuration as Configuration,
+    type GoogleGroup as GoogleGroup,
     type Permission as Permission,
     type Role as Role,
     type User as User,
@@ -138,7 +160,7 @@ export declare namespace V3 {
     Users as Users,
     type UserListResponse as UserListResponse,
     type UserCreateParams as UserCreateParams,
-    type UserPatchParams as UserPatchParams,
+    type UserUpdateParams as UserUpdateParams,
   };
 
   export {
@@ -165,5 +187,16 @@ export declare namespace V3 {
     type EncryptionEncryptResponse as EncryptionEncryptResponse,
     type EncryptionDecryptParams as EncryptionDecryptParams,
     type EncryptionEncryptParams as EncryptionEncryptParams,
+  };
+
+  export {
+    Classifications as Classifications,
+    type ClassificationCreateResponse as ClassificationCreateResponse,
+    type ClassificationUpdateResponse as ClassificationUpdateResponse,
+    type ClassificationListResponse as ClassificationListResponse,
+    type ClassificationShowResponse as ClassificationShowResponse,
+    type ClassificationCreateParams as ClassificationCreateParams,
+    type ClassificationUpdateParams as ClassificationUpdateParams,
+    type ClassificationListParams as ClassificationListParams,
   };
 }

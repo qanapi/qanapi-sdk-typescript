@@ -24,6 +24,18 @@ export class Users extends APIResource {
   }
 
   /**
+   * Update user
+   *
+   * @example
+   * ```ts
+   * const user = await client.v3.users.update(0);
+   * ```
+   */
+  update(user: number, body: UserUpdateParams, options?: RequestOptions): APIPromise<V3API.User> {
+    return this._client.patch(path`/v3/users/${user}`, { body, ...options });
+  }
+
+  /**
    * List users
    *
    * @example
@@ -63,18 +75,6 @@ export class Users extends APIResource {
   }
 
   /**
-   * Update user
-   *
-   * @example
-   * ```ts
-   * const user = await client.v3.users.patch(0);
-   * ```
-   */
-  patch(user: number, body: UserPatchParams, options?: RequestOptions): APIPromise<V3API.User> {
-    return this._client.patch(path`/v3/users/${user}`, { body, ...options });
-  }
-
-  /**
    * Restore user
    *
    * @example
@@ -110,7 +110,7 @@ export interface UserCreateParams {
   role: string;
 }
 
-export interface UserPatchParams {
+export interface UserUpdateParams {
   email?: string;
 
   name?: string;
@@ -124,6 +124,6 @@ export declare namespace Users {
   export {
     type UserListResponse as UserListResponse,
     type UserCreateParams as UserCreateParams,
-    type UserPatchParams as UserPatchParams,
+    type UserUpdateParams as UserUpdateParams,
   };
 }

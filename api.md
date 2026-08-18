@@ -4,6 +4,7 @@ Types:
 
 - <code><a href="./src/resources/v3/v3.ts">APIKey</a></code>
 - <code><a href="./src/resources/v3/v3.ts">Configuration</a></code>
+- <code><a href="./src/resources/v3/v3.ts">GoogleGroup</a></code>
 - <code><a href="./src/resources/v3/v3.ts">Permission</a></code>
 - <code><a href="./src/resources/v3/v3.ts">Role</a></code>
 - <code><a href="./src/resources/v3/v3.ts">User</a></code>
@@ -28,7 +29,7 @@ Types:
 Methods:
 
 - <code title="post /v3/configurations">client.v3.configurations.<a href="./src/resources/v3/configurations.ts">create</a>({ ...params }) -> Configuration</code>
-- <code title="put /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/resources/v3/configurations.ts">update</a>(configuration, { ...params }) -> Configuration</code>
+- <code title="patch /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/resources/v3/configurations.ts">update</a>(configuration, { ...params }) -> Configuration</code>
 - <code title="get /v3/configurations">client.v3.configurations.<a href="./src/resources/v3/configurations.ts">list</a>() -> ConfigurationListResponse</code>
 - <code title="delete /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/resources/v3/configurations.ts">delete</a>(configuration) -> void</code>
 - <code title="get /v3/configurations/{configuration}">client.v3.configurations.<a href="./src/resources/v3/configurations.ts">show</a>(configuration) -> Configuration</code>
@@ -42,10 +43,10 @@ Types:
 Methods:
 
 - <code title="post /v3/users">client.v3.users.<a href="./src/resources/v3/users.ts">create</a>({ ...params }) -> User</code>
+- <code title="patch /v3/users/{user}">client.v3.users.<a href="./src/resources/v3/users.ts">update</a>(user, { ...params }) -> User</code>
 - <code title="get /v3/users">client.v3.users.<a href="./src/resources/v3/users.ts">list</a>() -> UserListResponse</code>
 - <code title="delete /v3/users/{user}">client.v3.users.<a href="./src/resources/v3/users.ts">delete</a>(user) -> void</code>
 - <code title="get /v3/users/me">client.v3.users.<a href="./src/resources/v3/users.ts">me</a>() -> User</code>
-- <code title="patch /v3/users/{user}">client.v3.users.<a href="./src/resources/v3/users.ts">patch</a>(user, { ...params }) -> User</code>
 - <code title="patch /v3/users/{user}/restore">client.v3.users.<a href="./src/resources/v3/users.ts">restore</a>(user) -> User</code>
 - <code title="get /v3/users/{user}">client.v3.users.<a href="./src/resources/v3/users.ts">show</a>(user) -> User</code>
 
@@ -90,6 +91,23 @@ Methods:
 
 - <code title="post /v3/encryption/{proxy}/decrypt">client.v3.encryption.<a href="./src/resources/v3/encryption.ts">decrypt</a>(proxy, { ...params }) -> EncryptionDecryptResponse</code>
 - <code title="post /v3/encryption/{proxy}/encrypt">client.v3.encryption.<a href="./src/resources/v3/encryption.ts">encrypt</a>(proxy, { ...params }) -> EncryptionEncryptResponse</code>
+
+## Classifications
+
+Types:
+
+- <code><a href="./src/resources/v3/classifications.ts">ClassificationCreateResponse</a></code>
+- <code><a href="./src/resources/v3/classifications.ts">ClassificationUpdateResponse</a></code>
+- <code><a href="./src/resources/v3/classifications.ts">ClassificationListResponse</a></code>
+- <code><a href="./src/resources/v3/classifications.ts">ClassificationShowResponse</a></code>
+
+Methods:
+
+- <code title="post /v3/classifications">client.v3.classifications.<a href="./src/resources/v3/classifications.ts">create</a>({ ...params }) -> ClassificationCreateResponse</code>
+- <code title="patch /v3/classifications/{classification}">client.v3.classifications.<a href="./src/resources/v3/classifications.ts">update</a>(classification, { ...params }) -> ClassificationUpdateResponse</code>
+- <code title="get /v3/classifications">client.v3.classifications.<a href="./src/resources/v3/classifications.ts">list</a>({ ...params }) -> ClassificationListResponse</code>
+- <code title="delete /v3/classifications/{classification}">client.v3.classifications.<a href="./src/resources/v3/classifications.ts">delete</a>(classification) -> void</code>
+- <code title="get /v3/classifications/{classification}">client.v3.classifications.<a href="./src/resources/v3/classifications.ts">show</a>(classification) -> ClassificationShowResponse</code>
 
 # V2
 

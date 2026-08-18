@@ -76,6 +76,7 @@ describe('resource encryption', () => {
         address: 'bar',
       },
       'x-qanapi-fields': 'x-qanapi-fields',
+      'x-qanapi-classification': 'x-qanapi-classification',
       'x-qanapi-destination': 'x-qanapi-destination',
     });
   });
