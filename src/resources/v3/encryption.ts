@@ -65,13 +65,21 @@ export class Encryption extends APIResource {
     params: EncryptionEncryptParams,
     options?: RequestOptions,
   ): APIPromise<EncryptionEncryptResponse> {
-    const { data, 'x-qanapi-fields': xQanapiFields, 'x-qanapi-destination': xQanapiDestination } = params;
+    const {
+      data,
+      'x-qanapi-fields': xQanapiFields,
+      'x-qanapi-classification': xQanapiClassification,
+      'x-qanapi-destination': xQanapiDestination,
+    } = params;
     return this._client.post(path`/v3/encryption/${proxy}/encrypt`, {
       body: data,
       ...options,
       headers: buildHeaders([
         {
           'x-qanapi-fields': xQanapiFields,
+          ...(xQanapiClassification != null ?
+            { 'x-qanapi-classification': xQanapiClassification }
+          : undefined),
           ...(xQanapiDestination != null ? { 'x-qanapi-destination': xQanapiDestination } : undefined),
         },
         options?.headers,
@@ -110,6 +118,11 @@ export interface EncryptionEncryptParams {
    * notation to access nested fields.
    */
   'x-qanapi-fields': string;
+
+  /**
+   * Header param: The classification ID or slug to assign to the encrypted data.
+   */
+  'x-qanapi-classification'?: string;
 
   /**
    * Header param: A URL to forward the encrypted data to. All non-qanapi headers

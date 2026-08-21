@@ -38,7 +38,7 @@ export class Configurations extends APIResource {
     body: ConfigurationUpdateParams,
     options?: RequestOptions,
   ): APIPromise<V3API.Configuration> {
-    return this._client.put(path`/v3/configurations/${configuration}`, { body, ...options });
+    return this._client.patch(path`/v3/configurations/${configuration}`, { body, ...options });
   }
 
   /**

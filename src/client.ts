@@ -18,7 +18,7 @@ import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
 import { V2 } from './resources/v2/v2';
-import { APIKey, Configuration, Permission, Role, User, V3, Value } from './resources/v3/v3';
+import { APIKey, Configuration, GoogleGroup, Permission, Role, User, V3, Value } from './resources/v3/v3';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
@@ -259,9 +259,6 @@ export class Qanapi {
     return buildHeaders([{ Authorization: `Bearer ${this.bearerToken}` }]);
   }
 
-  /**
-   * Basic re-implementation of `qs.stringify` for primitive types.
-   */
   protected stringifyQuery(query: object | Record<string, unknown>): string {
     return stringifyQuery(query);
   }
@@ -788,6 +785,7 @@ export declare namespace Qanapi {
     V3 as V3,
     type APIKey as APIKey,
     type Configuration as Configuration,
+    type GoogleGroup as GoogleGroup,
     type Permission as Permission,
     type Role as Role,
     type User as User,

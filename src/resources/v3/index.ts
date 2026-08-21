@@ -2,6 +2,16 @@
 
 export { APIKeys, type APIKeyListResponse, type APIKeyRotateResponse } from './api-keys';
 export {
+  Classifications,
+  type ClassificationCreateResponse,
+  type ClassificationUpdateResponse,
+  type ClassificationListResponse,
+  type ClassificationShowResponse,
+  type ClassificationCreateParams,
+  type ClassificationUpdateParams,
+  type ClassificationListParams,
+} from './classifications';
+export {
   Configurations,
   type ConfigurationListResponse,
   type ConfigurationCreateParams,
@@ -26,5 +36,14 @@ export {
   type LogUnifiedParams,
 } from './logs';
 export { Roles, type RoleListResponse } from './roles';
-export { Users, type UserListResponse, type UserCreateParams, type UserPatchParams } from './users';
-export { V3, type APIKey, type Configuration, type Permission, type Role, type User, type Value } from './v3';
+export { Users, type UserListResponse, type UserCreateParams, type UserUpdateParams } from './users';
+export {
+  V3,
+  type APIKey,
+  type Configuration,
+  type GoogleGroup,
+  type Permission,
+  type Role,
+  type User,
+  type Value,
+} from './v3';

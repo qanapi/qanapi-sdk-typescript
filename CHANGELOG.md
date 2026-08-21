@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.11.0 (2026-08-18)
+
+Full Changelog: [v1.10.0...v1.11.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.10.0...v1.11.0)
+
+### Features
+
+* **api:** add API V3 classification routes ([42afd4b](https://github.com/qanapi/qanapi-sdk-typescript/commit/42afd4b0964a9108c83818d612f7dbca4d24121e))
+
 ## 1.10.0 (2026-08-10)
 
 Full Changelog: [v1.9.1...v1.10.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.9.1...v1.10.0)
