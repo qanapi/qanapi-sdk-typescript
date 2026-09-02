@@ -118,16 +118,16 @@ Types:
 - <code><a href="./src/resources/v2/auth.ts">AuthLoginResponse</a></code>
 - <code><a href="./src/resources/v2/auth.ts">AuthLogoutResponse</a></code>
 - <code><a href="./src/resources/v2/auth.ts">AuthRefreshTokenResponse</a></code>
-- <code><a href="./src/resources/v2/auth.ts">AuthRetrieveUserDetailsResponse</a></code>
 - <code><a href="./src/resources/v2/auth.ts">AuthRevokeTokenResponse</a></code>
+- <code><a href="./src/resources/v2/auth.ts">AuthUserDetailsResponse</a></code>
 
 Methods:
 
 - <code title="post /v2/auth/login">client.v2.auth.<a href="./src/resources/v2/auth.ts">login</a>({ ...params }) -> AuthLoginResponse</code>
 - <code title="post /v2/auth/logout">client.v2.auth.<a href="./src/resources/v2/auth.ts">logout</a>() -> AuthLogoutResponse</code>
 - <code title="post /v2/auth/refresh">client.v2.auth.<a href="./src/resources/v2/auth.ts">refreshToken</a>() -> AuthRefreshTokenResponse</code>
-- <code title="get /v2/auth/userdetails">client.v2.auth.<a href="./src/resources/v2/auth.ts">retrieveUserDetails</a>() -> AuthRetrieveUserDetailsResponse</code>
 - <code title="post /v2/auth/revoke">client.v2.auth.<a href="./src/resources/v2/auth.ts">revokeToken</a>() -> AuthRevokeTokenResponse</code>
+- <code title="get /v2/auth/userdetails">client.v2.auth.<a href="./src/resources/v2/auth.ts">userDetails</a>() -> AuthUserDetailsResponse</code>
 
 ## Encrypt
 
