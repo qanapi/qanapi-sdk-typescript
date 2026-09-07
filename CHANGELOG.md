@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.12.0 (2026-09-07)
+
+Full Changelog: [v1.11.0...v1.12.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.11.0...v1.12.0)
+
+### Features
+
+* initial stlc build ([9331937](https://github.com/qanapi/qanapi-sdk-typescript/commit/9331937df621df11c3c7477eef01336328431133))
+* initial stlc build ([0a18825](https://github.com/qanapi/qanapi-sdk-typescript/commit/0a18825326b3c413ed2f266f7e7806e0330896d5))
+* initial stlc build ([cc332b4](https://github.com/qanapi/qanapi-sdk-typescript/commit/cc332b4b11818ed5cb0efb98b57116287d693251))
+
+
+### Chores
+
+* add github workflows as custom code ([94efbcf](https://github.com/qanapi/qanapi-sdk-typescript/commit/94efbcf185ac5304b93e4db9d7339ba92fccf655))
+* setup workflows ([c70ff3f](https://github.com/qanapi/qanapi-sdk-typescript/commit/c70ff3fa834d8717cb33d2b5a0cfcf618c20050c))
+
 ## 1.11.0 (2026-08-18)
 
 Full Changelog: [v1.10.0...v1.11.0](https://github.com/qanapi/qanapi-sdk-typescript/compare/v1.10.0...v1.11.0)
