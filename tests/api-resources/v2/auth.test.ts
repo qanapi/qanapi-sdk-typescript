@@ -51,8 +51,8 @@ describe('resource auth', () => {
   });
 
   // Mock server tests are disabled
-  test.skip('retrieveUserDetails', async () => {
-    const responsePromise = client.v2.auth.retrieveUserDetails();
+  test.skip('revokeToken', async () => {
+    const responsePromise = client.v2.auth.revokeToken();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -63,8 +63,8 @@ describe('resource auth', () => {
   });
 
   // Mock server tests are disabled
-  test.skip('revokeToken', async () => {
-    const responsePromise = client.v2.auth.revokeToken();
+  test.skip('userDetails', async () => {
+    const responsePromise = client.v2.auth.userDetails();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

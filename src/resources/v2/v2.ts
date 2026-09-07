@@ -10,8 +10,8 @@ import {
   AuthLoginResponse,
   AuthLogoutResponse,
   AuthRefreshTokenResponse,
-  AuthRetrieveUserDetailsResponse,
   AuthRevokeTokenResponse,
+  AuthUserDetailsResponse,
 } from './auth';
 import * as DecryptAPI from './decrypt';
 import { Decrypt, DecryptDecryptPayloadParams, DecryptDecryptPayloadResponse } from './decrypt';
@@ -36,8 +36,8 @@ export declare namespace V2 {
     type AuthLoginResponse as AuthLoginResponse,
     type AuthLogoutResponse as AuthLogoutResponse,
     type AuthRefreshTokenResponse as AuthRefreshTokenResponse,
-    type AuthRetrieveUserDetailsResponse as AuthRetrieveUserDetailsResponse,
     type AuthRevokeTokenResponse as AuthRevokeTokenResponse,
+    type AuthUserDetailsResponse as AuthUserDetailsResponse,
     type AuthLoginParams as AuthLoginParams,
   };
 

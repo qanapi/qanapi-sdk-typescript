@@ -6,8 +6,8 @@ export {
   type AuthLoginResponse,
   type AuthLogoutResponse,
   type AuthRefreshTokenResponse,
-  type AuthRetrieveUserDetailsResponse,
   type AuthRevokeTokenResponse,
+  type AuthUserDetailsResponse,
   type AuthLoginParams,
 } from './auth';
 export { Decrypt, type DecryptDecryptPayloadResponse, type DecryptDecryptPayloadParams } from './decrypt';

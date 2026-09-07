@@ -45,18 +45,6 @@ export class Auth extends APIResource {
   }
 
   /**
-   * Get user details
-   *
-   * @example
-   * ```ts
-   * const response = await client.v2.auth.retrieveUserDetails();
-   * ```
-   */
-  retrieveUserDetails(options?: RequestOptions): APIPromise<AuthRetrieveUserDetailsResponse> {
-    return this._client.get('/v2/auth/userdetails', options);
-  }
-
-  /**
    * Revoke token
    *
    * @example
@@ -66,6 +54,18 @@ export class Auth extends APIResource {
    */
   revokeToken(options?: RequestOptions): APIPromise<AuthRevokeTokenResponse> {
     return this._client.post('/v2/auth/revoke', options);
+  }
+
+  /**
+   * Get user details
+   *
+   * @example
+   * ```ts
+   * const response = await client.v2.auth.userDetails();
+   * ```
+   */
+  userDetails(options?: RequestOptions): APIPromise<AuthUserDetailsResponse> {
+    return this._client.get('/v2/auth/userdetails', options);
   }
 }
 
@@ -106,7 +106,11 @@ export interface AuthRefreshTokenResponse {
   token_type?: string;
 }
 
-export interface AuthRetrieveUserDetailsResponse {
+export interface AuthRevokeTokenResponse {
+  message?: string;
+}
+
+export interface AuthUserDetailsResponse {
   id?: number;
 
   email?: string;
@@ -122,10 +126,6 @@ export interface AuthRetrieveUserDetailsResponse {
   roles?: Array<string>;
 }
 
-export interface AuthRevokeTokenResponse {
-  message?: string;
-}
-
 export interface AuthLoginParams {
   email: string;
 
@@ -137,8 +137,8 @@ export declare namespace Auth {
     type AuthLoginResponse as AuthLoginResponse,
     type AuthLogoutResponse as AuthLogoutResponse,
     type AuthRefreshTokenResponse as AuthRefreshTokenResponse,
-    type AuthRetrieveUserDetailsResponse as AuthRetrieveUserDetailsResponse,
     type AuthRevokeTokenResponse as AuthRevokeTokenResponse,
+    type AuthUserDetailsResponse as AuthUserDetailsResponse,
     type AuthLoginParams as AuthLoginParams,
   };
 }
